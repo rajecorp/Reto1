@@ -1,0 +1,13 @@
+header img{
+    width: 10%;
+    height: 10%;
+    float: left;
+    
+}
+header h1{
+    
+}
+header{
+    border: solid 2px #777;
+    margin: 2%;
+}
