@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>"Tranvia Vitoria"</title>
+    <style>
+      #emergencia{
+        margin:0px;
+        background-color: #FF5733;
+        height: 200px;
+        transition:all 0.3s ease;
+        animation-name: increase;
+        animation-duration: 0.7s;
+        overflow: hidden;
+      }
+
+      img{
+        display:block;
+        margin:auto;
+        max-height: 100%;
+        padding-top:20px;
+        animation-name: growshrink;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        animation-delay: 0;
+
+      }
+      @keyframes growshrink{
+      from{ 
+      transform: scale(0.7);
+      }
+
+      25%{
+
+      transform: scale(1.1);
+      }
+
+      50%{
+
+      transform: scale(0.7);
+      }
+
+      75%{
+
+      transform: scale(1.1);
+      } 
+
+      to{
+
+      transform: scale(0.7);
+    }
+  }
+
+        @keyframes increase{
+      from{
+        height: 0px;
+      }
+      to{
+        height: 200px;
+      }
+  }
+
+        @keyframes decrease{
+      from{
+        height: 200px;
+      }
+      to{
+        height: 0px;
+      }
+  }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="emergencia" style='visibility:hidden; display:none;'>
+        <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;">
+    </div>
+
+    <script>
+      let emerg=new Boolean()
+      
+      emerg=true;
+    
+        if(emerg==true){
+      document.getElementById('emergencia').style.display ='inherit';
+      
+      document.getElementById('emergencia').style.visibility ='visible';
+      
+      }
+    
+
+   
+
+</script>
+  </body>
+</html>
