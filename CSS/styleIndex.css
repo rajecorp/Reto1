@@ -1,13 +1,43 @@
-header img{
-    width: 10%;
-    height: 10%;
-    float: left;
-    
+body{
+  margin: 0;
+  background-color: #3EBD1C;
+  color: white;
 }
-header h1{
-    
+header {
+  background-color: white;
+  color: black;
+  box-shadow: inset 0px 0px 40px 35px #3EBD1C;
+  padding: 2%;
+  display: flex;
+  justify-content: space-around;
 }
-header{
-    border: solid 2px #777;
-    margin: 2%;
+
+header img {
+  padding: 10px;
+  width: 320px;
+  height: 200px;
+}
+
+h1 {
+  align-self: center;
+  font-size: 60px;
+}
+
+#contenido {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #B5FFA1;
+  color: black;
+  border: 2px solid green;
+}
+#menu {
+
+}
+
+footer {
+  background-color: black;
+}
+
+footer p {
+  margin: 0;
 }
