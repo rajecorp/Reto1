@@ -55,12 +55,12 @@ li {
   background-color: #EFF5EE;
 }
 
-#estado {
+#estadoM {
   border-radius: 29px 0px 0px 29px;
   border-right: none;
 }
 
-#acciones {
+#accionesM {
   border-radius: 0px 29px 29px 0px;
   border-left: none;
 }
@@ -147,4 +147,53 @@ footer h2 {
 
 footer p {
   margin: 0;
+}
+/*Acciones*/
+#acciones{
+    
+    overflow: hidden;
+}
+
+#acciones .botonParar{
+    background-color: rgb(171, 11, 53);
+}
+#acciones .botonSeguir{
+    background-color: #4CAF50;
+}
+#acciones .botonAbrir{
+    background-color: rgb(171, 11, 53);
+}
+#acciones .botonCerrar{
+    background-color: #4CAF50;
+}
+#acciones .botonIr{
+    background-color: rgb(36, 50, 206);
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 5px;
+    cursor: pointer;
+}
+#acciones .botones{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 5px;
+    cursor: pointer;
+}
+#acciones #botizq{
+    float: left;
+    width: 48%;
+}
+#acciones #botDer{
+    float: right;
+    width: 48%;
 }
