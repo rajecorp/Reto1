@@ -3,7 +3,6 @@ body{
   background-color: #3EBD1C;
   color: white;
 }
-
 header {
   background-color: white;
   color: black;
@@ -27,15 +26,18 @@ h1 {
 #contenido {
   width: 80%;
   margin: 10px auto;
-  margin-bottom: 0;
   padding: 20px;
   background-color: white;
   color: black;
-  border-radius: 29px 29px 0px 0px;
+  border-radius: 29px 29px 29px 29px;
 
 }
 
 #menu {
+
+}
+
+ul {
   list-style-type: none;
   margin-bottom: 20px;
   display: flex;
@@ -43,7 +45,7 @@ h1 {
   margin: 0;
 }
 
-.menuItem {
+li {
   width: 50%;
   padding: 20px 0;
   color: black;
@@ -135,20 +137,36 @@ li:hover{
   }
 }
 
+footer {
+  background-color: black;
+}
+
+footer h2 {
+  margin-top: 0;
+}
+
+footer p {
+  margin: 0;
+}
 /*Acciones*/
 #acciones{
-  overflow: hidden;
+    
+    overflow: hidden;
 }
 
-#botonParar, #botonAbrir{
+#acciones .botonParar{
     background-color: rgb(171, 11, 53);
 }
-
-#botonSeguir, #botonCerrar{
+#acciones .botonSeguir{
     background-color: #4CAF50;
 }
-
-#botonIr{
+#acciones .botonAbrir{
+    background-color: rgb(171, 11, 53);
+}
+#acciones .botonCerrar{
+    background-color: #4CAF50;
+}
+#acciones .botonIr{
     background-color: rgb(36, 50, 206);
     border: none;
     color: white;
@@ -160,7 +178,7 @@ li:hover{
     margin: 5px 5px;
     cursor: pointer;
 }
-.botones{
+#acciones .botones{
     border: none;
     color: white;
     padding: 15px 32px;
@@ -171,29 +189,62 @@ li:hover{
     margin: 5px 5px;
     cursor: pointer;
 }
-#botizq{
+#acciones #botizq{
     float: left;
     width: 48%;
 }
-#botDer{
+#acciones #botDer{
     float: right;
     width: 48%;
 }
-
-footer {
-  width: 80%;
-  margin: 10px auto;
-  margin-top: 0;
-  padding: 20px;
-  background-color: black;
-  color: white;
-  border-radius: 0px 0px 29px 29px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
+/**Switch*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-#github_logo {
-  width: 40px;
-  height: 40px;
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/**Acaba Switch*/
