@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>"Tranvia Vitoria"</title>
+      <script src="javaStript.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
   </head>
   <body>
@@ -13,14 +14,14 @@
         </header>
       <!-- /Cabecera -->
 
-      <!-- MenÃº principal -->
+      <!-- Menú principal -->
         <div id="menu">
           <ul>
-            <li id="estado">Estado</li>
-            <li id="acciones">Acciones</li>
+            <li id="estadoM">Estado</li>
+            <li id="accionesM">Acciones</li>
           </ul>
         </div>
-      <!-- /MenÃº principal -->
+      <!-- /Menú principal -->
 
       <!-- Emergencia -->
         <div id="emergencia" style='visibility:hidden; display:none;'>
@@ -40,13 +41,13 @@
       <!-- Contenido -->
       <div id="contenido">
 
-      <!-- TranvÃ­a -->
+      <!-- Tranvía -->
           <div id="tranvia">
             <h2>Posicion del tranvia</h2>
             <img src="img/tranvia.png">
             <p>Aqui va la linea por donde se movera el tranvia</p>
           </div>
-      <!-- /TranvÃ­a -->
+      <!-- /Tranvía -->
 
       <!-- Estado -->
           <div id="estado">
@@ -56,17 +57,61 @@
           </div>
       <!-- /Estado -->
 
-      <!-- Acciones -->
+          <!-- Acciones -->
           <div id="acciones">
-            <h2>Acciones</h2>
-            <p> <label>Posicion a la que ir: <input type="text" name="posicion"></label> </p>
-            <p> <label>Parada a la que ir: <input type="text" name="parada"></label> </p>
-            <p>Poner en marcha</p>
-            <p>Parar</p>
-            <p>Abrir puertas</p>
-            <p>Cerrar puertas</p>
+              <h2>Acciones</h2>
+              <div id="botIzq">
+                  <p> <label>Posicion a la que ir: <input type="number" name="posicion"></label> </p>
+                  <p> <label>Parada a la que ir:
+                      <select>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                      </select>
+                      <br><br>
+                      <input type="button" class="botonIr" onclick="showConfirm('ir')" value="Ir">
+                  </label> </p>
+                  <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
+              </div>
+              <div id="botDer">
+                  <input type="button" class="botonSeguir botones" onclick="showConfirm('seguir')" value="Poner en marcha">
+                  <input type="button" class="botonParar botones" onclick="showConfirm('parar')" value="Parar">
+                  <br>
+                  <input type="button" class="botonAbrir botones" onclick="showConfirm('abrir')" value="Abrir puertas">
+                  <input type="button" class="botonCerrar botones" onclick="showConfirm('cerrar')" value="Cerrar puertas">
+              </div>
+
           </div>
-      <!-- /Acciones -->
+          <script>
+              let confirmar
+              function showConfirm(accion) {
+                  confirmar = confirm("\u00BFEstas seguro?")
+                  if (confirmar == true) {
+                      if (accion == 'seguir') {
+
+                          alert("Seguir")
+
+                      }else if (accion == 'parar') {
+
+                          alert("Parar")
+
+                      }else if (accion == 'abrir') {
+
+                          alert("Abrir")
+
+                      }else if (accion == 'cerrar') {
+
+                          alert("cerrar")
+
+                      }else if(accion == 'ir'){
+                          alert("Ir")
+                      }
+                  }
+              }
+
+          </script>
+          <!-- /Acciones -->
 
       </div>
       <!-- /Contenido -->
