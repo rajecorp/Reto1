@@ -31,7 +31,7 @@
       background-color: black;
       }
       #contflechas{
-      height: 70% ;
+      height: 53% ;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -65,7 +65,7 @@
     width: 35px;
     border-radius:35px;
     position: absolute;
-    margin-top: 199px;
+    margin-top: 148px;
     margin-left: 4%;
 
       transition:all 0.3s ease;
@@ -116,7 +116,7 @@
 
     </style>
   </head>
-  <body>
+  <body  onload="return estacion();">
 
       <!-- Tranvía -->
           <div id="tranvia">
@@ -142,7 +142,8 @@
 
 
 
-      let pos=7;
+      function estacion(){
+      let pos=9;
     
 
       switch(pos){    
@@ -175,7 +176,7 @@
       document.getElementById('bolapos').style.animationName ='estacion4'; 
       break;
     }
-    
+    }
       </script>  
   </body>
 </html>
