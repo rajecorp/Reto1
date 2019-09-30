@@ -34,6 +34,71 @@ h1 {
 
 }
 
+#emergencia{
+  margin:0px;
+  background-color: #FF5733;
+  height: 200px;
+  transition:all 0.3s ease;
+  animation-name: increase;
+  animation-duration: 0.7s;
+  overflow: hidden;
+}
+
+#emergenciaImg{
+  display:block;
+  margin:auto;
+  max-height: 100%;
+  padding-top:20px;
+  animation-name: growshrink;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-delay: 0;
+
+}
+@keyframes growshrink{
+  from{
+  transform: scale(0.7);
+  }
+
+  25%{
+
+  transform: scale(1.1);
+  }
+
+  50%{
+
+  transform: scale(0.7);
+  }
+
+  75%{
+
+  transform: scale(1.1);
+  }
+
+  to{
+
+  transform: scale(0.7);
+  }
+}
+
+  @keyframes increase{
+  from{
+    height: 0px;
+  }
+  to{
+    height: 200px;
+  }
+}
+
+  @keyframes decrease{
+  from{
+    height: 200px;
+  }
+  to{
+    height: 0px;
+  }
+}
+
 footer {
   background-color: black;
 }

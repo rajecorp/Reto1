@@ -23,13 +23,22 @@
             </ul>
           </div>
       <!-- /Menú principal -->
+
       <div id="contenido">
+
       <!-- Emergencia -->
-          <div id="emergencia">
-            <h2>Emergencia</h2>
-            <img src="img/emergencia.png">
-            <p>Ha habido una emergencia y el tranvia se ha parado</p>
-          </div>
+        <div id="emergencia" style='visibility:hidden; display:none;'>
+            <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
+        </div>
+
+        <script>
+          let emerg=new Boolean()
+          emerg=true;
+            if(emerg==true){
+          document.getElementById('emergencia').style.display ='inherit';
+          document.getElementById('emergencia').style.visibility ='visible';
+          }
+        </script>
       <!-- /Emergencia -->
 
       <!-- Tranvía -->
