@@ -3,6 +3,7 @@ body{
   background-color: #3EBD1C;
   color: white;
 }
+
 header {
   background-color: white;
   color: black;
@@ -26,18 +27,15 @@ h1 {
 #contenido {
   width: 80%;
   margin: 10px auto;
+  margin-bottom: 0;
   padding: 20px;
   background-color: white;
   color: black;
-  border-radius: 29px 29px 29px 29px;
+  border-radius: 29px 29px 0px 0px;
 
 }
 
 #menu {
-
-}
-
-ul {
   list-style-type: none;
   margin-bottom: 20px;
   display: flex;
@@ -45,7 +43,7 @@ ul {
   margin: 0;
 }
 
-li {
+.menuItem {
   width: 50%;
   padding: 20px 0;
   color: black;
@@ -137,36 +135,20 @@ li:hover{
   }
 }
 
-footer {
-  background-color: black;
-}
-
-footer h2 {
-  margin-top: 0;
-}
-
-footer p {
-  margin: 0;
-}
 /*Acciones*/
 #acciones{
-    
-    overflow: hidden;
+  overflow: hidden;
 }
 
-#acciones .botonParar{
+#botonParar, #botonAbrir{
     background-color: rgb(171, 11, 53);
 }
-#acciones .botonSeguir{
+
+#botonSeguir, #botonCerrar{
     background-color: #4CAF50;
 }
-#acciones .botonAbrir{
-    background-color: rgb(171, 11, 53);
-}
-#acciones .botonCerrar{
-    background-color: #4CAF50;
-}
-#acciones .botonIr{
+
+#botonIr{
     background-color: rgb(36, 50, 206);
     border: none;
     color: white;
@@ -178,7 +160,7 @@ footer p {
     margin: 5px 5px;
     cursor: pointer;
 }
-#acciones .botones{
+.botones{
     border: none;
     color: white;
     padding: 15px 32px;
@@ -189,11 +171,29 @@ footer p {
     margin: 5px 5px;
     cursor: pointer;
 }
-#acciones #botizq{
+#botizq{
     float: left;
     width: 48%;
 }
-#acciones #botDer{
+#botDer{
     float: right;
     width: 48%;
+}
+
+footer {
+  width: 80%;
+  margin: 10px auto;
+  margin-top: 0;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 0px 0px 29px 29px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+#github_logo {
+  width: 40px;
+  height: 40px;
 }

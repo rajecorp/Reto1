@@ -14,14 +14,14 @@
         </header>
       <!-- /Cabecera -->
 
-      <!-- Menú principal -->
-        <div id="menu">
-          <ul>
-            <li id="estadoM">Estado</li>
-            <li id="accionesM">Acciones</li>
+      <!-- Menï¿½ principal -->
+        <div>
+          <ul id="menu">
+            <li class="menuItem" id="estadoM">Estado</li>
+            <li class="menuItem" id="accionesM">Acciones</li>
           </ul>
         </div>
-      <!-- /Menú principal -->
+      <!-- /Menï¿½ principal -->
 
       <!-- Emergencia -->
         <div id="emergencia" style='visibility:hidden; display:none;'>
@@ -41,13 +41,13 @@
       <!-- Contenido -->
       <div id="contenido">
 
-      <!-- Tranvía -->
+      <!-- Tranvï¿½a -->
           <div id="tranvia">
             <h2>Posicion del tranvia</h2>
             <img src="img/tranvia.png">
             <p>Aqui va la linea por donde se movera el tranvia</p>
           </div>
-      <!-- /Tranvía -->
+      <!-- /Tranvï¿½a -->
 
       <!-- Estado -->
           <div id="estado">
@@ -70,16 +70,16 @@
                           <option value="4">4</option>
                       </select>
                       <br><br>
-                      <input type="button" class="botonIr" onclick="showConfirm('ir')" value="Ir">
+                      <input type="button" id="botonIr" onclick="showConfirm('ir')" value="Ir">
                   </label> </p>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
               </div>
               <div id="botDer">
-                  <input type="button" class="botonSeguir botones" onclick="showConfirm('seguir')" value="Poner en marcha">
-                  <input type="button" class="botonParar botones" onclick="showConfirm('parar')" value="Parar">
+                  <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
+                  <input type="button" id="botonParar" class="botones"onclick="showConfirm('parar')" value="Parar">
                   <br>
-                  <input type="button" class="botonAbrir botones" onclick="showConfirm('abrir')" value="Abrir puertas">
-                  <input type="button" class="botonCerrar botones" onclick="showConfirm('cerrar')" value="Cerrar puertas">
+                  <input type="button" id="botonAbrir" class="botones"onclick="showConfirm('abrir')" value="Abrir puertas">
+                  <input type="button" id="botonCerrar" class="botones"onclick="showConfirm('cerrar')" value="Cerrar puertas">
               </div>
 
           </div>
@@ -113,15 +113,28 @@
           </script>
           <!-- /Acciones -->
 
-      </div>
-      <!-- /Contenido -->
+        </div>
+        <!-- /Contenido -->
 
-      <!-- Footer -->
+        <!-- Footer -->
           <footer>
-            <h2>Footer</h2>
-            <p>Aqui ira el footer</p>
+            <div id="correo">
+            <p>rajecorp@gmail.com</p>
+            </div>
+
+            <div id="links">
+                <a href="https://github.com/rajecorp/reto1" target="_blank"><img src="img/github_logo.png" id="github_logo"></a>
+            </div>
+
+            <div id="copyright">
+              <p>Â© 2019 RajeCorp</p>
+            </div>
+
+
           </footer>
-      <!-- /Footer -->
+        <!-- /Footer -->
+
+
 
   </body>
 </html>
