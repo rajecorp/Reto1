@@ -17,12 +17,12 @@
       <!-- Men� principal -->
         <div id="menu">
           <ul>
-            <li id="estadoM">Estado</li>
-            <li id="accionesM">Acciones</li>
+            <li id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
+            <li id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
           </ul>
         </div>
       <!-- /Men� principal -->
-
+        <script src="javaScriptArkaitz.js"></script>
       <!-- Emergencia -->
         <div id="emergencia" style='visibility:hidden; display:none;'>
             <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
@@ -80,10 +80,12 @@
                   <input type="button" class="botonSeguir botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" class="botonParar botones" onclick="showConfirm('parar')" value="Parar">
                   <br>
+                  <!--Switch-->
                   <p>Abrir puertas<label class="switch">
                       <input type="checkbox" onclick="abrirPuertas( this)">
                       <span class="slider"></span>
                   </label></p>
+                  <!--/Switch-->
               </div>
 
           </div>
@@ -111,6 +113,7 @@
                   parada = parseInt(parada)
                 }
               }
+              //Switch
               function abrirPuertas(valor){
                 if (valor.checked == false) {
                   alert("Las puertas se cierran")
@@ -118,6 +121,7 @@
                   alert("Las puertas se abren")
                 }
               }
+              //Switch
 
           </script>
           <!-- /Acciones -->
