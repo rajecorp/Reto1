@@ -66,13 +66,18 @@
     border-radius:35px;
     position: absolute;
     margin-top: 148px;
-    margin-left: 4%;
+    margin-left: var(--pos);
 
       transition:all 0.3s ease;
       animation-duration: 2s;
       animation-iteration-count: 1;
   }
 
+  
+  :root {
+  --pos: 4%;
+}
+/*
         @keyframes estacion1{
       from{
         margin-left: 4%;
@@ -113,7 +118,7 @@
       }
   }
 
-
+*/
     </style>
   </head>
   <body  onload="return estacion();">
@@ -143,15 +148,23 @@
 
 
       function estacion(){
-      let pos=9;
+      let pos=2;
     
 
       switch(pos){    
       case 2:
+
       document.getElementById('parada1').style.animationName ='parada';  
+      var posi= getComputedStyle('#bolapos').marginLeft
+      #bolapos.style.setProperty('--pos', posi)
 
       document.getElementById('bolapos').style.marginLeft ='13%';
-      document.getElementById('bolapos').style.animationName ='estacion1'; 
+      
+      
+
+
+
+      /*document.getElementById('bolapos').style.animationName ='estacion1'; */
 
       break;
            
@@ -159,22 +172,22 @@
       document.getElementById('parada2').style.animationName ='parada';  
 
       document.getElementById('bolapos').style.marginLeft ='35.6%';
-      document.getElementById('bolapos').style.animationName ='estacion2'; 
+      /*document.getElementById('bolapos').style.animationName ='estacion2'; */
       break;
    
       case 7:
       document.getElementById('parada3').style.animationName ='parada'; 
 
       document.getElementById('bolapos').style.marginLeft ='58.3%';
-      document.getElementById('bolapos').style.animationName ='estacion3'; 
+      /*document.getElementById('bolapos').style.animationName ='estacion3'; */
       break;
 
        case 9:
       document.getElementById('parada4').style.animationName ='parada';  
 
       document.getElementById('bolapos').style.marginLeft ='81%';
-      document.getElementById('bolapos').style.animationName ='estacion4'; 
-      break;
+      /*document.getElementById('bolapos').style.animationName ='estacion4'; 
+      break;*/
     }
     }
       </script>  
