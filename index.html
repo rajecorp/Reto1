@@ -1,3 +1,12 @@
+<!-- AWP_In_Variable Name='"mis_datos".Emergencia'-->
+<!-- AWP_In_Variable Name='"mis_datos".Posicion'-->
+<!-- AWP_In_Variable Name='"mis_datos".Velocidad'-->
+<!-- AWP_In_Variable Name='"mis_datos".PuertaAbierta'-->
+<!-- AWP_In_Variable Name='"mis_datos".PuertaCerrada'-->
+<!-- AWP_In_Variable Name='"mis_datos".SeguridadPuerta'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada'-->
+
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -30,7 +39,7 @@
 <!--Hay que pasar este script a un archivo .js fuera del html-->
         <script>
           let emerg=new Boolean()
-          emerg=true;
+          emerg=false;
             if(emerg==true){
           document.getElementById('emergencia').style.display ='inherit';
           document.getElementById('emergencia').style.visibility ='visible';
@@ -52,9 +61,46 @@
       <!-- Estado -->
           <div id="estado">
             <h2>Estado del tranvia</h2>
-            <p>Parada1</p>
-            <p>Parada2</p>
+            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
+              <p><span id="tiempo"></span></p>
           </div>
+          <script>
+              let Parada=0xAFCE;//aqui ira '"mis_datos".Parada'
+              let fechaAhora= new Date(Date.now());
+              FechaParada=parsear(fechaAhora);
+              let Par;
+              let ParSig;
+              switch(Parada) {
+                  case 0x2712:
+                      Par = 'Parada 1';
+                      ParSig='Parada 2';
+                      document.getElementById("paradaAnt").innerHTML = Par;
+                      document.getElementById("paradaSig").innerHTML = ParSig;
+                      break;
+                  case 0x61AA:
+                      Par = 'Parada 2';
+                      ParSig='Parada 3';
+                      document.getElementById("paradaAnt").innerHTML = Par;
+                      document.getElementById("paradaSig").innerHTML = ParSig;
+                      break;
+                  case 0x88b6:
+                      Par = 'Parada 3';
+                      ParSig='Parada 4';
+                      document.getElementById("paradaAnt").innerHTML = Par;
+                      document.getElementById("paradaSig").innerHTML = ParSig;
+                      break;
+                  case 0xAFCE:
+                      Par = 'Parada 4';
+                      ParSig='Parada 3';
+                      document.getElementById("paradaAnt").innerHTML = Par;
+                      document.getElementById("paradaSig").innerHTML = ParSig;
+                      break;
+              }
+              function parsear(fechaAhora) {
+                  return FechaParada=fechaAhora.getHours()+':'+fechaAhora.getMinutes()+':'+fechaAhora.getSeconds();
+
+              }
+          </script>
       <!-- /Estado -->
 
           <!-- Acciones -->

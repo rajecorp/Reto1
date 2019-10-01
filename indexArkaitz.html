@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>"Tranvia Vitoria"</title>
+      <script src="javaStript.js"></script>
+    <link rel="stylesheet" type="text/css" href="CSS/styleIndexArkaitz.css" title="styleIndex" />
+  </head>
+  <body>
+
+      <!-- Cabecera -->
+        <header>
+          <img src="img/euskotren_logo.png">
+          <h1>Control del tranvia</h1>
+        </header>
+      <!-- /Cabecera -->
+
+      <!-- Men� principal -->
+        <div id="menu">
+          <ul>
+            <li id="estadoM">Estado</li>
+            <li id="accionesM">Acciones</li>
+          </ul>
+        </div>
+      <!-- /Men� principal -->
+
+      <!-- Emergencia -->
+        <div id="emergencia" style='visibility:hidden; display:none;'>
+            <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
+        </div>
+<!--Hay que pasar este script a un archivo .js fuera del html-->
+        <script>
+          let emerg=new Boolean()
+          emerg=true;
+            if(emerg==true){
+          document.getElementById('emergencia').style.display ='inherit';
+          document.getElementById('emergencia').style.visibility ='visible';
+          }
+        </script>
+      <!-- /Emergencia -->
+
+      <!-- Contenido -->
+      <div id="contenido">
+
+      <!-- Tranv�a -->
+          <div id="tranvia">
+            <h2>Posicion del tranvia</h2>
+            <img src="img/tranvia.png">
+            <p>Aqui va la linea por donde se movera el tranvia</p>
+          </div>
+      <!-- /Tranv�a -->
+
+      <!-- Estado -->
+          <div id="estado">
+            <h2>Estado del tranvia</h2>
+            <p>Parada1</p>
+            <p>Parada2</p>
+          </div>
+      <!-- /Estado -->
+
+          <!-- Acciones -->
+          <div id="acciones">
+              <h2>Acciones</h2>
+              <div id="botIzq">
+                  <p> <label>Posicion a la que ir: <input type="number" name="posicion"></label> </p>
+                  <form>
+                  <p> <label>Parada a la que ir:
+                      <select>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                      </select>
+                      <br><br>
+                      <input type="button" class="botonIr" onclick="showConfirm('ir')" value="Ir">
+                  </label> </p>
+                  </form>
+                  <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
+              </div>
+              <div id="botDer">
+                  <input type="button" class="botonSeguir botones" onclick="showConfirm('seguir')" value="Poner en marcha">
+                  <input type="button" class="botonParar botones" onclick="showConfirm('parar')" value="Parar">
+                  <br>
+                  <p>Abrir puertas<label class="switch">
+                      <input type="checkbox" onclick="abrirPuertas( this)">
+                      <span class="slider"></span>
+                  </label></p>
+              </div>
+
+          </div>
+          <script>
+              let confirmar
+              function showConfirm(accion, valor) {
+                  confirmar = confirm("\u00BFEstas seguro?")
+                  if (confirmar == true) {
+                      if (accion == 'seguir') {
+
+                          alert("Se esta poniendo en marcha")
+
+                      }else if (accion == 'parar') {
+
+                          alert("El tranvia se va a parar")
+
+                      }else if(accion == 'ir'){
+                          alert("Nos estamos dirigiendo a la direccion establecida")
+                      }
+                  }
+              }
+              function irParada(valor) {
+                
+              }
+              function abrirPuertas(valor){
+                if (valor.checked == false) {
+                  alert("Las puertas se cierran")
+                  }else{
+                  alert("Las puertas se abren")
+                }
+              }
+
+          </script>
+          <!-- /Acciones -->
+
+      </div>
+      <!-- /Contenido -->
+
+      <!-- Footer -->
+          <footer>
+            <h2>Footer</h2>
+            <p>Aqui ira el footer</p>
+          </footer>
+      <!-- /Footer -->
+
+  </body>
+</html>
