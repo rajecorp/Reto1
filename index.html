@@ -52,8 +52,8 @@
       <!-- Estado -->
           <div id="estado">
             <h2>Estado del tranvia</h2>
-            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempoParSalida"></span></p>
+            <p><span id="paradaSig"></span><----------------------------<span id="paradaAnt"></span></p>
+              <p><span id="tiempoParSalida"></span><----------------------------<span id="tiempoAhora"></span></p>
           </div>
       <!-- /Estado -->
 
@@ -65,10 +65,10 @@
                   <form action="" method="post" onsubmit="irParada()">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
-                              <option name="parad" value="0x2712">1</option>
-                              <option name="parad" value="0x61AA">2</option>
-                              <option name="parad" value="0x88b6">3</option>
-                              <option name="parad" value="0xAFCE">4</option>
+                              <option name="parad" id="op1" value="0x2712">1</option>
+                              <option name="parad" id="op2" value="0x61AA">2</option>
+                              <option name="parad" id="op3" value="0x88B6">3</option>
+                              <option name="parad" id="op4" value="0xAFCE">4</option>
                           </select>
                           <br><br>
                           <input type="submit" class="botonIr" value="Ir">
@@ -80,8 +80,10 @@
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" id="botonParar" class="botones" onclick="showConfirm('parar')" value="Parar">
                   <br>
-                  <input type="button" id="botonAbrir" class="botones" onclick="showConfirm('abrir')" value="Abrir puertas">
-                  <input type="button" id="botonCerrar" class="botones" onclick="showConfirm('cerrar')" value="Cerrar puertas">
+                  <p>Abrir puertas<label class="switch">
+                      <input type="checkbox" onclick="abrirPuertas( this)">
+                      <span class="slider"></span>
+                  </label></p>
               </div>
           </div>
           <!-- /Acciones -->
