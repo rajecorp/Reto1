@@ -62,16 +62,16 @@
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion"></label> </p>
-                  <form>
+                  <form onsubmit="return irParada()">
                   <p> <label>Parada a la que ir:
-                      <select>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                      <select id="parad">
+                          <option name="parad" value="1">1</option>
+                          <option name="parad" value="2">2</option>
+                          <option name="parad" value="3">3</option>
+                          <option name="parad" value="4">4</option>
                       </select>
                       <br><br>
-                      <input type="button" class="botonIr" onclick="showConfirm('ir')" value="Ir">
+                      <input type="submit" class="botonIr" value="Ir">
                   </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
@@ -100,13 +100,16 @@
 
                           alert("El tranvia se va a parar")
 
-                      }else if(accion == 'ir'){
-                          alert("Nos estamos dirigiendo a la direccion establecida")
                       }
                   }
               }
               function irParada(valor) {
-                
+                let parada = document.getElementById("parad").value
+                confirmar = confirm("\u00BFDesea ir a la parada "+ parada +"?")
+                if (confirmar == true) {
+                  /*Aqui ira el código para dirigirse a la parada*/
+                  parada = parseInt(parada)
+                }
               }
               function abrirPuertas(valor){
                 if (valor.checked == false) {
