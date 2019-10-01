@@ -11,10 +11,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>"Tranvia Vitoria"</title>
-      <script src="javaStript.js"></script>
+      <script src="javaScript.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
   </head>
-  <body>
+  <body onload="todas()">
 
       <!-- Cabecera -->
         <header>
@@ -36,15 +36,6 @@
         <div id="emergencia" style='visibility:hidden; display:none;'>
             <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
         </div>
-<!--Hay que pasar este script a un archivo .js fuera del html-->
-        <script>
-          let emerg=new Boolean()
-          emerg=false;
-            if(emerg==true){
-          document.getElementById('emergencia').style.display ='inherit';
-          document.getElementById('emergencia').style.visibility ='visible';
-          }
-        </script>
       <!-- /Emergencia -->
 
       <!-- Contenido -->
@@ -62,45 +53,8 @@
           <div id="estado">
             <h2>Estado del tranvia</h2>
             <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempo"></span></p>
+              <p><span id="tiempoParSalida"></span></p>
           </div>
-          <script>
-              let Parada=0xAFCE;//aqui ira '"mis_datos".Parada'
-              let fechaAhora= new Date(Date.now());
-              FechaParada=parsear(fechaAhora);
-              let Par;
-              let ParSig;
-              switch(Parada) {
-                  case 0x2712:
-                      Par = 'Parada 1';
-                      ParSig='Parada 2';
-                      document.getElementById("paradaAnt").innerHTML = Par;
-                      document.getElementById("paradaSig").innerHTML = ParSig;
-                      break;
-                  case 0x61AA:
-                      Par = 'Parada 2';
-                      ParSig='Parada 3';
-                      document.getElementById("paradaAnt").innerHTML = Par;
-                      document.getElementById("paradaSig").innerHTML = ParSig;
-                      break;
-                  case 0x88b6:
-                      Par = 'Parada 3';
-                      ParSig='Parada 4';
-                      document.getElementById("paradaAnt").innerHTML = Par;
-                      document.getElementById("paradaSig").innerHTML = ParSig;
-                      break;
-                  case 0xAFCE:
-                      Par = 'Parada 4';
-                      ParSig='Parada 3';
-                      document.getElementById("paradaAnt").innerHTML = Par;
-                      document.getElementById("paradaSig").innerHTML = ParSig;
-                      break;
-              }
-              function parsear(fechaAhora) {
-                  return FechaParada=fechaAhora.getHours()+':'+fechaAhora.getMinutes()+':'+fechaAhora.getSeconds();
-
-              }
-          </script>
       <!-- /Estado -->
 
           <!-- Acciones -->
@@ -108,55 +62,28 @@
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion"></label> </p>
-                  <p> <label>Parada a la que ir:
-                      <select>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                      </select>
-                      <br><br>
-                      <input type="button" id="botonIr" onclick="showConfirm('ir')" value="Ir">
-                  </label> </p>
+                  <form action="" method="post" onsubmit="irParada()">
+                      <p> <label>Parada a la que ir:
+                          <select id="parad">
+                              <option name="parad" value="0x2712">1</option>
+                              <option name="parad" value="0x61AA">2</option>
+                              <option name="parad" value="0x88b6">3</option>
+                              <option name="parad" value="0xAFCE">4</option>
+                          </select>
+                          <br><br>
+                          <input type="submit" class="botonIr" value="Ir">
+                      </label> </p>
+                  </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
               </div>
               <div id="botDer">
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
-                  <input type="button" id="botonParar" class="botones"onclick="showConfirm('parar')" value="Parar">
+                  <input type="button" id="botonParar" class="botones" onclick="showConfirm('parar')" value="Parar">
                   <br>
-                  <input type="button" id="botonAbrir" class="botones"onclick="showConfirm('abrir')" value="Abrir puertas">
-                  <input type="button" id="botonCerrar" class="botones"onclick="showConfirm('cerrar')" value="Cerrar puertas">
+                  <input type="button" id="botonAbrir" class="botones" onclick="showConfirm('abrir')" value="Abrir puertas">
+                  <input type="button" id="botonCerrar" class="botones" onclick="showConfirm('cerrar')" value="Cerrar puertas">
               </div>
-
           </div>
-          <script>
-              let confirmar
-              function showConfirm(accion) {
-                  confirmar = confirm("\u00BFEstas seguro?")
-                  if (confirmar == true) {
-                      if (accion == 'seguir') {
-
-                          alert("Seguir")
-
-                      }else if (accion == 'parar') {
-
-                          alert("Parar")
-
-                      }else if (accion == 'abrir') {
-
-                          alert("Abrir")
-
-                      }else if (accion == 'cerrar') {
-
-                          alert("cerrar")
-
-                      }else if(accion == 'ir'){
-                          alert("Ir")
-                      }
-                  }
-              }
-
-          </script>
           <!-- /Acciones -->
 
         </div>
@@ -179,7 +106,6 @@
 
           </footer>
         <!-- /Footer -->
-
 
 
   </body>
