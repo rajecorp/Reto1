@@ -21,37 +21,62 @@ function irParada(evt) {
     confirmar = confirm("\u00BFDesea ir a la parada " + paradaSiguiente + "?")
     if (confirmar == true) {
         //'"mis_datos".Parada'=paradaSiguiente;
-        alert(paradaSiguiente)
+        parada(paradaSiguiente)
     }
+}
+
+/**
+ * Funcion para ocultar la pocion de la parada si esta en una parada
+ */
+function ocultarParada() {
+    let Parada = 0x2712;
+
+switch (Parada) {
+    case 0x2712:
+        document.getElementById("op1").style.display = "none"
+        break;
+    case 0x61AA:
+        document.getElementById("op2").style.display = "none"
+        break;
+    case 0x88B6:
+        document.getElementById("op3").style.display = "none"
+        break;
+    case 0xAFCE:
+        document.getElementById("op4").style.display = "none"
+        break;
+}
 }
 /**
  * Funcion que sirve para marcar en el estado en que parada ha estado, su hora de llegada a esa parada y su siguiente parada cual es
  */
-function parada() {
+function parada(ParSig) {
+    ParSig=parseInt(ParSig);
     let Parada=0x2712;//aqui ira '"mis_datos".Parada'
-    let fechaAhora= new Date(Date.now());
-    let FechaParada=parsearFecha(fechaAhora);
+    let FechaAhora=crearFecha();
+    let FechaParada=crearFecha();
     var time = setTimeout(function(){ parada() }, 500);
     let Par;
-    let paradaSiguiente = document.getElementById("parad").value
-    let ParSig=paradaSiguiente;
     switch(Parada) {
         case 0x2712:
             Par = 'Parada 1';
             document.getElementById("paradaAnt").innerHTML = Par;
-            document.getElementById("tiempoParSalida").innerHTML=FechaParada;
+            document.getElementById("tiempoParSalida").innerHTML=FechaAhora;
             switch (ParSig) {
                 case 0x61AA:
                     ParSig='Parada 2'
                     document.getElementById("paradaSig").innerHTML = ParSig;
+                    document.getElementById("tiempoAhora").innerHTML=FechaParada;
+
                     break;
-                case 0x88b6:
+                case 0x88B6:
                     ParSig='Parada 3'
                     document.getElementById("paradaSig").innerHTML = ParSig;
+                    document.getElementById("tiempoAhora").innerHTML=FechaParada;
                     break;
                 case 0xAFCE:
                     ParSig='Parada 4'
                     document.getElementById("paradaSig").innerHTML = ParSig;
+                    document.getElementById("tiempoAhora").innerHTML=FechaParada;
                     break;
             }
             break;
@@ -60,7 +85,7 @@ function parada() {
             document.getElementById("paradaAnt").innerHTML = Par;
             document.getElementById("tiempoParSalida").innerHTML=FechaParada;
             break;
-        case 0x88b6:
+        case 0x88B6:
             Par = 'Parada 3';
             document.getElementById("paradaAnt").innerHTML = Par;
             document.getElementById("tiempoParSalida").innerHTML=FechaParada;
@@ -79,7 +104,8 @@ function parada() {
  * @param fechaAhora la fecha en formato completo
  * @returns {string} la fehca en string con formato horas:minutos:segundos
  */
-function parsearFecha(fechaAhora) {
+function crearFecha() {
+    let fechaAhora= new Date(Date.now());
     return FechaParada=fechaAhora.getHours()+':'+fechaAhora.getMinutes()+':'+fechaAhora.getSeconds();
 }
 
@@ -118,6 +144,18 @@ function showConfirm(accion) {
  *
  */
 function todas() {
-    parada();
     emergencia();
+    ocultarParada()
+}
+
+/**
+ * funcion para el switch de abrir puertas
+ * @param valor
+ */
+function abrirPuertas(valor){
+    if (valor.checked == false) {
+        alert("Las puertas se cierran")
+    }else{
+        alert("Las puertas se abren")
+    }
 }
