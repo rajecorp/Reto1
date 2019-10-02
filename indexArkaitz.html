@@ -17,12 +17,12 @@
       <!-- Men� principal -->
         <div id="menu">
           <ul>
-            <li id="estadoM">Estado</li>
-            <li id="accionesM">Acciones</li>
+            <li id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
+            <li id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
           </ul>
         </div>
       <!-- /Men� principal -->
-
+        <script src="javaScriptArkaitz.js"></script>
       <!-- Emergencia -->
         <div id="emergencia" style='visibility:hidden; display:none;'>
             <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
@@ -62,16 +62,16 @@
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion"></label> </p>
-                  <form>
+                  <form onsubmit="return irParada()">
                   <p> <label>Parada a la que ir:
-                      <select>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                      <select id="parad">
+                          <option name="parad" value="1">1</option>
+                          <option name="parad" value="2">2</option>
+                          <option name="parad" value="3">3</option>
+                          <option name="parad" value="4">4</option>
                       </select>
                       <br><br>
-                      <input type="button" class="botonIr" onclick="showConfirm('ir')" value="Ir">
+                      <input type="submit" class="botonIr" value="Ir">
                   </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
@@ -80,10 +80,12 @@
                   <input type="button" class="botonSeguir botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" class="botonParar botones" onclick="showConfirm('parar')" value="Parar">
                   <br>
+                  <!--Switch-->
                   <p>Abrir puertas<label class="switch">
                       <input type="checkbox" onclick="abrirPuertas( this)">
                       <span class="slider"></span>
                   </label></p>
+                  <!--/Switch-->
               </div>
 
           </div>
@@ -100,14 +102,18 @@
 
                           alert("El tranvia se va a parar")
 
-                      }else if(accion == 'ir'){
-                          alert("Nos estamos dirigiendo a la direccion establecida")
                       }
                   }
               }
               function irParada(valor) {
-                
+                let parada = document.getElementById("parad").value
+                confirmar = confirm("\u00BFDesea ir a la parada "+ parada +"?")
+                if (confirmar == true) {
+                  /*Aqui ira el código para dirigirse a la parada*/
+                  parada = parseInt(parada)
+                }
               }
+              //Switch
               function abrirPuertas(valor){
                 if (valor.checked == false) {
                   alert("Las puertas se cierran")
@@ -115,6 +121,7 @@
                   alert("Las puertas se abren")
                 }
               }
+              //Switch
 
           </script>
           <!-- /Acciones -->

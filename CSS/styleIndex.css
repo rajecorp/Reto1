@@ -1,97 +1,106 @@
+/*Color de fondo del la pagina*/
 body{
-  margin: 0;
   background-color: #3EBD1C;
-  color: white;
+  color: black;
 }
+/*HEADER*/
 
+/*Color de fondo y letra mas el efecto de sombra en los bordes y el posicionamiento del contenido con flex-box para
+ponerlos a la misma distancia*/
 header {
   background-color: white;
-  color: black;
   box-shadow: inset 0px 0px 40px 35px #3EBD1C;
   padding: 2%;
   display: flex;
   justify-content: space-around;
 }
 
+/*Ajustes a la imagen para que no pege con la sombra y parezca que esta dentro*/
 header img {
   padding: 10px;
   width: 320px;
   height: 200px;
 }
 
+/*Tamaño de la letra del titulo y posicion del mismo*/
 h1 {
   align-self: center;
   font-size: 60px;
 }
 
-#contenido {
-  width: 80%;
-  margin: 10px auto;
-  margin-bottom: 0;
-  padding: 20px;
-  background-color: white;
-  color: black;
-  border-radius: 29px 29px 0px 0px;
+/*MENU*/
 
-}
-
+/*Quitar el estilo predeterminado a la lista y posicionamiento de la misma*/
 #menu {
   list-style-type: none;
+  margin: 0;
   margin-bottom: 20px;
   display: flex;
   padding-inline-start: 0;
-  margin: 0;
 }
 
+/*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
+el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
 .menuItem {
   width: 50%;
   padding: 20px 0;
-  color: black;
   text-align: center;
   border: 2px solid green;
   font-size: 30px;
   background-color: #EFF5EE;
 }
 
+/*Se les pone el borde redondo a los dos items del menu de tal manera que entre ellos queden unidos (sin bordes redondos)*/
+
+/*Aqui es para que solo tenga borde redondo a la izquierda*/
 #estadoM {
   border-radius: 29px 0px 0px 29px;
   border-right: none;
 }
 
+/*Y aqui para que solo tenga borde redondo a la derecha*/
 #accionesM {
   border-radius: 0px 29px 29px 0px;
   border-left: none;
 }
 
+/*Cuando el raton pase por encima del menu item se cambiara el color del fondo para que se vea se puede clicar ahí*/
 li:hover{
     background-color: #D2D9D1;
-    color: black;
 }
 
+/*EMERGENCIA*/
+
+/*Esta caja solo aparecera si recibimos del automata que ha habido una emergencia*/
 #emergencia{
+  /*Aqui se define el tamaño con el color de fondo y su borde*/
   margin: 5px;
   background-color: #FF896F;
-  height: 200px;
-  transition:all 0.3s ease;
-  animation-name: increase;
-  animation-duration: 0.7s;
-  overflow: hidden;
+  height: 12.5em;
   border: 2px groove #FF5733;
   border-radius: 29px 29px 29px 29px;
+  /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
+  transition: all 0.3s ease;
+  animation-name: abrir;
+  animation-duration: 0.7s;
+  overflow: hidden;
 }
 
 #emergenciaImg{
+  /*Posicionamiento y tamaño de la imagen*/
   display:block;
   margin:auto;
-  max-height: 100%;
+  height: auto;
   padding-top:20px;
-  animation-name: growshrink;
+  /*Animacion que hace que la imagen aumente el tamaño*/
+  animation-name: crecer;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
   animation-delay: 0;
-
 }
-@keyframes growshrink{
+
+/*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
+@keyframes crecer{
   from{
   transform: scale(0.7);
   }
@@ -117,29 +126,47 @@ li:hover{
   }
 }
 
-  @keyframes increase{
+/*Animacion que abre la caja emergencia que pasa de no tener altura a tener 12.5em*/
+@keyframes abrir{
   from{
-    height: 0px;
+    height: 0;
   }
   to{
-    height: 200px;
+    height: 12.5em;
   }
 }
 
-  @keyframes decrease{
+/*Animacion que cierra la caja emergencia que hace la mismo que el de abrir pero a la inversa*/
+@keyframes decrease{
   from{
-    height: 200px;
+    height: 12.5em;
   }
   to{
-    height: 0px;
+    height: 0;
   }
 }
 
-/*Acciones*/
+/*CONTENIDO*/
+
+/*Anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte del menu y la emergencia si esta, 0 de
+separación con el footer para que esten pegados y auto a los lados para que se centre en la página. Definicion del color
+de fondo. Forma del div con puntas redondas*/
+#contenido {
+  width: 80%;
+  margin: 10px auto;
+  margin-bottom: 0;
+  padding: 20px;
+  background-color: #EFF5EE;
+  border-radius: 29px 29px 0px 0px;
+}
+
+/*ACCIONES*/
+
 #acciones{
   overflow: hidden;
 }
 
+/*Color para los botones*/
 #botonParar, #botonAbrir{
     background-color: rgb(171, 11, 53);
 }
@@ -148,38 +175,44 @@ li:hover{
     background-color: #4CAF50;
 }
 
+/*Diseño del boton ir*/
 #botonIr{
     background-color: rgb(36, 50, 206);
-    border: none;
     color: white;
     padding: 15px 25px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 16px;
-    margin: 5px 5px;
+    /*margin: 5px 5px;*/
     cursor: pointer;
 }
+
+/*Diseñp de los botones de interaccion con el trnavia*/
 .botones{
-    border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 5px 5px;
     cursor: pointer;
 }
+
+/*Posicionamiento del los botones*/
 #botizq{
     float: left;
-    width: 48%;
 }
 #botDer{
     float: right;
     width: 48%;
 }
 
+/*FOOTER*/
+
+/*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
+de abajo de la pagina, 0 de separación con el contenido para que esten pegados y auto a los lados para que se
+centre en la página. Definicion del color de fondo que es diferente al del contenido para que se vea la diferencia.
+Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
 footer {
   width: 80%;
   margin: 10px auto;
@@ -193,6 +226,7 @@ footer {
   padding: 0 20px;
 }
 
+/*Ajuste a la imagen de github*/
 #github_logo {
   width: 40px;
   height: 40px;
