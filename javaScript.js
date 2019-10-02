@@ -2,12 +2,14 @@
  * Funcion que sirve para mostrar o ocultar la ventnan de emergencia dependiendo del valor emerg
  */
 function emergencia() {
-    let emerg = true;//aqui va '"mis_datos".Emergencia'
+    let emerg = false;//aqui va '"mis_datos".Emergencia'
     if (emerg == true) {
         document.getElementById('emergencia').style.display = 'inherit';
         document.getElementById('emergencia').style.visibility = 'visible';
+        document.getElementById('emergencia').style.animationName = 'abrir';
     }
 }
+
 var paradaSiguiente;
 /**
  * Funcion para mandar la parada donde ira el tranvia
