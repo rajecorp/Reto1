@@ -248,3 +248,13 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /**Acaba Switch*/
+#acciones::after{
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+#acciones{
+  display: none;
+}
