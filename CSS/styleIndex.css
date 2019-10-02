@@ -164,8 +164,16 @@ de fondo. Forma del div con puntas redondas*/
 
 #acciones{
   overflow: hidden;
+  display: none;
 }
-
+/*para que el fondo blanco ocupe todo el alto de acciones*/
+#acciones::after{
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
 /*Color para los botones*/
 #botonParar, #botonAbrir{
     background-color: rgb(171, 11, 53);
