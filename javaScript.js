@@ -271,3 +271,60 @@ function abrirPuertas(valor){
         alert("Las puertas se abren")
     }
 }
+
+
+function mover(evt){
+    let evento= evt||window.event;
+    evento.preventDefault();
+
+    let pos=document.getElementById("posicion").value
+    var postranvia=document.getElementById("bolapos")
+
+    postranvia.style.marginLeft=(pos+"%")
+
+    switch(parseInt(pos)){    
+    case 10:
+        document.getElementById('parada1').style.animationName ='parada';
+
+        document.getElementById('parada2').style.animationName ='none';
+
+        document.getElementById('parada3').style.animationName ='none';
+
+        document.getElementById('parada4').style.animationName ='none';  
+
+        break;
+   
+    case 40:
+        document.getElementById('parada1').style.animationName ='none';
+
+        document.getElementById('parada2').style.animationName ='parada';
+
+        document.getElementById('parada3').style.animationName ='none';
+
+        document.getElementById('parada4').style.animationName ='none';  
+
+        break;
+
+    case 70:
+        document.getElementById('parada1').style.animationName ='none';
+
+        document.getElementById('parada2').style.animationName ='none';
+
+        document.getElementById('parada3').style.animationName ='parada';
+
+        document.getElementById('parada4').style.animationName ='none';  
+
+        break;
+
+    case 100:
+        document.getElementById('parada1').style.animationName ='none';
+
+        document.getElementById('parada2').style.animationName ='none';
+
+        document.getElementById('parada3').style.animationName ='none';
+
+        document.getElementById('parada4').style.animationName ='parada';  
+
+        break;
+    }
+}
