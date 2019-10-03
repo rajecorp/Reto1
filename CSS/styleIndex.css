@@ -68,6 +68,10 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
 
 /*Y aqui para que solo tenga borde redondo a la derecha*/
 #accionesM {
+  border-right: none;
+  border-left: none;
+}
+#graficoM{
   border-radius: 0px 29px 29px 0px;
   border-left: none;
 }
@@ -313,4 +317,21 @@ footer {
     margin-top: -154px;
     transition:margin-left 4s;
   }
-  
+  #idGrafico{
+    width: 30%;
+    height: 30%;
+    float: left;
+  }
+  #grafico{
+    margin: 2%;
+    overflow: hidden;
+    display: none;
+  }
+  /*para que el fondo blanco ocupe todo el alto de acciones*/
+#grafico::after{
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}

@@ -8,6 +8,7 @@ var paradaSiguiente;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
 var Emergencia=false;//aqui va '"mis_datos".Emergencia'
+let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
 //let fechaAhora;
 var porcentaje;
 
@@ -18,6 +19,7 @@ var porcentaje;
 function todas() {
     emergencia();
     ocultarParada();
+    ejecGrafico();
 }
 
 /*EMERGENCIA*/
@@ -52,19 +54,26 @@ function emergencia() {
 }
 
 /**
- * Funcion que intercambia la ocultacion de estado y acciones
+ * Funcion que intercambia la ocultacion de estado, acciones y grafico
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
     if (valor=="estado") {
         document.getElementById("acciones").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
         document.getElementById("estado").style.display = "inline"
         document.getElementById("estado").style.overflow = "hidden"
     }else if(valor == "acciones"){
         document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
         document.getElementById("acciones").style.display = "contents"
         document.getElementById("acciones").style.overflow = "hidden"
         document.getElementById("acciones").style.height = "20%"
+    }else if (valor=="grafico") {
+        document.getElementById("acciones").style.display = "none"
+        document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "inline"
+        document.getElementById("grafico").style.overflow = "hidden"
     }
 }
 
@@ -340,3 +349,77 @@ function mover(evt){
         break;
     }
 }
+/**
+ * Funcionalidad de Grafico
+ */
+function ejecGrafico() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            datasets: [{
+                label: 'Velocity',
+                data: [v1, v2, v3, v4, v5, v6, v7, v8, v9],
+                backgroundColor: 'rgba(26, 129, 102, 0.2)',
+                borderColor: "#3cba9f",
+                borderWidth: 1
+            }]
+        },
+        
+    });
+}
+
+/**
+ * Recoge la velocidad y la parada del grafico
+ */
+function asignarVel(){
+    let velo = document.getElementById("vel").value;
+    let stop = document.getElementById("stop").value;
+    asignarVelocidad(parseInt(velo), parseInt(stop));
+  }
+/**
+ * Asigna la velocidad a la parada en el grafico
+ * @param {*} velocidad 
+ * @param {*} punto 
+ */
+  function asignarVelocidad(velocidad, punto) {
+    switch (punto) {
+      case 1:
+        v1 = velocidad
+        ejecGrafico();
+        break;
+      case 2:
+        v2 = velocidad
+        ejecGrafico();
+        break;
+      case 3:
+        v3=velocidad
+        ejecGrafico();
+        break;
+      case 4:
+        v4=velocidad
+        ejecGrafico();
+        break;
+      case 5:
+        v5=velocidad
+        ejecGrafico();
+        break;
+      case 6:
+        v6=velocidad
+        ejecGrafico();
+        break;
+      case 7:
+        v7=velocidad
+        ejecGrafico();
+        break;
+      case 8:
+        v8=velocidad
+        ejecGrafico();
+        break;
+      case 9:
+        v9=velocidad
+        ejecGrafico();
+        break;   
+    }
+  }
