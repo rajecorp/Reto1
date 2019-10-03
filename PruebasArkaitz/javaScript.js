@@ -1,15 +1,21 @@
 /**
  * Variables globales
  */
-var Posicion_Destino=false;
-var COTAS;
-var ENTER=false;
+
+function emergencia() {
+    let emerg = false;//aqui va '"mis_datos".Emergencia'
+    if (emerg == true) {
+        document.getElementById('emergencia').style.display = 'inherit';
+        document.getElementById('emergencia').style.visibility = 'visible';
+        document.getElementById('emergencia').style.animationName = 'abrir';
+    }
+}
+
 var paradaSiguiente;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
 var Emergencia=false;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
-var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
@@ -18,22 +24,7 @@ var porcentaje;
 function todas() {
     emergencia();
     ocultarParada();
-}
-
-/*EMERGENCIA*/
-/**
- * funcion que es un poton para sacar o meter el mensaje de emergencia
- */
-function pararEm() {
-    if (Emergencia==true){
-        Emergencia=false;
-        emergencia();
-    }
-    else{
-        Emergencia=true;
-        emergencia();
-    }
-
+    ejecGrafico();
 }
 
 /**
@@ -43,12 +34,27 @@ function emergencia() {
     if (Emergencia == true) {
         document.getElementById('emergencia').style.display = 'inherit';
         document.getElementById('emergencia').style.visibility = 'visible';
-        document.getElementById('emergencia').style.animationName = 'abrir';
     }
-    else
-    {
-        document.getElementById('emergencia').style.display = 'none';
-    }
+}
+
+/**
+ * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
+ */
+function ocultarParada() {
+switch (Parada) {
+    case 50:
+        document.getElementById("op1").style.display = "none"
+        break;
+    case 200:
+        document.getElementById("op2").style.display = "none"
+        break;
+    case 350:
+        document.getElementById("op3").style.display = "none"
+        break;
+    case 500:
+        document.getElementById("op4").style.display = "none"
+        break;
+}
 }
 
 /**
@@ -58,40 +64,48 @@ function emergencia() {
 function ocultarMenu(valor) {
     if (valor=="estado") {
         document.getElementById("acciones").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
         document.getElementById("estado").style.display = "inline"
         document.getElementById("estado").style.overflow = "hidden"
     }else if(valor == "acciones"){
         document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
         document.getElementById("acciones").style.display = "contents"
         document.getElementById("acciones").style.overflow = "hidden"
         document.getElementById("acciones").style.height = "20%"
+    }else if (valor=="grafico") {
+        document.getElementById("acciones").style.display = "none"
+        document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "inline"
+        document.getElementById("grafico").style.overflow = "hidden"
     }
 }
 
-/*BOTON MOVER TRANVIA COTAS*/
 /**
  * Funcion para mover el tranvia a una posicion en mm
  */
 function irPosicion() {
-    Posicion_Destino=true;
-    ENTER=true;
-    COTAS = document.getElementById("posicion").value
-    let validar = validarMm(COTAS)
-    if(validar){       
-        porcentaje=(parseInt(COTAS)*100)/500;
-        mover();
+    posicionMm = document.getElementById("posicion").value
+    let validar = validarMm(posicionMm)
+    if(validar){
+        confirmar = confirm("\u00BFDesea ir a la posicion "+ posicionMm +"?")
+        if (confirmar == true) {
+            //fechaAhora=crearFecha();
+            //movMm();
+        }
     }else{
         alert("Solo se puede ir a una posicion entre 0-500")
     }
+
 }
 
 /**
  * validar si los mm entran en el rango establecido
+ * @param posicionMm valor a validar
  * @returns {boolean} si es correcto o no
- * @param COTAS
  */
-function validarMm(COTAS) {
-    if (COTAS>500||COTAS<0){
+function validarMm(posicionMm) {
+    if (posicionMm>500||posicionMm<0){
      return false;
     }
     return true;
@@ -109,27 +123,6 @@ function validarMm(COTAS) {
     document.getElementById("paradaSig").innerHTML = posicionMm;
 }*/
 
-/*BOTON MOVER TRANVIA A UNA PARADA*/
-/**
- * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
- */
-function ocultarParada() {
-    switch (Parada) {
-        case 50:
-            document.getElementById("op1").style.display = "none"
-            break;
-        case 200:
-            document.getElementById("op2").style.display = "none"
-            break;
-        case 350:
-            document.getElementById("op3").style.display = "none"
-            break;
-        case 500:
-            document.getElementById("op4").style.display = "none"
-            break;
-    }
-}
-
 /**
  * Funcion para mandar la parada donde ira el tranvia
  *
@@ -139,8 +132,11 @@ function irParada(evt) {
     let evento= evt||window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
-    porcentaje=parseInt((parseInt(paradaSiguiente)*100)/500);
-    mover();
+    confirmar = confirm("\u00BFDesea ir a la parada " + paradaSiguiente + "?")
+    if (confirmar == true) {
+        //fechaAhora=crearFecha();
+        //parada(paradaSiguiente)
+    }
 }
 
 /**
@@ -272,18 +268,29 @@ function showConfirm(accion) {
     }
 }
 
-/*ANIMACION*/
 /**
- * Funcion para la la animacion de la bola
- * @param evt para prevenir que la pagina se recargue
+ * funcion para el switch de abrir puertas
+ * @param valor booleano de las puertas si estan abiertas o cerradas
  */
+function abrirPuertas(valor){
+    if (valor.checked == false) {
+        alert("Las puertas se cierran")
+    }else{
+        alert("Las puertas se abren")
+    }
+}
+
+
 function mover(evt){
     let evento= evt||window.event;
     evento.preventDefault();
-    var postranvia=document.getElementById("bolapos")
-    postranvia.style.marginLeft=(porcentaje+"%")
 
-    switch(porcentaje){    
+    let pos=document.getElementById("posicion").value
+    var postranvia=document.getElementById("bolapos")
+
+    postranvia.style.marginLeft=(pos+"%")
+
+    switch(parseInt(pos)){    
     case 10:
         document.getElementById('parada1').style.animationName ='parada';
 
@@ -327,16 +334,70 @@ function mover(evt){
         document.getElementById('parada4').style.animationName ='parada';  
 
         break;
-
-    default:
-        document.getElementById('parada1').style.animationName ='none';
-
-        document.getElementById('parada2').style.animationName ='none';
-
-        document.getElementById('parada3').style.animationName ='none';
-
-        document.getElementById('parada4').style.animationName ='none';  
-
-        break;
     }
 }
+
+let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
+function ejecGrafico() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            datasets: [{
+                label: 'Velocity',
+                data: [v1, v2, v3, v4, v5, v6, v7, v8, v9],
+                backgroundColor: 'rgba(26, 129, 102, 0.2)',
+                borderColor: "#3cba9f",
+                borderWidth: 1
+            }]
+        },
+        
+    });
+}
+function asignarVel(){
+    let velo = document.getElementById("vel").value;
+    let stop = document.getElementById("stop").value;
+    asignarVelocidad(parseInt(velo), parseInt(stop));
+  }
+
+  function asignarVelocidad(velocidad, punto) {
+    switch (punto) {
+      case 1:
+        v1 = velocidad
+        ejecGrafico();
+        break;
+      case 2:
+        v2 = velocidad
+        ejecGrafico();
+        break;
+      case 3:
+        v3=velocidad
+        ejecGrafico();
+        break;
+      case 4:
+        v4=velocidad
+        ejecGrafico();
+        break;
+      case 5:
+        v5=velocidad
+        ejecGrafico();
+        break;
+      case 6:
+        v6=velocidad
+        ejecGrafico();
+        break;
+      case 7:
+        v7=velocidad
+        ejecGrafico();
+        break;
+      case 8:
+        v8=velocidad
+        ejecGrafico();
+        break;
+      case 9:
+        v9=velocidad
+        ejecGrafico();
+        break;   
+    }
+  }
