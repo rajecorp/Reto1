@@ -1,10 +1,24 @@
 <!-- AWP_In_Variable Name='"mis_datos".Emergencia'-->
+<!-- AWP_In_Variable Name='"mis_datos".COTAS'-->
+    <!--permiso para mover en mm -->
+<!-- AWP_In_Variable Name='"mis_datos".ENTER'-->
+    <!--permiso para mover en mm -->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_1'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_2'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_3'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_4'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_0'-->
+<!-- AWP_In_Variable Name='"mis_datos".Paro'-->
+    <!--boton de parar Boleano -->
 <!-- AWP_In_Variable Name='"mis_datos".Posicion'-->
 <!-- AWP_In_Variable Name='"mis_datos".Velocidad'-->
-<!-- AWP_In_Variable Name='"mis_datos".PuertaAbierta'-->
-<!-- AWP_In_Variable Name='"mis_datos".PuertaCerrada'-->
-<!-- AWP_In_Variable Name='"mis_datos".SeguridadPuerta'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada'-->
+<!-- AWP_In_Variable Name='"mis_datos".REARME_1'-->
+    <!--boton de añadir corriente Boleano-->
+<!-- AWP_In_Variable Name='"mis_datos".REARME_2'-->
+    <!--boton de inicio de automata Boleano-->
+<!-- AWP_In_Variable Name='"mis_datos".Posicion_destino'-->
+    <!--permiso para mover en mm -->
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -32,7 +46,7 @@
       <!-- /Men� principal -->
 
       <!-- Emergencia -->
-        <div id="emergencia" style='visibility:hidden; display:none;'>
+        <div id="emergencia">
             <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
         </div>
       <!-- /Emergencia -->
@@ -41,22 +55,20 @@
       <div id="contenido">
 
       <!-- Tranv�a -->
-          <div id="tranvia">
-            <h2>Posicion del tranvia</h2>
-            <div id="tranvia">
-              <h2>Posicion del tranvia</h2>
-              <img src="img/tranvia.png">
-              <div id="posicionTranvia">
-                <div id="contflechas">
-                  <div class="trianguloposicion" id="parada1" ></div>
-                  <div class="trianguloposicion" id="parada2"></div>
-                  <div class="trianguloposicion" id="parada3"></div>
-                  <div class="trianguloposicion" id="parada4"></div>
-                </div>
-                <div class="barra"><div id="bolapos"></div></div>
-              </div>
-            </div>
+      <div id="tranvia">
+        <h2>Posicion del tranvia</h2>
+        <div id="posicionTranvia">
+          <div id="contflechas">
+            <div class="trianguloposicion" id="parada1" ></div>
+            <div class="trianguloposicion" id="parada2"></div>
+            <div class="trianguloposicion" id="parada3"></div>
+            <div class="trianguloposicion" id="parada4"></div>
           </div>
+          <div class="barra"></div></div>
+          <div id="contbola">
+          <div id="bolapos"></div>
+        </div>
+      </div>
       <!-- /Tranv�a -->
 
       <!-- Estado -->
@@ -72,8 +84,8 @@
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-                  <input type="button" onclick="irPosicion()" value="Ir posicion">
-                  <form action="" method="post" onsubmit="irParada()">
+                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                  <form action="" method="post">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
                               <option selected="true" disabled>seleccione la parada</option>
@@ -83,19 +95,14 @@
                               <option name="parad" id="op4" value="500">4</option>
                           </select>
                           <br><br>
-                          <input type="submit" class="botonIr" value="Ir">
+                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
                       </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
               </div>
               <div id="botDer">
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
-                  <input type="button" id="botonParar" class="botones" onclick="showConfirm('parar')" value="Parar">
-                  <br>
-                  <p>Abrir puertas<label class="switch">
-                      <input type="checkbox" onclick="abrirPuertas( this)">
-                      <span class="slider"></span>
-                  </label></p>
+                  <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
               </div>
           </div>
           <!-- /Acciones -->
