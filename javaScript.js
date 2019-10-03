@@ -280,9 +280,10 @@ function mover(evt){
     let pos=document.getElementById("posicion").value
     var postranvia=document.getElementById("bolapos")
 
-    postranvia.style.marginLeft=(pos+"%")
+    let porcentaje=parseInt((parseInt(pos)*100)/500);
+    postranvia.style.marginLeft=(porcentaje+"%")
 
-    switch(parseInt(pos)){    
+    switch(porcentaje){    
     case 10:
         document.getElementById('parada1').style.animationName ='parada';
 
@@ -324,6 +325,17 @@ function mover(evt){
         document.getElementById('parada3').style.animationName ='none';
 
         document.getElementById('parada4').style.animationName ='parada';  
+
+        break;
+
+    default:
+        document.getElementById('parada1').style.animationName ='none';
+
+        document.getElementById('parada2').style.animationName ='none';
+
+        document.getElementById('parada3').style.animationName ='none';
+
+        document.getElementById('parada4').style.animationName ='none';  
 
         break;
     }
