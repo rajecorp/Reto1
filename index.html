@@ -5,12 +5,11 @@
 <!-- AWP_In_Variable Name='"mis_datos".PuertaCerrada'-->
 <!-- AWP_In_Variable Name='"mis_datos".SeguridadPuerta'-->
 <!-- AWP_In_Variable Name='"mis_datos".Parada'-->
-
-
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>"Tranvia Vitoria"</title>
+      <script src="jquery-3.4.1.js"></script>
       <script src="javaScript.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
   </head>
@@ -26,8 +25,8 @@
       <!-- Men� principal -->
         <div>
           <ul id="menu">
-            <li class="menuItem" id="estadoM">Estado</li>
-            <li class="menuItem" id="accionesM">Acciones</li>
+              <li class="menuItem" id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
+              <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
           </ul>
         </div>
       <!-- /Men� principal -->
@@ -61,8 +60,8 @@
       <!-- Estado -->
           <div id="estado">
             <h2>Estado del tranvia</h2>
-            <p><span id="paradaSig"></span><----------------------------<span id="paradaAnt"></span></p>
-              <p><span id="tiempoParSalida"></span><----------------------------<span id="tiempoAhora"></span></p>
+            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
+              <p><span id="tiempoAhora"></span>----------------------------><span id="tiempoParSalida"></span></p>
           </div>
       <!-- /Estado -->
 
@@ -70,14 +69,16 @@
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
-                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion"></label> </p>
-                  <form action="" method="post" onsubmit="irParada();mover();">
+                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
+                  <input type="button" onclick="irPosicion()" value="Ir posicion">
+                  <form action="" method="post" onsubmit="irParada()">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
-                              <option name="parad" id="op1" value="0x2712">1</option>
-                              <option name="parad" id="op2" value="0x61AA">2</option>
-                              <option name="parad" id="op3" value="0x88B6">3</option>
-                              <option name="parad" id="op4" value="0xAFCE">4</option>
+                              <option selected="true" disabled>seleccione la parada</option>
+                              <option name="parad" id="op1" value="50">1</option>
+                              <option name="parad" id="op2" value="200">2</option>
+                              <option name="parad" id="op3" value="350">3</option>
+                              <option name="parad" id="op4" value="500">4</option>
                           </select>
                           <br><br>
                           <input type="submit" class="botonIr" value="Ir">
