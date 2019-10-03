@@ -16,6 +16,7 @@ var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
 var Emergencia=false;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
+var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
@@ -77,14 +78,11 @@ function ocultarMenu(valor) {
  * Funcion para mover el tranvia a una posicion en mm
  */
 function irPosicion() {
-    posicionMm = document.getElementById("posicion").value
+    let posicionMm = document.getElementById("posicion").value
     let validar = validarMm(posicionMm)
-    if(validar){
-        confirmar = confirm("\u00BFDesea ir a la posicion "+ posicionMm +"?")
-        if (confirmar == true) {
-            //fechaAhora=crearFecha();
-            //movMm();
-        }
+    if(validar){       
+        porcentaje=(parseInt(posicionMm)*100)/500;
+        mover();
     }else{
         alert("Solo se puede ir a una posicion entre 0-500")
     }
@@ -124,11 +122,11 @@ function irParada(evt) {
     let evento= evt||window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
-    confirmar = confirm("\u00BFDesea ir a la parada " + paradaSiguiente + "?")
-    if (confirmar == true) {
-        //fechaAhora=crearFecha();
-        //parada(paradaSiguiente)
-    }
+
+    porcentaje=parseInt((parseInt(paradaSiguiente)*100)/500);
+    alert(porcentaje)
+
+    mover();
 }
 
 /**
@@ -276,11 +274,8 @@ function abrirPuertas(valor){
 function mover(evt){
     let evento= evt||window.event;
     evento.preventDefault();
-
-    let pos=document.getElementById("posicion").value
     var postranvia=document.getElementById("bolapos")
-
-    let porcentaje=parseInt((parseInt(pos)*100)/500);
+alert(porcentaje)
     postranvia.style.marginLeft=(porcentaje+"%")
 
     switch(porcentaje){    
