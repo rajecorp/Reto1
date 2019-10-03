@@ -1,16 +1,9 @@
 /**
  * Variables globales
  */
-
-function emergencia() {
-    let emerg = false;//aqui va '"mis_datos".Emergencia'
-    if (emerg == true) {
-        document.getElementById('emergencia').style.display = 'inherit';
-        document.getElementById('emergencia').style.visibility = 'visible';
-        document.getElementById('emergencia').style.animationName = 'abrir';
-    }
-}
-
+var Posicion_Destino=false;
+var COTAS;
+var ENTER=false;
 var paradaSiguiente;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
@@ -27,6 +20,22 @@ function todas() {
     ocultarParada();
 }
 
+/*EMERGENCIA*/
+/**
+ * funcion que es un poton para sacar o meter el mensaje de emergencia
+ */
+function pararEm() {
+    if (Emergencia==true){
+        Emergencia=false;
+        emergencia();
+    }
+    else{
+        Emergencia=true;
+        emergencia();
+    }
+
+}
+
 /**
  * Funcion que sirve para mostrar o ocultar la ventnan de emergencia dependiendo del valor emerg
  */
@@ -34,27 +43,12 @@ function emergencia() {
     if (Emergencia == true) {
         document.getElementById('emergencia').style.display = 'inherit';
         document.getElementById('emergencia').style.visibility = 'visible';
+        document.getElementById('emergencia').style.animationName = 'abrir';
     }
-}
-
-/**
- * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
- */
-function ocultarParada() {
-switch (Parada) {
-    case 50:
-        document.getElementById("op1").style.display = "none"
-        break;
-    case 200:
-        document.getElementById("op2").style.display = "none"
-        break;
-    case 350:
-        document.getElementById("op3").style.display = "none"
-        break;
-    case 500:
-        document.getElementById("op4").style.display = "none"
-        break;
-}
+    else
+    {
+        document.getElementById('emergencia').style.display = 'none';
+    }
 }
 
 /**
@@ -74,28 +68,30 @@ function ocultarMenu(valor) {
     }
 }
 
+/*BOTON MOVER TRANVIA COTAS*/
 /**
  * Funcion para mover el tranvia a una posicion en mm
  */
 function irPosicion() {
-    let posicionMm = document.getElementById("posicion").value
-    let validar = validarMm(posicionMm)
+    Posicion_Destino=true;
+    ENTER=true;
+    COTAS = document.getElementById("posicion").value
+    let validar = validarMm(COTAS)
     if(validar){       
-        porcentaje=(parseInt(posicionMm)*100)/500;
+        porcentaje=(parseInt(COTAS)*100)/500;
         mover();
     }else{
         alert("Solo se puede ir a una posicion entre 0-500")
     }
-
 }
 
 /**
  * validar si los mm entran en el rango establecido
- * @param posicionMm valor a validar
  * @returns {boolean} si es correcto o no
+ * @param COTAS
  */
-function validarMm(posicionMm) {
-    if (posicionMm>500||posicionMm<0){
+function validarMm(COTAS) {
+    if (COTAS>500||COTAS<0){
      return false;
     }
     return true;
@@ -113,6 +109,27 @@ function validarMm(posicionMm) {
     document.getElementById("paradaSig").innerHTML = posicionMm;
 }*/
 
+/*BOTON MOVER TRANVIA A UNA PARADA*/
+/**
+ * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
+ */
+function ocultarParada() {
+    switch (Parada) {
+        case 50:
+            document.getElementById("op1").style.display = "none"
+            break;
+        case 200:
+            document.getElementById("op2").style.display = "none"
+            break;
+        case 350:
+            document.getElementById("op3").style.display = "none"
+            break;
+        case 500:
+            document.getElementById("op4").style.display = "none"
+            break;
+    }
+}
+
 /**
  * Funcion para mandar la parada donde ira el tranvia
  *
@@ -122,10 +139,7 @@ function irParada(evt) {
     let evento= evt||window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
-
     porcentaje=parseInt((parseInt(paradaSiguiente)*100)/500);
-    alert(porcentaje)
-
     mover();
 }
 
@@ -258,24 +272,15 @@ function showConfirm(accion) {
     }
 }
 
+/*ANIMACION*/
 /**
- * funcion para el switch de abrir puertas
- * @param valor booleano de las puertas si estan abiertas o cerradas
+ * Funcion para la la animacion de la bola
+ * @param evt para prevenir que la pagina se recargue
  */
-function abrirPuertas(valor){
-    if (valor.checked == false) {
-        alert("Las puertas se cierran")
-    }else{
-        alert("Las puertas se abren")
-    }
-}
-
-
 function mover(evt){
     let evento= evt||window.event;
     evento.preventDefault();
     var postranvia=document.getElementById("bolapos")
-alert(porcentaje)
     postranvia.style.marginLeft=(porcentaje+"%")
 
     switch(porcentaje){    
