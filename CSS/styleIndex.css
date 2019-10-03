@@ -300,10 +300,9 @@ input:checked + .slider:before {
 
 #posicionTranvia{
   height: 300px;
-  background-color: green;
   display: flex;
   flex-direction: column; 
-  padding: 0 8%;     
+  padding: 0 8%;    
 }
 
 .trianguloposicion{
@@ -311,10 +310,10 @@ input:checked + .slider:before {
   height: 0;
   border-style: solid;
   border-width: 40px 20px;
-  border-color: white transparent transparent transparent;
+  border-color: black transparent transparent transparent;
   filter: drop-shadow(3px 3px 3px rgba(0,0,0,.5));
   float:right;
-  margin:2% 13.5% 0 12.8%;
+  margin:2% 14% 0 12.8%;
   transition:all 0.3s ease;
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
@@ -329,7 +328,7 @@ input:checked + .slider:before {
     width: 100%;
     display: flex;
     justify-content: center;  
-    margin-left:7.1%;
+    margin-left:6%;
   }
 
   @keyframes parada{
@@ -353,15 +352,15 @@ input:checked + .slider:before {
     }
   }
 
+  #contbola{
+    padding: 0 9% 0 7%; 
+  }
+
   #bolapos{
-    background-color: white;
+    background-color: black;
     height: 40px;
     width: 40px;
     border-radius:40px;
-    margin-top: -13px;
-    margin-left: -34px;
-
-    transition:all 0.3s ease;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+    margin-top: -154px;
+    transition:all 5s ease;
   }
