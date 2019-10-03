@@ -1,6 +1,16 @@
 /**
  * Variables globales
  */
+
+function emergencia() {
+    let emerg = false;//aqui va '"mis_datos".Emergencia'
+    if (emerg == true) {
+        document.getElementById('emergencia').style.display = 'inherit';
+        document.getElementById('emergencia').style.visibility = 'visible';
+        document.getElementById('emergencia').style.animationName = 'abrir';
+    }
+}
+
 var paradaSiguiente;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'

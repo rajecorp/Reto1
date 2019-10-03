@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans|Patua+One&display=swap');
+
+*{
+  font-family: 'PT sans', Arial, sans-serif;
+  font-size: 18px;
+}
 /*Color de fondo del la pagina*/
 body{
   background-color: #3EBD1C;
@@ -11,21 +17,23 @@ header {
   background-color: white;
   box-shadow: inset 0px 0px 40px 35px #3EBD1C;
   padding: 2%;
+  height: 10%;
   display: flex;
   justify-content: space-around;
 }
 
 /*Ajustes a la imagen para que no pege con la sombra y parezca que esta dentro*/
 header img {
-  padding: 10px;
-  width: 320px;
-  height: 200px;
+  margin-top: -20px;
+  width:  300px;
+  height: auto;
 }
 
 /*Tamaño de la letra del titulo y posicion del mismo*/
 h1 {
+  font-family: 'Patua One';
   align-self: center;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 /*MENU*/
@@ -34,7 +42,7 @@ h1 {
 #menu {
   list-style-type: none;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   padding-inline-start: 0;
 }
@@ -43,10 +51,10 @@ h1 {
 el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
 .menuItem {
   width: 50%;
-  padding: 20px 0;
+  padding: 5px 0;
   text-align: center;
   border: 2px solid green;
-  font-size: 30px;
+  font-size: 25px;
   background-color: #EFF5EE;
 }
 
@@ -76,12 +84,11 @@ li:hover{
   /*Aqui se define el tamaño con el color de fondo y su borde*/
   margin: 5px;
   background-color: #FF896F;
-  height: 12.5em;
+  height: 8.5em;
   border: 2px groove #FF5733;
   border-radius: 29px 29px 29px 29px;
   /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
   transition: all 0.3s ease;
-  animation-name: abrir;
   animation-duration: 0.7s;
   overflow: hidden;
 }
@@ -91,7 +98,7 @@ li:hover{
   display:block;
   margin:auto;
   height: auto;
-  padding-top:20px;
+  padding-top:5px;
   /*Animacion que hace que la imagen aumente el tamaño*/
   animation-name: crecer;
   animation-duration: 2.5s;
@@ -102,27 +109,27 @@ li:hover{
 /*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
 @keyframes crecer{
   from{
-  transform: scale(0.7);
+  transform: scale(0.5);
   }
 
   25%{
 
-  transform: scale(1.1);
+  transform: scale(0.9);
   }
 
   50%{
 
-  transform: scale(0.7);
+  transform: scale(0.5);
   }
 
   75%{
 
-  transform: scale(1.1);
+  transform: scale(0.9);
   }
 
   to{
 
-  transform: scale(0.7);
+  transform: scale(0.5);
   }
 }
 
@@ -132,14 +139,14 @@ li:hover{
     height: 0;
   }
   to{
-    height: 12.5em;
+    height: 8.5em;
   }
 }
 
 /*Animacion que cierra la caja emergencia que hace la mismo que el de abrir pero a la inversa*/
 @keyframes decrease{
   from{
-    height: 12.5em;
+    height: 8.5em;
   }
   to{
     height: 0;
