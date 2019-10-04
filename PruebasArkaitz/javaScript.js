@@ -58,7 +58,7 @@ switch (Parada) {
 }
 
 /**
- * Funcion que intercambia la ocultacion de estado y acciones
+ * Funcion que intercambia la ocultacion de estado, acciones y grafico
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
