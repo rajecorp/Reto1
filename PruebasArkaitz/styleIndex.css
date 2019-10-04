@@ -186,14 +186,26 @@ de fondo. Forma del div con puntas redondas*/
   clear: both;
 }
 /*Color para los botones*/
-#botonParar, #botonAbrir{
+#botonParar{
     background-color: rgb(171, 11, 53);
 }
-
-#botonSeguir, #botonCerrar{
-    background-color: #4CAF50;
+#botonParar:hover{
+  background-color: rgb(131, 7, 40);
 }
 
+#botonSeguir{
+    background-color: #4CAF50;
+}
+#botonSeguir:hover{
+  background-color: rgb(40, 113, 42);
+}
+.botonIr {
+  background-color: #008CBA;
+}
+
+.botonIr:hover {
+  background-color: rgb(3, 85, 113);
+}
 /*Diseño del boton ir*/
 #botonIr{
     background-color: rgb(36, 50, 206);
@@ -207,14 +219,18 @@ de fondo. Forma del div con puntas redondas*/
 }
 
 /*Diseñp de los botones de interaccion con el trnavia*/
-.botones{
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px 5px;
-    cursor: pointer;
+.botones {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 /*Posicionamiento del los botones*/
@@ -250,64 +266,12 @@ footer {
   width: 40px;
   height: 40px;
 }
-/**Switch*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-    border-radius: 50%;
-}
-input:checked + .slider {
-    background-color: #2196F3;
-}
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-/**Acaba Switch*/
 
 #posicionTranvia{
   height: 300px;
-  background-color: green;
   display: flex;
   flex-direction: column; 
-  padding: 0 8%;     
+  padding: 0 8%;    
 }
 
 .trianguloposicion{
@@ -315,11 +279,11 @@ input:checked + .slider:before {
   height: 0;
   border-style: solid;
   border-width: 40px 20px;
-  border-color: white transparent transparent transparent;
+  border-color: black transparent transparent transparent;
   filter: drop-shadow(3px 3px 3px rgba(0,0,0,.5));
   float:right;
-  margin:2% 13.5% 0 12.8%;
-  transition:all 0.3s ease;
+  margin:2% 14% 0 12.8%;
+  transition:margin-top 0.3s;
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
 }
@@ -333,7 +297,7 @@ input:checked + .slider:before {
     width: 100%;
     display: flex;
     justify-content: center;  
-    margin-left:7.1%;
+    margin-left:6%;
   }
 
   @keyframes parada{
@@ -357,17 +321,17 @@ input:checked + .slider:before {
     }
   }
 
+  #contbola{
+    padding: 0 9% 0 7%; 
+  }
+
   #bolapos{
-    background-color: white;
+    background-color: black;
     height: 40px;
     width: 40px;
     border-radius:40px;
-    margin-top: -13px;
-    margin-left: -34px;
-
-    transition:all 0.3s ease;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+    margin-top: -154px;
+    transition:margin-left 4s;
   }
   #idGrafico{
     width: 30%;
@@ -387,3 +351,5 @@ input:checked + .slider:before {
   height: 0;
   clear: both;
 }
+
+

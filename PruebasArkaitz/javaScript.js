@@ -337,7 +337,7 @@ function mover(evt){
     }
 }
 
-let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
+let velocidades = new Array();
 function ejecGrafico() {
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -346,58 +346,18 @@ function ejecGrafico() {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
             datasets: [{
                 label: 'Velocity',
-                data: [v1, v2, v3, v4, v5, v6, v7, v8, v9],
+                data: [velocidades[0], velocidades[1], velocidades[2], velocidades[3], velocidades[4], velocidades[5], velocidades[6], velocidades[7], velocidades[8], velocidades[9]],
                 backgroundColor: 'rgba(26, 129, 102, 0.2)',
                 borderColor: "#3cba9f",
                 borderWidth: 1
             }]
-        },
-        
+        },    
     });
 }
 function asignarVel(){
     let velo = document.getElementById("vel").value;
     let stop = document.getElementById("stop").value;
-    asignarVelocidad(parseInt(velo), parseInt(stop));
-  }
-
-  function asignarVelocidad(velocidad, punto) {
-    switch (punto) {
-      case 1:
-        v1 = velocidad
-        ejecGrafico();
-        break;
-      case 2:
-        v2 = velocidad
-        ejecGrafico();
-        break;
-      case 3:
-        v3=velocidad
-        ejecGrafico();
-        break;
-      case 4:
-        v4=velocidad
-        ejecGrafico();
-        break;
-      case 5:
-        v5=velocidad
-        ejecGrafico();
-        break;
-      case 6:
-        v6=velocidad
-        ejecGrafico();
-        break;
-      case 7:
-        v7=velocidad
-        ejecGrafico();
-        break;
-      case 8:
-        v8=velocidad
-        ejecGrafico();
-        break;
-      case 9:
-        v9=velocidad
-        ejecGrafico();
-        break;   
-    }
+    
+    velocidades[parseInt(stop)-1] = parseInt(velo)
+    ejecGrafico();
   }
