@@ -4,10 +4,16 @@
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
 }
+
+h2{
+  padding-bottom: 10%;
+  font-style: bold
+}
 /*Color de fondo del la pagina*/
 body{
   background-color: #EFF5EE;
   color: black;
+  z-index: 1;
 }
 /*HEADER*/
 
@@ -42,14 +48,15 @@ h1 {
 #menu {
   list-style-type: none;
   display: flex;
-  padding-inline-start: 0;
+  padding: 0;
   position:fixed;
   bottom:0;
   left:0;
-  width: 99.95%;
+  width: 100%;
   margin:0;
   box-shadow:3px 3px 5px #BEBEBE ;
-
+  z-index: 2;
+  height: 6%;
 }
 
 /*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
@@ -61,7 +68,7 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
   text-align: center;
   border: 0.016px solid #BEBEBE;
   font-size: 25px;
-  background-color: #EFF5EE;
+  background-color: #E0E8DF;
 }
 
 /*EMERGENCIA*/
@@ -145,19 +152,17 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
 separación con el footer para que esten pegados y auto a los lados para que se centre en la página. Definicion del color
 de fondo. Forma del div con puntas redondas*/
 #contenido {
-  height: 74%;
-  padding: 12px 19px;
+  padding: 39px 74px;
   position: relative;
-  left: -0.9%;
-  width: 97.8%;
   background-color: #EFF5EE;
 }
 
 /*ACCIONES*/
 
 #acciones{
-  overflow: hidden;
-  display: none;
+  padding-top: 16%;
+  display: flex;
+  flex-direction: column;
 }
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
@@ -204,8 +209,10 @@ de fondo. Forma del div con puntas redondas*/
     float: left;
 }
 #botDer{
-    float: right;
-    width: 48%;
+    width: 58%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20%;
 }
 
 /*FOOTER*/
@@ -223,16 +230,32 @@ Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
   top:30%;
   right: 3%;
   position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
 }
 
+#correo{
+  visibility: visible;
+  top:40%;
+  right: 3%;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
+  background-image:url(logoGmail.png);
+  background-position: center;
+  background-size: contain; 
+}
+#correo p{
+  display: none;
+}
 #posicionTranvia{
   height: 300px;
   display: flex;
   flex-direction: column; 
-  padding: 0 8%;    
+  padding: 0 8%;   
+  width: 70%; 
 }
 
 .trianguloposicion{
@@ -254,11 +277,11 @@ Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
     background-color: black;
   }
   #contflechas{
-    height: 53% ;
-    width: 100%;
+    height: 53%;
+    width: 94%;
     display: flex;
-    justify-content: center;  
-    margin-left:6%;
+    justify-content: center;
+    margin-left: 4.5%;
   }
 
   @keyframes parada{
