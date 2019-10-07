@@ -22,6 +22,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
     <title>Tranvia Vitoria</title>
       <script src="jquery-3.4.1.js"></script>
       <script src="javaScript.js"></script>
@@ -40,7 +42,6 @@
       <!-- Men� principal -->
         <div>
           <ul id="menu">
-              <li class="menuItem" id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
               <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
               <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
           </ul>
@@ -73,24 +74,16 @@
       </div>
       <!-- /Tranv�a -->
 
-      <!-- Estado -->
-          <div id="estado">
-            <h2>Estado del tranvia</h2>
-            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempoAhora"></span>----------------------------><span id="tiempoParSalida"></span></p>
-          </div>
-      <!-- /Estado -->
-
           <!-- Acciones -->
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                  <input type="submit" onclick="irPosicion()" value="Ir posicion" disabled>
                   <form action="" method="post">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
-                              <option selected="true" disabled>seleccione la parada</option>
+                              <option selected="true">seleccione la parada</option>
                               <option name="parad" id="op1" value="50">1</option>
                               <option name="parad" id="op2" value="200">2</option>
                               <option name="parad" id="op3" value="350">3</option>
@@ -111,29 +104,9 @@
           <!--Grafico-->
           <div id="grafico">
               <div id="idGrafico">
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" style="max-width: 700px;max-height: 400px;"></canvas>
               </div>
-              <div style="float: right;">
-                <p><label>velocidad:<input type="number" id="vel"></label></p>    
-                    <p>
-                      <label>Parada a la que ir:</label> 
-                        <select id="stop">
-                            <option selected="true" disabled>seleccione la parada</option>
-                            <option name="parad" value="1">1</option>
-                            <option name="parad" value="2">2</option>
-                            <option name="parad" value="3">3</option>
-                            <option name="parad" value="4">4</option>
-                            <option name="parad" value="5">5</option>
-                            <option name="parad" value="6">6</option>
-                            <option name="parad" value="7">7</option>
-                            <option name="parad" value="8">8</option>
-                            <option name="parad" value="9">9</option>
-                        </select>
-                        <br><br>
-                        <input type="submit" class="botonIr" value="Ir" onclick="asignarVel()">
-                    </p>
-              </div>
-            </div>
+          </div>
             <!--/Grafico-->
         </div>
         <!-- /Contenido -->
