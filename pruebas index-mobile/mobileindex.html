@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Tranvia Vitoria</title>
+      <script src="jquery-3.4.1.js"></script>
+      <script src="javaScript.js"></script>
+      <script src="PruebasGrafico/Librerias/Chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="mobileindex.css" title="styleIndex" />
+  </head>
+  <body onload="todas()">
+
+      <!-- Cabecera -->
+        <header>
+          <img src="img/euskotren_logo.png">
+          <h1>CONTROL DE TRANVIA</h1>
+        </header>
+      <!-- /Cabecera -->
+
+      <!-- Men� principal -->
+        <div>
+          <ul id="menu">
+              <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
+              <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
+          </ul>
+        </div>
+      <!-- /Men� principal -->
+
+      <!-- Emergencia -->
+        <div id="emergencia">
+            <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
+        </div>
+      <!-- /Emergencia -->
+
+      <!-- Contenido -->
+      <div id="contenido">
+
+      <!-- Tranv�a -->
+      <div id="tranvia">
+        <h2>Posicion del tranvia</h2>
+        <div id="posicionTranvia">
+          <div id="contflechas">
+            <div class="trianguloposicion" id="parada1" ></div>
+            <div class="trianguloposicion" id="parada2"></div>
+            <div class="trianguloposicion" id="parada3"></div>
+            <div class="trianguloposicion" id="parada4"></div>
+          </div>
+          <div class="barra"></div></div>
+          <div id="contbola">
+          <div id="bolapos"></div>
+        </div>
+      </div>
+      <!-- /Tranv�a -->
+          <!-- Acciones -->
+          <div id="acciones">
+              <h2>Acciones</h2>
+              <div id="botIzq">
+                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
+                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                  <form action="" method="post">
+                      <p> <label>Parada a la que ir:
+                          <select id="parad">
+                              <option selected="true" disabled>seleccione la parada</option>
+                              <option name="parad" id="op1" value="50">1</option>
+                              <option name="parad" id="op2" value="200">2</option>
+                              <option name="parad" id="op3" value="350">3</option>
+                              <option name="parad" id="op4" value="500">4</option>
+                          </select>
+                          <br><br>
+                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
+                      </label> </p>
+                  </form>
+                  <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
+              </div>
+              <div id="botDer">
+                  <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
+                  <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
+              </div>
+          </div>
+          <!-- /Acciones -->
+          <!--Grafico-->
+          <div id="grafico">
+              <div id="idGrafico">
+                <canvas id="myChart"></canvas>
+              </div>
+              <div style="float: right;">
+                <p><label>velocidad:<input type="number" id="vel"></label></p>    
+                    <p>
+                      <label>Parada a la que ir:</label> 
+                        <select id="stop">
+                            <option selected="true" disabled>seleccione la parada</option>
+                            <option name="parad" value="1">1</option>
+                            <option name="parad" value="2">2</option>
+                            <option name="parad" value="3">3</option>
+                            <option name="parad" value="4">4</option>
+                            <option name="parad" value="5">5</option>
+                            <option name="parad" value="6">6</option>
+                            <option name="parad" value="7">7</option>
+                            <option name="parad" value="8">8</option>
+                            <option name="parad" value="9">9</option>
+                        </select>
+                        <br><br>
+                        <input type="submit" class="botonIr" value="Ir" onclick="asignarVel()">
+                    </p>
+              </div>
+            </div>
+            <!--/Grafico-->
+        </div>
+        <!-- /Contenido -->
+
+        <!-- Footer -->
+          <footer>
+            <div id="correo">
+            <p>rajecorp@gmail.com</p>
+            </div>
+
+            <div id="links">
+                <a href="https://github.com/rajecorp/reto1" target="_blank"><img src="img/github_logo.png" id="github_logo"></a>
+            </div>
+
+            <div id="copyright">
+              <p>&copy 2019 RajeCorp</p>
+            </div>
+
+
+          </footer>
+        <!-- /Footer -->
+
+
+  </body>
+</html>
