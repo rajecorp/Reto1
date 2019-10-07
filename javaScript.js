@@ -4,22 +4,37 @@
 var Posicion_Destino=false;
 var COTAS;
 var ENTER=false;
-var paradaSiguiente;
+var Paro;
+var Parada_0;
+var Parada_1 = false;
+var Parada_2 = false;
+var Parada_3 = false;
+var Parada_4 = false;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
 var Emergencia=false;//aqui va '"mis_datos".Emergencia'
+var REARME_1;
+var REARME_2;
+var velocidad;
 let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
 //let fechaAhora;
 var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
- *
  */
 function todas() {
     emergencia();
     ocultarParada();
     ejecGrafico();
+}
+
+/*POSICIONAR BOLA*/
+/**
+ * Funcion para posicionar la bola en la posicion actual del automata
+ */
+function posInicio() {
+    $get(variables/varPosicion)
 }
 
 /*EMERGENCIA*/
