@@ -1,0 +1,34 @@
+<!-- AWP_In_Variable Name='"mis_datos".Posicion' -->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_3' -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STEP 0.0</title>
+	<script src="jquery-3.2.1.min.js"></script>	
+</head>
+<body>    
+	<p>Parada_3 = :="mis_datos".Parada_3:</p>
+	<p>Posicion = :="mis_datos".Posicion:</p>
+       <form action="" method="post">
+	   <input type="text" id="valor" name='"mis_datos".Parada_3'/>
+       <input type="submit" value="enviar"/>
+     </form>
+	 <p>Recargar Parada_3: <label id="etiquetaE">:="mis_datos".Parada_3:</label></p>
+	 <p>Recargar Posicion: <label id="etiquetaP">:="mis_datos".Posicion:</label></p>
+
+	 <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajaxSetup({ cache: false });
+        setInterval(function() {
+            $.get('Variables/varParada.html', function(result){
+                $('#etiquetaE').text(result.trim());
+            });
+			$.get('Variables/varPosicion.html', function(result){
+				$('#etiquetaP').text(result.trim());
+			});
+        },1000);
+        });
+	</script>
+</body>
+</html>
