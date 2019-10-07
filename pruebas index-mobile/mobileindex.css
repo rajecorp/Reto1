@@ -4,18 +4,24 @@
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
 }
+
+h2{
+  padding-bottom: 10%;
+  font-style: bold
+}
 /*Color de fondo del la pagina*/
 body{
-  background-color: #3EBD1C;
+  background-color: #EFF5EE;
   color: black;
+  z-index: 1;
 }
 /*HEADER*/
 
 /*Color de fondo y letra mas el efecto de sombra en los bordes y el posicionamiento del contenido con flex-box para
 ponerlos a la misma distancia*/
 header {
-  background-color: white;
-  box-shadow: inset 0px 0px 40px 35px #3EBD1C;
+  background-color: #3EBD1C;
+  box-shadow: inset 0px 0px 40px 35px #EFF5EE;
   padding: 2%;
   height: 10%;
   display: flex;
@@ -41,56 +47,39 @@ h1 {
 /*Quitar el estilo predeterminado a la lista y posicionamiento de la misma*/
 #menu {
   list-style-type: none;
-  margin: 0;
-  margin-bottom: 10px;
   display: flex;
-  padding-inline-start: 0;
+  padding: 0;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  margin:0;
+  box-shadow:3px 3px 5px #BEBEBE ;
+  z-index: 2;
+  height: 6%;
 }
 
 /*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
 el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
 .menuItem {
+
   width: 50%;
-  padding: 5px 0;
+  padding: 20px 0;
   text-align: center;
-  border: 2px solid green;
+  border: 0.016px solid #BEBEBE;
   font-size: 25px;
-  background-color: #EFF5EE;
-}
-
-/*Se les pone el borde redondo a los dos items del menu de tal manera que entre ellos queden unidos (sin bordes redondos)*/
-
-/*Aqui es para que solo tenga borde redondo a la izquierda*/
-#estadoM {
-  border-radius: 29px 0px 0px 29px;
-  border-right: none;
-}
-
-/*Y aqui para que solo tenga borde redondo a la derecha*/
-#accionesM {
-  border-right: none;
-  border-left: none;
-}
-#graficoM{
-  border-radius: 0px 29px 29px 0px;
-  border-left: none;
-}
-
-/*Cuando el raton pase por encima del menu item se cambiara el color del fondo para que se vea se puede clicar ahí*/
-li:hover{
-    background-color: #D2D9D1;
+  background-color: #E0E8DF;
 }
 
 /*EMERGENCIA*/
 
 /*Esta caja solo aparecera si recibimos del automata que ha habido una emergencia*/
 #emergencia{
+  margin:0px -0.8% 0 -0.8%;
   /*Aqui se define el tamaño con el color de fondo y su borde*/
-  margin: 5px;
   background-color: #FF896F;
   height: 8.5em;
   border: 2px groove #FF5733;
-  border-radius: 29px 29px 29px 29px;
   /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
   transition: all 0.3s ease;
   animation-duration: 0.7s;
@@ -163,19 +152,17 @@ li:hover{
 separación con el footer para que esten pegados y auto a los lados para que se centre en la página. Definicion del color
 de fondo. Forma del div con puntas redondas*/
 #contenido {
-  width: 80%;
-  margin: 10px auto;
-  margin-bottom: 0;
-  padding: 20px;
+  padding: 39px 74px;
+  position: relative;
   background-color: #EFF5EE;
-  border-radius: 29px 29px 0px 0px;
 }
 
 /*ACCIONES*/
 
 #acciones{
-  overflow: hidden;
-  display: none;
+  padding-top: 16%;
+  display: flex;
+  flex-direction: column;
 }
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
@@ -186,26 +173,14 @@ de fondo. Forma del div con puntas redondas*/
   clear: both;
 }
 /*Color para los botones*/
-#botonParar{
+#botonParar, #botonAbrir{
     background-color: rgb(171, 11, 53);
 }
-#botonParar:hover{
-  background-color: rgb(131, 7, 40);
-}
 
-#botonSeguir{
+#botonSeguir, #botonCerrar{
     background-color: #4CAF50;
 }
-#botonSeguir:hover{
-  background-color: rgb(40, 113, 42);
-}
-.botonIr {
-  background-color: #008CBA;
-}
 
-.botonIr:hover {
-  background-color: rgb(3, 85, 113);
-}
 /*Diseño del boton ir*/
 #botonIr{
     background-color: rgb(36, 50, 206);
@@ -219,18 +194,14 @@ de fondo. Forma del div con puntas redondas*/
 }
 
 /*Diseñp de los botones de interaccion con el trnavia*/
-.botones {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
+.botones{
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 5px;
+    cursor: pointer;
 }
 
 /*Posicionamiento del los botones*/
@@ -238,40 +209,53 @@ de fondo. Forma del div con puntas redondas*/
     float: left;
 }
 #botDer{
-    float: right;
-    width: 48%;
+    width: 58%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20%;
 }
 
 /*FOOTER*/
-
+footer{
+  visibility: hidden;
+}
 /*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
 de abajo de la pagina, 0 de separación con el contenido para que esten pegados y auto a los lados para que se
 centre en la página. Definicion del color de fondo que es diferente al del contenido para que se vea la diferencia.
 Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
-footer {
-  width: 80%;
-  margin: 10px auto;
-  margin-top: 0;
-  padding: 20px;
-  background-color: black;
-  color: white;
-  border-radius: 0px 0px 29px 29px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-}
 
 /*Ajuste a la imagen de github*/
 #github_logo {
-  width: 40px;
-  height: 40px;
+  visibility: visible;
+  top:30%;
+  right: 3%;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
 }
 
+#correo{
+  visibility: visible;
+  top:40%;
+  right: 3%;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
+  background-image:url(logoGmail.png);
+  background-position: center;
+  background-size: contain; 
+}
+#correo p{
+  display: none;
+}
 #posicionTranvia{
   height: 300px;
   display: flex;
   flex-direction: column; 
-  padding: 0 8%;    
+  padding: 0 8%;   
+  width: 70%; 
 }
 
 .trianguloposicion{
@@ -293,11 +277,11 @@ footer {
     background-color: black;
   }
   #contflechas{
-    height: 53% ;
-    width: 100%;
+    height: 53%;
+    width: 94%;
     display: flex;
-    justify-content: center;  
-    margin-left:6%;
+    justify-content: center;
+    margin-left: 4.5%;
   }
 
   @keyframes parada{
@@ -351,5 +335,3 @@ footer {
   height: 0;
   clear: both;
 }
-
-
