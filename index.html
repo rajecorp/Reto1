@@ -85,8 +85,22 @@
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
-                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                  <form>
+                      <p>
+                          <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_destino'>True
+                          <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_destino' value="false">
+                      </p>
+                      <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
+
+                      <p>
+                          <input id="enter1" type="radio" class="radio" name='"mis_datos".ENTER'>True
+                          <input id="enter0" type="radio" class="radio" name='"mis_datos".ENTER' value="false">
+                      </p>
+
+                      <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                  </form>
+
+
                   <form action="" method="post">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
@@ -96,8 +110,23 @@
                               <option name="parad" id="op3" value="350">3</option>
                               <option name="parad" id="op4" value="500">4</option>
                           </select>
-                          <br><br>
-                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
+
+                      <p>
+                        <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1'>Parada 1
+                        <input id="parada1_0" type="radio" class="radio" name='"mis_datos".Parada_1' value="false">
+
+                        <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'>Parada 2
+                        <input id="parada2_0" type="radio" class="radio" name='"mis_datos".Parada_2' value="false">
+
+                        <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'>Parada 3
+                        <input id="parada3_0" type="radio" class="radio" name='"mis_datos".Parada_3' value="false">
+
+                        <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'>Parada 4
+                        <input id="parada4_0" type="radio" class="radio" name='"mis_datos".Parada_4' value="false">
+                      </p>
+
+                      <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
+
                       </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
@@ -105,6 +134,13 @@
               <div id="botDer">
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
+                  <p>
+                    <input id="rearme1_1" type="radio" class="radio" name='"mis_datos".REARME_1'>Rearme 1
+                    <input id="rearme1_0" type="radio" class="radio" name='"mis_datos".REARME_1' value="false">
+
+                    <input id="rearme2_1" type="radio" class="radio" name='"mis_datos".REARME_2'>Rearme 2
+                    <input id="rearme2_0" type="radio" class="radio" name='"mis_datos".REARME_2' value="false">
+                  </p>
               </div>
           </div>
           <!-- /Acciones -->
