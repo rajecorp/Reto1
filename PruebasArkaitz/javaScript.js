@@ -363,40 +363,6 @@ function ejecGrafico() {
 function asignarVel() {
     let velo = parseInt(document.getElementById("vel").value);
     let stop = parseInt(document.getElementById("stop").value);
-
-
-    switch (stop) {
-        case 1:
-            localStorage.setItem('v1', JSON.stringify(velo))
-            break;
-        case 2:
-            localStorage.setItem('v2', JSON.stringify(velo))
-            break;
-        case 3:
-            localStorage.setItem('v3', JSON.stringify(velo))
-            break;
-        case 4:
-            localStorage.setItem('v4', JSON.stringify(velo))
-            break;
-        case 5:
-            localStorage.setItem('v5', JSON.stringify(velo))
-            break;
-        case 6:
-            localStorage.setItem('v6', JSON.stringify(velo))
-            break;
-        case 7:
-            localStorage.setItem('v7', JSON.stringify(velo))
-            break;
-        case 8:
-            localStorage.setItem('v8', JSON.stringify(velo))
-            break;
-        case 9:
-            localStorage.setItem('v9', JSON.stringify(velo))
-            break;
-        case 10:
-            localStorage.setItem('v10', JSON.stringify(velo))
-            break;
-    }
-
+    localStorage.setItem('v'+stop.toString(), JSON.stringify(velo))
     ejecGrafico();
 }
