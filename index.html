@@ -22,6 +22,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
     <title>Tranvia Vitoria</title>
       <script src="jquery-3.4.1.js"></script>
       <script src="javaScript.js"></script>
@@ -40,7 +42,6 @@
       <!-- Men� principal -->
         <div>
           <ul id="menu">
-              <li class="menuItem" id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
               <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
               <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
           </ul>
@@ -49,7 +50,7 @@
 
       <!-- Emergencia -->
         <div id="emergencia">
-            <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
+            <img src="img/emergencia.png" class="growshrink" id="emergenciaImg">
         </div>
       <!-- /Emergencia -->
 
@@ -73,19 +74,12 @@
       </div>
       <!-- /Tranv�a -->
 
-      <!-- Estado -->
-          <div id="estado">
-            <h2>Estado del tranvia</h2>
-            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempoAhora"></span>----------------------------><span id="tiempoParSalida"></span></p>
-          </div>
-      <!-- /Estado -->
-
           <!-- Acciones -->
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
-                  <form>
+
+                         <form id="moverposicion">
                       <p>
                           <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_destino'>True
                           <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_destino' value="false">
@@ -97,11 +91,12 @@
                           <input id="enter0" type="radio" class="radio" name='"mis_datos".ENTER' value="false">
                       </p>
 
-                      <input type="submit" onclick="irPosicion()" value="Ir posicion">
-                  </form>
+                      <input type="submit" id="botonpos" onclick="irPosicion()" value="Ir posicion">
+                          </form>
 
 
-                  <form action="" method="post">
+                  <form action="" method="post" id="moverparada">
+
                       <p> <label>Parada a la que ir:
                           <select id="parad">
                               <option selected="true" disabled>seleccione la parada</option>
@@ -112,16 +107,13 @@
                           </select>
 
                       <p>
-                        <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1'>Parada 1
+
                         <input id="parada1_0" type="radio" class="radio" name='"mis_datos".Parada_1' value="false">
 
-                        <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'>Parada 2
                         <input id="parada2_0" type="radio" class="radio" name='"mis_datos".Parada_2' value="false">
 
-                        <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'>Parada 3
                         <input id="parada3_0" type="radio" class="radio" name='"mis_datos".Parada_3' value="false">
 
-                        <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'>Parada 4
                         <input id="parada4_0" type="radio" class="radio" name='"mis_datos".Parada_4' value="false">
                       </p>
 
@@ -134,7 +126,9 @@
               <div id="botDer">
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
-                  <p>
+
+                  <p id="botonrearme">
+
                     <input id="rearme1_1" type="radio" class="radio" name='"mis_datos".REARME_1'>Rearme 1
                     <input id="rearme1_0" type="radio" class="radio" name='"mis_datos".REARME_1' value="false">
 
@@ -147,29 +141,9 @@
           <!--Grafico-->
           <div id="grafico">
               <div id="idGrafico">
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" style="max-width: 700px;max-height: 400px;"></canvas>
               </div>
-              <div style="float: right;">
-                <p><label>velocidad:<input type="number" id="vel"></label></p>    
-                    <p>
-                      <label>Parada a la que ir:</label> 
-                        <select id="stop">
-                            <option selected="true" disabled>seleccione la parada</option>
-                            <option name="parad" value="1">1</option>
-                            <option name="parad" value="2">2</option>
-                            <option name="parad" value="3">3</option>
-                            <option name="parad" value="4">4</option>
-                            <option name="parad" value="5">5</option>
-                            <option name="parad" value="6">6</option>
-                            <option name="parad" value="7">7</option>
-                            <option name="parad" value="8">8</option>
-                            <option name="parad" value="9">9</option>
-                        </select>
-                        <br><br>
-                        <input type="submit" class="botonIr" value="Ir" onclick="asignarVel()">
-                    </p>
-              </div>
-            </div>
+          </div>
             <!--/Grafico-->
         </div>
         <!-- /Contenido -->

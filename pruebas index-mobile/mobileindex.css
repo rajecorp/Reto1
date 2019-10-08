@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|Patua+One&display=swap');
-
+@media (max-width: 799px)
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
@@ -64,7 +64,7 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
 .menuItem {
 
   width: 50%;
-  padding: 20px 0;
+  padding: 39px 0;
   text-align: center;
   border: 0.016px solid #BEBEBE;
   font-size: 25px;
@@ -207,12 +207,26 @@ de fondo. Forma del div con puntas redondas*/
 /*Posicionamiento del los botones*/
 #botizq{
     float: left;
+    display: flex;
+    justify-content: space-around;
 }
 #botDer{
     width: 58%;
     display: flex;
     justify-content: space-between;
     padding-left: 20%;
+    margin-top: 30%;
+}
+
+#mandarPosicion{
+    position: absolute;
+    margin-top: 6.5%;
+    left: 20%;
+}
+
+#mandarParada{
+    position: absolute;
+    left: 70%;
 }
 
 /*FOOTER*/
@@ -247,7 +261,7 @@ Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
   background-position: center;
   background-size: contain; 
 }
-#correo p{
+#correo a{
   display: none;
 }
 #posicionTranvia{
