@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|Patua+One&display=swap');
 
-@media (min-width: 1300px){
+@media (min-width: 1200px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
@@ -328,14 +328,14 @@ footer {
   /*para que el fondo blanco ocupe todo el alto de acciones*/
 #grafico::after{
   content: ".";
-  visibility: hidden;
+  visibility: visible;
   display: block;
   height: 0;
   clear: both;
 }
 }
 /*-----------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 1299px) and (min-width:799px){
+@media (max-width: 1199px) and (min-width:799px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
