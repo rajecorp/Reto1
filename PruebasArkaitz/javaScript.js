@@ -4,36 +4,21 @@
 var Posicion_Destino=false;
 var COTAS;
 var ENTER=false;
-var Paro;
-var Parada_0;
-var Parada_1 = false;
-var Parada_2 = false;
-var Parada_3 = false;
-var Parada_4 = false;
+var paradaSiguiente;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
-var Emergencia=false;//aqui va '"mis_datos".Emergencia'
-var REARME_1;
-var REARME_2;
-
+var Emergencia=true;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
 var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
+ *
  */
 function todas() {
     emergencia();
     ocultarParada();
     ejecGrafico();
-}
-
-/*POSICIONAR BOLA*/
-/**
- * Funcion para posicionar la bola en la posicion actual del automata
- */
-function posInicio() {
-    $get(variables/varPosicion)
 }
 
 /*EMERGENCIA*/
@@ -72,14 +57,22 @@ function emergencia() {
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
-    if(valor == "acciones"){
+    if (valor=="estado") {
+        document.getElementById("acciones").style.display = "none"
         document.getElementById("grafico").style.display = "none"
-        document.getElementById("acciones").style.display = "flex"
-
+        document.getElementById("estado").style.display = "inline"
+        document.getElementById("estado").style.overflow = "hidden"
+    }else if(valor == "acciones"){
+        document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
+        document.getElementById("acciones").style.display = "contents"
+        document.getElementById("acciones").style.overflow = "hidden"
+        document.getElementById("acciones").style.height = "20%"
     }else if (valor=="grafico") {
         document.getElementById("acciones").style.display = "none"
+        document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "inline"
-
+        document.getElementById("grafico").style.overflow = "hidden"
     }
 }
 
