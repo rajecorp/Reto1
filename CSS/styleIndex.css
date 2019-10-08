@@ -172,6 +172,8 @@ de fondo. Forma del div con puntas redondas*/
 #acciones{
   overflow: hidden;
   display: block;
+  display: flex;
+  flex-direction: column;
 }
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
@@ -216,12 +218,32 @@ de fondo. Forma del div con puntas redondas*/
 /*Posicionamiento del los botones*/
 #botizq{
     float: left;
+    display: flex;
+    justify-content: space-around;
 }
 #botDer{
     float: right;
-    width: 48%;
+    width: 98%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+#moverPosicion{
+    display: flex;
+    flex-direction: column;
+}
+
+#moverParada{
+    display: flex;
+    flex-direction: column;
+    width: 191px;
+    padding-top: 20px;
+}
+}
+
+#botonrearme{
+
+}
 /*FOOTER*/
 
 /*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
@@ -239,6 +261,11 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+}
+
+#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
+  visibility: hidden;
+  display: none;
 }
 
 /*Ajuste a la imagen de github*/
@@ -696,7 +723,7 @@ body{
 ponerlos a la misma distancia*/
 header {
   background-color: #3EBD1C;
-  box-shadow: inset 0px 0px 40px 35px #EFF5EE;
+  box-shadow: inset 0px 0px 16px 19px #EFF5EE;
   display: flex;
   justify-content: space-around;
 }
@@ -830,10 +857,6 @@ de fondo. Forma del div con puntas redondas*/
 
 /*ACCIONES*/
 
-#acciones{
-
-
-}
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
   content: ".";
@@ -866,12 +889,13 @@ de fondo. Forma del div con puntas redondas*/
 /*Diseñp de los botones de interaccion con el trnavia*/
 .botones{
     color: white;
-    padding: 15px 32px;
+    padding: 0px 14px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
     margin: 5px 5px;
     cursor: pointer;
+    height: 49px;
 }
 
 /*Posicionamiento del los botones*/
@@ -895,9 +919,28 @@ de fondo. Forma del div con puntas redondas*/
     left: 70%;
 }
 
+#botonrearme{
+
+}
+
+#moverposicion{
+  display:flex;
+
+}
+#botonpos{
+  clear:left;
+}
+#moverparada{
+  
+}
 /*FOOTER*/
 footer{
   visibility: hidden;
+}
+
+#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
+  visibility: hidden;
+  display: none;
 }
 
 #posicionTranvia{
