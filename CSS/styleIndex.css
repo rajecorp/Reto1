@@ -171,17 +171,19 @@ de fondo. Forma del div con puntas redondas*/
 
 #acciones{
   overflow: hidden;
-  display: block;
   display: flex;
   flex-direction: column;
 }
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
   content: ".";
+  display: flex;
+  flex-direction: column;
   visibility: hidden;
-  display: block;
   height: 0;
   clear: both;
+  overflow: hidden;
+
 }
 /*Color para los botones*/
 #botonParar, #botonAbrir{
@@ -236,9 +238,8 @@ de fondo. Forma del div con puntas redondas*/
 #moverParada{
     display: flex;
     flex-direction: column;
-    width: 191px;
-    padding-top: 20px;
-}
+    width: 331px;
+    padding-top: 56px;
 }
 
 #botonrearme{
