@@ -1,0 +1,62 @@
+<!-- AWP_In_Variable Name='"mis_datos".Posicion' -->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_3' -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STEP 0.0</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styleIndex.css" title="styleIndex" />
+</head>
+<body>    
+	<p>Parada_3 = :="mis_datos".Parada_3:</p>
+	<p>Posicion = :="mis_datos".Posicion:</p>
+       <form action="" method="post">
+		   <input id="valor1" type="radio" class="radio" name='"mis_datos".Parada_3' data-value="true" />true
+		   <input id="valor0" type="radio" class="radio" name='"mis_datos".Parada_3' data-value="false" value="false" />false
+		   <button id="enviar" type="submit" >enviar</button>
+     </form>
+	 <p>Recargar Parada_3: <label id="etiquetaE">:="mis_datos".Parada_3:</label></p>
+	 <p>Recargar Posicion: <label id="etiquetaP">:="mis_datos".Posicion:</label></p>
+
+	<!--web Storage-->
+	<p>Mostrar datos de la Web Storage</p>
+	<label id="Posicion"></label> <br>
+	<button id="boton-cargar">
+		Cargar elementos
+	</button>
+
+	 <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajaxSetup({ cache: false });
+        setInterval(function() {
+            $.get('Variables/varParada.html', function(result){
+            	//si es 1 lo que hay en el PLC reenvia un 0.
+            	if(result.trim()==1){
+            		$("#valor0").trigger("click");
+            		//accion de clickar el boton enviar
+            		$("#enviar").trigger("click");
+				}
+                $('#etiquetaE').text(result.trim());
+            });
+			$.get('Variables/varPosicion.html', function(result){
+				/*guardar el valor posicion el un localStorage*/
+				localStorage.setItem("Posicion", result.trim());
+				$('#etiquetaP').text(result.trim());
+			});
+        },1000);
+        });
+
+        /*web Storage*/
+		$(document).ready(function(){
+			$('#boton-cargar').click(function(){
+				/*Obtener datos almacenados*/
+				var pos = localStorage.getItem("Posicion");
+				alert(pos);
+				/*Mostrar datos almacenados*/
+				document.getElementById("Posicion").innerHTML = pos;
+			});
+		});
+	</script>
+</body>
+</html>

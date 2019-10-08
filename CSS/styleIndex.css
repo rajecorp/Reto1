@@ -242,7 +242,13 @@ de fondo. Forma del div con puntas redondas*/
     padding-top: 56px;
 }
 
+
 #botonrearme{
+
+  }
+#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
+  visibility: hidden;
+  display: none;
 
 }
 /*FOOTER*/
