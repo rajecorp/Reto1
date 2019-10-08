@@ -12,9 +12,9 @@ function emergencia() {
 }
 
 var paradaSiguiente;
-var Parada=50;//aqui ira '"mis_datos".Parada'
-var Posicion=50;//'"mis_datos".Posicion'
-var Emergencia=false;//aqui va '"mis_datos".Emergencia'
+var Parada = 50;//aqui ira '"mis_datos".Parada'
+var Posicion = 50;//'"mis_datos".Posicion'
+var Emergencia = false;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
 
 /**
@@ -41,20 +41,20 @@ function emergencia() {
  * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
  */
 function ocultarParada() {
-switch (Parada) {
-    case 50:
-        document.getElementById("op1").style.display = "none"
-        break;
-    case 200:
-        document.getElementById("op2").style.display = "none"
-        break;
-    case 350:
-        document.getElementById("op3").style.display = "none"
-        break;
-    case 500:
-        document.getElementById("op4").style.display = "none"
-        break;
-}
+    switch (Parada) {
+        case 50:
+            document.getElementById("op1").style.display = "none"
+            break;
+        case 200:
+            document.getElementById("op2").style.display = "none"
+            break;
+        case 350:
+            document.getElementById("op3").style.display = "none"
+            break;
+        case 500:
+            document.getElementById("op4").style.display = "none"
+            break;
+    }
 }
 
 /**
@@ -62,18 +62,18 @@ switch (Parada) {
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
-    if (valor=="estado") {
+    if (valor == "estado") {
         document.getElementById("acciones").style.display = "none"
         document.getElementById("grafico").style.display = "none"
         document.getElementById("estado").style.display = "inline"
         document.getElementById("estado").style.overflow = "hidden"
-    }else if(valor == "acciones"){
+    } else if (valor == "acciones") {
         document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "none"
         document.getElementById("acciones").style.display = "contents"
         document.getElementById("acciones").style.overflow = "hidden"
         document.getElementById("acciones").style.height = "20%"
-    }else if (valor=="grafico") {
+    } else if (valor == "grafico") {
         document.getElementById("acciones").style.display = "none"
         document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "inline"
@@ -87,13 +87,13 @@ function ocultarMenu(valor) {
 function irPosicion() {
     posicionMm = document.getElementById("posicion").value
     let validar = validarMm(posicionMm)
-    if(validar){
-        confirmar = confirm("\u00BFDesea ir a la posicion "+ posicionMm +"?")
+    if (validar) {
+        confirmar = confirm("\u00BFDesea ir a la posicion " + posicionMm + "?")
         if (confirmar == true) {
             //fechaAhora=crearFecha();
             //movMm();
         }
-    }else{
+    } else {
         alert("Solo se puede ir a una posicion entre 0-500")
     }
 
@@ -105,8 +105,8 @@ function irPosicion() {
  * @returns {boolean} si es correcto o no
  */
 function validarMm(posicionMm) {
-    if (posicionMm>500||posicionMm<0){
-     return false;
+    if (posicionMm > 500 || posicionMm < 0) {
+        return false;
     }
     return true;
 }
@@ -129,7 +129,7 @@ function validarMm(posicionMm) {
  * @param evt para prevenir recargar la pagina
  */
 function irParada(evt) {
-    let evento= evt||window.event;
+    let evento = evt || window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
     confirmar = confirm("\u00BFDesea ir a la parada " + paradaSiguiente + "?")
@@ -250,19 +250,19 @@ function showConfirm(accion) {
 
             alert("Seguir")
 
-        }else if (accion == 'parar') {
+        } else if (accion == 'parar') {
 
             alert("Parar")
 
-        }else if (accion == 'abrir') {
+        } else if (accion == 'abrir') {
 
             alert("Abrir")
 
-        }else if (accion == 'cerrar') {
+        } else if (accion == 'cerrar') {
 
             alert("cerrar")
 
-        }else if(accion == 'ir'){
+        } else if (accion == 'ir') {
             alert("Ir")
         }
     }
@@ -272,72 +272,75 @@ function showConfirm(accion) {
  * funcion para el switch de abrir puertas
  * @param valor booleano de las puertas si estan abiertas o cerradas
  */
-function abrirPuertas(valor){
+function abrirPuertas(valor) {
     if (valor.checked == false) {
         alert("Las puertas se cierran")
-    }else{
+    } else {
         alert("Las puertas se abren")
     }
 }
 
 
-function mover(evt){
-    let evento= evt||window.event;
+function mover(evt) {
+    let evento = evt || window.event;
     evento.preventDefault();
 
-    let pos=document.getElementById("posicion").value
-    var postranvia=document.getElementById("bolapos")
+    let pos = document.getElementById("posicion").value
+    var postranvia = document.getElementById("bolapos")
 
-    postranvia.style.marginLeft=(pos+"%")
+    postranvia.style.marginLeft = (pos + "%")
 
-    switch(parseInt(pos)){    
-    case 10:
-        document.getElementById('parada1').style.animationName ='parada';
+    switch (parseInt(pos)) {
+        case 10:
+            document.getElementById('parada1').style.animationName = 'parada';
 
-        document.getElementById('parada2').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada3').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada4').style.animationName = 'none';
 
-        break;
-   
-    case 40:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='parada';
+        case 40:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'parada';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada3').style.animationName = 'none';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'none';
 
-    case 70:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='none';
+        case 70:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='parada';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada3').style.animationName = 'parada';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'none';
 
-    case 100:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='none';
+        case 100:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='parada';  
+            document.getElementById('parada3').style.animationName = 'none';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'parada';
+
+            break;
     }
 }
 
-let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
+
+/**
+ * Grafico!!!!
+ */
 function ejecGrafico() {
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -346,58 +349,17 @@ function ejecGrafico() {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
             datasets: [{
                 label: 'Velocity',
-                data: [v1, v2, v3, v4, v5, v6, v7, v8, v9],
+                data: [localStorage.getItem('v1'), localStorage.getItem('v2'), localStorage.getItem('v3'), localStorage.getItem('v4'), localStorage.getItem('v5'), localStorage.getItem('v6'), localStorage.getItem('v7'), localStorage.getItem('v8'), localStorage.getItem('v9'), localStorage.getItem('v10')],
                 backgroundColor: 'rgba(26, 129, 102, 0.2)',
                 borderColor: "#3cba9f",
                 borderWidth: 1
             }]
         },
-        
     });
 }
-function asignarVel(){
-    let velo = document.getElementById("vel").value;
-    let stop = document.getElementById("stop").value;
-    asignarVelocidad(parseInt(velo), parseInt(stop));
-  }
-
-  function asignarVelocidad(velocidad, punto) {
-    switch (punto) {
-      case 1:
-        v1 = velocidad
-        ejecGrafico();
-        break;
-      case 2:
-        v2 = velocidad
-        ejecGrafico();
-        break;
-      case 3:
-        v3=velocidad
-        ejecGrafico();
-        break;
-      case 4:
-        v4=velocidad
-        ejecGrafico();
-        break;
-      case 5:
-        v5=velocidad
-        ejecGrafico();
-        break;
-      case 6:
-        v6=velocidad
-        ejecGrafico();
-        break;
-      case 7:
-        v7=velocidad
-        ejecGrafico();
-        break;
-      case 8:
-        v8=velocidad
-        ejecGrafico();
-        break;
-      case 9:
-        v9=velocidad
-        ejecGrafico();
-        break;   
-    }
-  }
+function asignarVel() {
+    let velo = parseInt(document.getElementById("vel").value);
+    let stop = parseInt(document.getElementById("stop").value);
+    localStorage.setItem('v'+stop.toString(), JSON.stringify(velo))
+    ejecGrafico();
+}

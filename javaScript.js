@@ -4,22 +4,36 @@
 var Posicion_Destino=false;
 var COTAS;
 var ENTER=false;
-var paradaSiguiente;
+var Paro;
+var Parada_0;
+var Parada_1 = false;
+var Parada_2 = false;
+var Parada_3 = false;
+var Parada_4 = false;
 var Parada=50;//aqui ira '"mis_datos".Parada'
 var Posicion=50;//'"mis_datos".Posicion'
 var Emergencia=false;//aqui va '"mis_datos".Emergencia'
-let v1, v2, v3, v4, v5, v6, v7, v8, v9 = 0;
+var REARME_1;
+var REARME_2;
+
 //let fechaAhora;
 var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
- *
  */
 function todas() {
     emergencia();
     ocultarParada();
     ejecGrafico();
+}
+
+/*POSICIONAR BOLA*/
+/**
+ * Funcion para posicionar la bola en la posicion actual del automata
+ */
+function posInicio() {
+    $get(variables/varPosicion)
 }
 
 /*EMERGENCIA*/
@@ -360,66 +374,21 @@ function ejecGrafico() {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
             datasets: [{
                 label: 'Velocity',
-                data: [v1, v2, v3, v4, v5, v6, v7, v8, v9],
+                data: [localStorage.getItem('v1'), localStorage.getItem('v2'), localStorage.getItem('v3'), localStorage.getItem('v4'), localStorage.getItem('v5'), localStorage.getItem('v6'), localStorage.getItem('v7'), localStorage.getItem('v8'), localStorage.getItem('v9'), localStorage.getItem('v10')],
                 backgroundColor: 'rgba(26, 129, 102, 0.2)',
                 borderColor: "#3cba9f",
                 borderWidth: 1
             }]
         },
-        
     });
 }
 
 /**
- * Recoge la velocidad y la parada del grafico
+ * Recoge la velocidad y la parada del grafico y la guarda en localStorage para futuras sesiones
  */
-function asignarVel(){
-    let velo = document.getElementById("vel").value;
-    let stop = document.getElementById("stop").value;
-    asignarVelocidad(parseInt(velo), parseInt(stop));
-  }
-/**
- * Asigna la velocidad a la parada en el grafico
- * @param {*} velocidad 
- * @param {*} punto 
- */
-  function asignarVelocidad(velocidad, punto) {
-    switch (punto) {
-      case 1:
-        v1 = velocidad
-        ejecGrafico();
-        break;
-      case 2:
-        v2 = velocidad
-        ejecGrafico();
-        break;
-      case 3:
-        v3=velocidad
-        ejecGrafico();
-        break;
-      case 4:
-        v4=velocidad
-        ejecGrafico();
-        break;
-      case 5:
-        v5=velocidad
-        ejecGrafico();
-        break;
-      case 6:
-        v6=velocidad
-        ejecGrafico();
-        break;
-      case 7:
-        v7=velocidad
-        ejecGrafico();
-        break;
-      case 8:
-        v8=velocidad
-        ejecGrafico();
-        break;
-      case 9:
-        v9=velocidad
-        ejecGrafico();
-        break;   
-    }
-  }
+function asignarVel() {
+    let velo = parseInt(document.getElementById("vel").value);
+    let stop = parseInt(document.getElementById("stop").value);
+    localStorage.setItem('v'+stop.toString(), JSON.stringify(velo))
+    ejecGrafico();
+}

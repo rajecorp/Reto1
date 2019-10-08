@@ -1,24 +1,3 @@
-<!-- AWP_In_Variable Name='"mis_datos".Emergencia'-->
-<!-- AWP_In_Variable Name='"mis_datos".COTAS'-->
-    <!--permiso para mover en mm -->
-<!-- AWP_In_Variable Name='"mis_datos".ENTER'-->
-    <!--permiso para mover en mm -->
-<!-- AWP_In_Variable Name='"mis_datos".Parada_1'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada_2'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada_3'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada_4'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada_0'-->
-<!-- AWP_In_Variable Name='"mis_datos".Paro'-->
-    <!--boton de parar Boleano -->
-<!-- AWP_In_Variable Name='"mis_datos".Posicion'-->
-<!-- AWP_In_Variable Name='"mis_datos".Velocidad'-->
-<!-- AWP_In_Variable Name='"mis_datos".REARME_1'-->
-    <!--boton de añadir corriente Boleano-->
-<!-- AWP_In_Variable Name='"mis_datos".REARME_2'-->
-    <!--boton de inicio de automata Boleano-->
-<!-- AWP_In_Variable Name='"mis_datos".Posicion_destino'-->
-    <!--permiso para mover en mm -->
-
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -26,7 +5,7 @@
       <script src="jquery-3.4.1.js"></script>
       <script src="javaScript.js"></script>
       <script src="PruebasGrafico/Librerias/Chart.js"></script>
-    <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
+    <link rel="stylesheet" type="text/css" href="mobileindex.css" title="styleIndex" />
   </head>
   <body onload="todas()">
 
@@ -40,7 +19,6 @@
       <!-- Men� principal -->
         <div>
           <ul id="menu">
-              <li class="menuItem" id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
               <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
               <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
           </ul>
@@ -72,35 +50,12 @@
         </div>
       </div>
       <!-- /Tranv�a -->
-
-      <!-- Estado -->
-          <div id="estado">
-            <h2>Estado del tranvia</h2>
-            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempoAhora"></span>----------------------------><span id="tiempoParSalida"></span></p>
-          </div>
-      <!-- /Estado -->
-
           <!-- Acciones -->
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
-                  <form>
-                      <p>
-                          <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_destino'>True
-                          <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_destino' value="false">
-                      </p>
-                      <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-
-                      <p>
-                          <input id="enter1" type="radio" class="radio" name='"mis_datos".ENTER'>True
-                          <input id="enter0" type="radio" class="radio" name='"mis_datos".ENTER' value="false">
-                      </p>
-
-                      <input type="submit" onclick="irPosicion()" value="Ir posicion">
-                  </form>
-
-
+                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
+                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
                   <form action="" method="post">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
@@ -110,23 +65,8 @@
                               <option name="parad" id="op3" value="350">3</option>
                               <option name="parad" id="op4" value="500">4</option>
                           </select>
-
-                      <p>
-                        <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1'>Parada 1
-                        <input id="parada1_0" type="radio" class="radio" name='"mis_datos".Parada_1' value="false">
-
-                        <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'>Parada 2
-                        <input id="parada2_0" type="radio" class="radio" name='"mis_datos".Parada_2' value="false">
-
-                        <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'>Parada 3
-                        <input id="parada3_0" type="radio" class="radio" name='"mis_datos".Parada_3' value="false">
-
-                        <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'>Parada 4
-                        <input id="parada4_0" type="radio" class="radio" name='"mis_datos".Parada_4' value="false">
-                      </p>
-
-                      <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
-
+                          <br><br>
+                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
                       </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
@@ -134,13 +74,6 @@
               <div id="botDer">
                   <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
                   <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
-                  <p>
-                    <input id="rearme1_1" type="radio" class="radio" name='"mis_datos".REARME_1'>Rearme 1
-                    <input id="rearme1_0" type="radio" class="radio" name='"mis_datos".REARME_1' value="false">
-
-                    <input id="rearme2_1" type="radio" class="radio" name='"mis_datos".REARME_2'>Rearme 2
-                    <input id="rearme2_0" type="radio" class="radio" name='"mis_datos".REARME_2' value="false">
-                  </p>
               </div>
           </div>
           <!-- /Acciones -->
