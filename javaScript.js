@@ -72,22 +72,14 @@ function emergencia() {
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
-    if (valor=="estado") {
-        document.getElementById("acciones").style.display = "none"
+    if(valor == "acciones"){
         document.getElementById("grafico").style.display = "none"
-        document.getElementById("estado").style.display = "inline"
-        document.getElementById("estado").style.overflow = "hidden"
-    }else if(valor == "acciones"){
-        document.getElementById("estado").style.display = "none"
-        document.getElementById("grafico").style.display = "none"
-        document.getElementById("acciones").style.display = "contents"
-        document.getElementById("acciones").style.overflow = "hidden"
-        document.getElementById("acciones").style.height = "20%"
+        document.getElementById("acciones").style.display = "flex"
+
     }else if (valor=="grafico") {
         document.getElementById("acciones").style.display = "none"
-        document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "inline"
-        document.getElementById("grafico").style.overflow = "hidden"
+
     }
 }
 

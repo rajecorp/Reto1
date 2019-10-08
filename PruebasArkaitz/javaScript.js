@@ -1,21 +1,15 @@
 /**
  * Variables globales
  */
-
-function emergencia() {
-    let emerg = false;//aqui va '"mis_datos".Emergencia'
-    if (emerg == true) {
-        document.getElementById('emergencia').style.display = 'inherit';
-        document.getElementById('emergencia').style.visibility = 'visible';
-        document.getElementById('emergencia').style.animationName = 'abrir';
-    }
-}
-
+var Posicion_Destino=false;
+var COTAS;
+var ENTER=false;
 var paradaSiguiente;
-var Parada = 50;//aqui ira '"mis_datos".Parada'
-var Posicion = 50;//'"mis_datos".Posicion'
-var Emergencia = false;//aqui va '"mis_datos".Emergencia'
+var Parada=50;//aqui ira '"mis_datos".Parada'
+var Posicion=50;//'"mis_datos".Posicion'
+var Emergencia=true;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
+var porcentaje;
 
 /**
  * Funcion para llamar a todas las funciones que se tienesn que ir al principio de la pagina
@@ -27,6 +21,22 @@ function todas() {
     ejecGrafico();
 }
 
+/*EMERGENCIA*/
+/**
+ * funcion que es un poton para sacar o meter el mensaje de emergencia
+ */
+function pararEm() {
+    if (Emergencia==true){
+        Emergencia=false;
+        emergencia();
+    }
+    else{
+        Emergencia=true;
+        emergencia();
+    }
+
+}
+
 /**
  * Funcion que sirve para mostrar o ocultar la ventnan de emergencia dependiendo del valor emerg
  */
@@ -34,9 +44,80 @@ function emergencia() {
     if (Emergencia == true) {
         document.getElementById('emergencia').style.display = 'inherit';
         document.getElementById('emergencia').style.visibility = 'visible';
+        document.getElementById('emergencia').style.animationName = 'abrir';
+    }
+    else
+    {
+        document.getElementById('emergencia').style.display = 'none';
     }
 }
 
+/**
+ * Funcion que intercambia la ocultacion de estado, acciones y grafico
+ * @param valor el cambia si es acciones o estado
+ */
+function ocultarMenu(valor) {
+    if (valor=="estado") {
+        document.getElementById("acciones").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
+        document.getElementById("estado").style.display = "inline"
+        document.getElementById("estado").style.overflow = "hidden"
+    }else if(valor == "acciones"){
+        document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "none"
+        document.getElementById("acciones").style.display = "contents"
+        document.getElementById("acciones").style.overflow = "hidden"
+        document.getElementById("acciones").style.height = "20%"
+    }else if (valor=="grafico") {
+        document.getElementById("acciones").style.display = "none"
+        document.getElementById("estado").style.display = "none"
+        document.getElementById("grafico").style.display = "inline"
+        document.getElementById("grafico").style.overflow = "hidden"
+    }
+}
+
+/*BOTON MOVER TRANVIA COTAS*/
+/**
+ * Funcion para mover el tranvia a una posicion en mm
+ */
+function irPosicion() {
+    Posicion_Destino=true;
+    ENTER=true;
+    COTAS = document.getElementById("posicion").value
+    let validar = validarMm(COTAS)
+    if(validar){       
+        porcentaje=(parseInt(COTAS)*100)/500;
+        mover();
+    }else{
+        alert("Solo se puede ir a una posicion entre 0-500")
+    }
+}
+
+/**
+ * validar si los mm entran en el rango establecido
+ * @returns {boolean} si es correcto o no
+ * @param COTAS
+ */
+function validarMm(COTAS) {
+    if (COTAS>500||COTAS<0){
+     return false;
+    }
+    return true;
+}
+
+/**
+ * funcion que mueve el tranvia unos mm
+ */
+/*function movMm() {
+    let fechaParada=crearFecha();
+    var time = setTimeout(function(){ movMm() }, 500);//repite la funcion cada 500 ms
+    document.getElementById("tiempoParSalida").innerHTML=fechaParada;
+    document.getElementById("tiempoAhora").innerHTML=fechaAhora;
+    document.getElementById("paradaAnt").innerHTML = Posicion;
+    document.getElementById("paradaSig").innerHTML = posicionMm;
+}*/
+
+/*BOTON MOVER TRANVIA A UNA PARADA*/
 /**
  * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
  */
@@ -58,85 +139,16 @@ function ocultarParada() {
 }
 
 /**
- * Funcion que intercambia la ocultacion de estado, acciones y grafico
- * @param valor el cambia si es acciones o estado
- */
-function ocultarMenu(valor) {
-    if (valor == "estado") {
-        document.getElementById("acciones").style.display = "none"
-        document.getElementById("grafico").style.display = "none"
-        document.getElementById("estado").style.display = "inline"
-        document.getElementById("estado").style.overflow = "hidden"
-    } else if (valor == "acciones") {
-        document.getElementById("estado").style.display = "none"
-        document.getElementById("grafico").style.display = "none"
-        document.getElementById("acciones").style.display = "contents"
-        document.getElementById("acciones").style.overflow = "hidden"
-        document.getElementById("acciones").style.height = "20%"
-    } else if (valor == "grafico") {
-        document.getElementById("acciones").style.display = "none"
-        document.getElementById("estado").style.display = "none"
-        document.getElementById("grafico").style.display = "inline"
-        document.getElementById("grafico").style.overflow = "hidden"
-    }
-}
-
-/**
- * Funcion para mover el tranvia a una posicion en mm
- */
-function irPosicion() {
-    posicionMm = document.getElementById("posicion").value
-    let validar = validarMm(posicionMm)
-    if (validar) {
-        confirmar = confirm("\u00BFDesea ir a la posicion " + posicionMm + "?")
-        if (confirmar == true) {
-            //fechaAhora=crearFecha();
-            //movMm();
-        }
-    } else {
-        alert("Solo se puede ir a una posicion entre 0-500")
-    }
-
-}
-
-/**
- * validar si los mm entran en el rango establecido
- * @param posicionMm valor a validar
- * @returns {boolean} si es correcto o no
- */
-function validarMm(posicionMm) {
-    if (posicionMm > 500 || posicionMm < 0) {
-        return false;
-    }
-    return true;
-}
-
-/**
- * funcion que mueve el tranvia unos mm
- */
-/*function movMm() {
-    let fechaParada=crearFecha();
-    var time = setTimeout(function(){ movMm() }, 500);//repite la funcion cada 500 ms
-    document.getElementById("tiempoParSalida").innerHTML=fechaParada;
-    document.getElementById("tiempoAhora").innerHTML=fechaAhora;
-    document.getElementById("paradaAnt").innerHTML = Posicion;
-    document.getElementById("paradaSig").innerHTML = posicionMm;
-}*/
-
-/**
  * Funcion para mandar la parada donde ira el tranvia
  *
  * @param evt para prevenir recargar la pagina
  */
 function irParada(evt) {
-    let evento = evt || window.event;
+    let evento= evt||window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
-    confirmar = confirm("\u00BFDesea ir a la parada " + paradaSiguiente + "?")
-    if (confirmar == true) {
-        //fechaAhora=crearFecha();
-        //parada(paradaSiguiente)
-    }
+    porcentaje=parseInt((parseInt(paradaSiguiente)*100)/500);
+    mover();
 }
 
 /**
@@ -250,96 +262,94 @@ function showConfirm(accion) {
 
             alert("Seguir")
 
-        } else if (accion == 'parar') {
+        }else if (accion == 'parar') {
 
             alert("Parar")
 
-        } else if (accion == 'abrir') {
+        }else if (accion == 'abrir') {
 
             alert("Abrir")
 
-        } else if (accion == 'cerrar') {
+        }else if (accion == 'cerrar') {
 
             alert("cerrar")
 
-        } else if (accion == 'ir') {
+        }else if(accion == 'ir'){
             alert("Ir")
         }
     }
 }
 
+/*ANIMACION*/
 /**
- * funcion para el switch de abrir puertas
- * @param valor booleano de las puertas si estan abiertas o cerradas
+ * Funcion para la la animacion de la bola
+ * @param evt para prevenir que la pagina se recargue
  */
-function abrirPuertas(valor) {
-    if (valor.checked == false) {
-        alert("Las puertas se cierran")
-    } else {
-        alert("Las puertas se abren")
-    }
-}
-
-
-function mover(evt) {
-    let evento = evt || window.event;
+function mover(evt){
+    let evento= evt||window.event;
     evento.preventDefault();
+    var postranvia=document.getElementById("bolapos")
+    postranvia.style.marginLeft=(porcentaje+"%")
 
-    let pos = document.getElementById("posicion").value
-    var postranvia = document.getElementById("bolapos")
+    switch(porcentaje){    
+    case 10:
+        document.getElementById('parada1').style.animationName ='parada';
 
-    postranvia.style.marginLeft = (pos + "%")
+        document.getElementById('parada2').style.animationName ='none';
 
-    switch (parseInt(pos)) {
-        case 10:
-            document.getElementById('parada1').style.animationName = 'parada';
+        document.getElementById('parada3').style.animationName ='none';
 
-            document.getElementById('parada2').style.animationName = 'none';
+        document.getElementById('parada4').style.animationName ='none';  
 
-            document.getElementById('parada3').style.animationName = 'none';
+        break;
+   
+    case 40:
+        document.getElementById('parada1').style.animationName ='none';
 
-            document.getElementById('parada4').style.animationName = 'none';
+        document.getElementById('parada2').style.animationName ='parada';
 
-            break;
+        document.getElementById('parada3').style.animationName ='none';
 
-        case 40:
-            document.getElementById('parada1').style.animationName = 'none';
+        document.getElementById('parada4').style.animationName ='none';  
 
-            document.getElementById('parada2').style.animationName = 'parada';
+        break;
 
-            document.getElementById('parada3').style.animationName = 'none';
+    case 70:
+        document.getElementById('parada1').style.animationName ='none';
 
-            document.getElementById('parada4').style.animationName = 'none';
+        document.getElementById('parada2').style.animationName ='none';
 
-            break;
+        document.getElementById('parada3').style.animationName ='parada';
 
-        case 70:
-            document.getElementById('parada1').style.animationName = 'none';
+        document.getElementById('parada4').style.animationName ='none';  
 
-            document.getElementById('parada2').style.animationName = 'none';
+        break;
 
-            document.getElementById('parada3').style.animationName = 'parada';
+    case 100:
+        document.getElementById('parada1').style.animationName ='none';
 
-            document.getElementById('parada4').style.animationName = 'none';
+        document.getElementById('parada2').style.animationName ='none';
 
-            break;
+        document.getElementById('parada3').style.animationName ='none';
 
-        case 100:
-            document.getElementById('parada1').style.animationName = 'none';
+        document.getElementById('parada4').style.animationName ='parada';  
 
-            document.getElementById('parada2').style.animationName = 'none';
+        break;
 
-            document.getElementById('parada3').style.animationName = 'none';
+    default:
+        document.getElementById('parada1').style.animationName ='none';
 
-            document.getElementById('parada4').style.animationName = 'parada';
+        document.getElementById('parada2').style.animationName ='none';
 
-            break;
+        document.getElementById('parada3').style.animationName ='none';
+
+        document.getElementById('parada4').style.animationName ='none';  
+
+        break;
     }
 }
-
-
 /**
- * Grafico!!!!
+ * Funcionalidad de Grafico
  */
 function ejecGrafico() {
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -357,6 +367,10 @@ function ejecGrafico() {
         },
     });
 }
+
+/**
+ * Recoge la velocidad y la parada del grafico y la guarda en localStorage para futuras sesiones
+ */
 function asignarVel() {
     let velo = parseInt(document.getElementById("vel").value);
     let stop = parseInt(document.getElementById("stop").value);

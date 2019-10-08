@@ -18,6 +18,7 @@
 
       <!-- Men� principal -->
         <div>
+          <!-- cambios para mobile index -->
           <ul id="menu">
               <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
               <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
@@ -55,7 +56,8 @@
               <h2>Acciones</h2>
               <div id="botIzq">
                   <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-                  <input type="submit" onclick="irPosicion()" value="Ir posicion">
+                 <!-- añadidia una id--> 
+                 <input type="submit" onclick="irPosicion()" value="Ir posicion" id="mandarPosicion">
                   <form action="" method="post">
                       <p> <label>Parada a la que ir:
                           <select id="parad">
@@ -66,7 +68,7 @@
                               <option name="parad" id="op4" value="500">4</option>
                           </select>
                           <br><br>
-                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()">
+                          <input type="submit" class="botonIr" value="Ir" onclick="irParada()" id="mandarParada">
                       </label> </p>
                   </form>
                   <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
@@ -110,7 +112,7 @@
         <!-- Footer -->
           <footer>
             <div id="correo">
-            <p>rajecorp@gmail.com</p>
+            <a>rajecorp@gmail.com</a>
             </div>
 
             <div id="links">
