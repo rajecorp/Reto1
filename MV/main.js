@@ -16,6 +16,7 @@ var Emergencia=false;
 var REARME_1=0;
 var REARME_2=0;
 var arrayVelocidad= new Array();
+let posi = new Array();
 var porcentaje;
 
 /**
@@ -23,7 +24,6 @@ var porcentaje;
  */
 function todas() {
     emergencia();
-    //ejecGrafico();
     if (localStorage.getItem("selectPos")=="1")
     {
         irPosicion();
@@ -119,8 +119,8 @@ $(document).ready(function(){
             }
         });
         $.get('variables/Velocidad.html', function(result){
-            arrayVelocidad.push(result.trim().substring(3,6));
-            localStorage.setItem("Velocidad", arrayVelocidad.join());
+            arrayVelocidad.push(parseInt(result.trim().substring(3,6)));
+            ejecGrafico();
         });
         $.get('variables/REARME_1.html', function(result){
             if(result.trim().substring(3,4)=="1"){
@@ -175,6 +175,7 @@ function emergencia() {
     }
 }
 
+//MENU
 /**
  * Funcion que intercambia la ocultacion de estado, acciones y grafico
  * @param valor el cambia si es acciones o estado
@@ -193,7 +194,7 @@ function ocultarMenu(valor) {
     }
 }
 
-/*BOTON MOVER TRANVIA COTAS*/
+//ACCION
 /**
  * Funcion para mover el tranvia a una posicion en mm
  */
@@ -203,8 +204,6 @@ function irPosicion() {
         mover();
 }
 
-/*BOTON MOVER TRANVIA A UNA PARADA*/
-
 /**
  * funcion para elegir al recargar la pagina si es posicion
  */
@@ -212,6 +211,7 @@ function pos() {
     localStorage.setItem("selectPos","1");
     localStorage.setItem("selectPar","0");
 }
+
 /**
  * funcion para elegir al recargar la pagina si es parada
  */
@@ -219,6 +219,7 @@ function par() {
     localStorage.setItem("selectPos","0");
     localStorage.setItem("selectPar","1");
 }
+
 /**
  * Funcion para mandar la parada donde ira el tranvia
  *
@@ -242,12 +243,16 @@ function irParada() {
     mover();
 }
 
+/**
+ * funcion para mover la bola en tiempo real
+ */
 function posInicioBola() {
     Posicion = localStorage.getItem("Posicion");
     porcentaje=(parseInt(Posicion)*100)/500;
     mover();
 }
-/*ANIMACION*/
+
+//ANIMACION
 /**
  * Funcion para la la animacion de la bola
  * @param evt para prevenir que la pagina se recargue
@@ -316,20 +321,20 @@ function mover(evt){
     }
 }
 
+//GRAFICO
 /**
  * Funcionalidad de Grafico
  */
 function ejecGrafico() {
-    let velocidadaString=localStorage.getItem("arrayVelocidad");
-    let velocidadArray= velocidadaString.split(",");
+    datosGrafico();
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            labels: posi,
             datasets: [{
                 label: 'Velocity',
-                data: [velocidadArray[0],velocidadArray[1], velocidadArray[2],velocidadArray[3], velocidadArray[4], velocidadArray[5],velocidadArray[6], velocidadArray[7],velocidadArray[8], velocidadArray[9]],
+                data: arrayVelocidad,
                 backgroundColor: 'rgba(26, 129, 102, 0.2)',
                 borderColor: "#3cba9f",
                 borderWidth: 1
@@ -339,11 +344,10 @@ function ejecGrafico() {
 }
 
 /**
- * Recoge la velocidad y la parada del grafico y la guarda en localStorage para futuras sesiones
+ * posicion del label para ese punto
  */
-function asignarVel() {
-   /* let velo = parseInt(document.getElementById("vel").value);
-    let stop = parseInt(document.getElementById("stop").value);
-    localStorage.setItem('v'+stop.toString(), JSON.stringify(velo))*/
-    ejecGrafico();
+function datosGrafico() {
+    for (let i = 0; i < arrayVelocidad.length; i++) {
+        posi[i] = i+1;
+    }
 }
