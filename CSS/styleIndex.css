@@ -233,6 +233,10 @@ de fondo. Forma del div con puntas redondas*/
 
 #rearme {
   display: flex;
+  height: 28%;
+  width:40.5%;
+  top:46.6%;
+  transform:scale(2);
 }
 #activar{
   position: absolute;
@@ -322,11 +326,8 @@ footer {
       margin-top: 20px;
     }
   }
-
-
-
-  #mover{
-    bottom: 23%;
+  #contparada{
+    bottom: 11%;
     right: 29%;
     position: absolute;
   }
@@ -604,10 +605,23 @@ de fondo. Forma del div con puntas redondas*/
 
 #rearme {
   display: flex;
+  height: 28%;
+  width:40.5%;
+  top:45.6%;
+  transform:scale(2);
 }
 #activar{
   position: absolute;
   top: 45%;
+}
+#contparada{
+  bottom: 11%;
+  right: 29%;
+  position: absolute;
+}
+
+#enviarPar{
+  width: 100%;
 }
 
 #pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
@@ -861,7 +875,7 @@ li:hover{
     height: 0;
   }
   to{
-    height: 8.5em;
+    height: 4.5em;
   }
 }
 
@@ -889,13 +903,11 @@ de fondo. Forma del div con puntas redondas*/
 /*ACCIONES*/
 #acciones{
   display: inherit;
-  margin-left:25%;
-  width: 100%;
 }
 /*para que el fondo blanco ocupe todo el alto de acciones*/
 #acciones::after{
   content: ".";
-  display: flex;
+  display: block;
   flex-direction: column;
   visibility: hidden;
   height: 0;
@@ -907,18 +919,14 @@ de fondo. Forma del div con puntas redondas*/
 #botonParar{
     background-color: rgb(171, 11, 53);
 }
-
-
+#contparada{
+  bottom: -3%;
+  right: 14%;
+  position: absolute;
+}
 /*Diseño del boton ir*/
-#botonIr{
-    background-color: rgb(36, 50, 206);
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    /*display: inline-block;*/
-    font-size: 16px;
-    /*margin: 5px 5px;*/
-    cursor: pointer;
+#enviarPar{
+  width: 100%;
 }
 
 /*Diseñp de los botones de interaccion con el trnavia*/
@@ -942,13 +950,6 @@ de fondo. Forma del div con puntas redondas*/
     width: 98%;
 }
 
-#moverPosicion{
-    display: flex;
-}
-
-#moverParada{
-
-}
 #mandarPosicion{
     position: absolute;
     margin-top: 6.5%;
@@ -962,6 +963,10 @@ de fondo. Forma del div con puntas redondas*/
 
 #rearme {
   display: flex;
+  height: 43%;
+  width: 75.5%;
+  top: 31.6%;
+  transform:scale(1.5);
 }
 #activar{
   position: absolute;
