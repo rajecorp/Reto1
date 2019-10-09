@@ -162,15 +162,14 @@ function activarTranvia(){
 function rearme(){
     document.getElementById("rearme").style.backgroundColor='#EFF5EE';
     document.getElementById("rearme").style.position='absolute';
-    document.getElementById("rearme").style.width='40.5%';
-    document.getElementById("rearme").style.height='18%';
-    document.getElementById("rearme").style.top='41.6%';
     document.getElementById("rearme").style.paddingTop='6%';
     document.getElementById("rearme").style.justifyContent='center';
-    document.getElementById("rearme").style.transform='scale(2)';
-    document.getElementById("rearme").style.transform='scale(2)';
-
+    
     document.getElementById("tranvia").style.visibility='hidden';
+
+    document.getElementById("contparada").style.visibility='hidden';
+
+    document.getElementById("moverposicion").style.visibility='hidden';
 
     document.getElementById("botonParar").style.visibility='hidden';
 
