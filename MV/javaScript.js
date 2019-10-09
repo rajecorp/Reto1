@@ -23,8 +23,7 @@ var porcentaje;
  */
 function todas() {
     emergencia();
-    ocultarParada();
-    ejecGrafico();
+    //ejecGrafico();
     if (localStorage.getItem("selectPos")=="1")
     {
         irPosicion();
@@ -33,6 +32,8 @@ function todas() {
     {
         irParada();
     }
+    localStorage.setItem("selectPos","0");
+    localStorage.setItem("selectPar","0");
 
 }
 
@@ -43,84 +44,105 @@ $(document).ready(function(){
     $.ajaxSetup({ cache: false });
     setInterval(function() {
         $.get('variables/COTAS.html', function(result){
+
             /*guardar el valor COTAS el un localStorage*/
-            localStorage.setItem("COTAS", result.trim());
+            localStorage.setItem("COTAS", result.trim().substring(3,6));
         });
         $.get('variables/Posicion_Destino.html', function(result){
             //si es 1 lo que hay en el PLC reenvia un 0.
-            if(result.trim()=="<p>1</p>"){
+            if(result.trim().substring(3,4)=="1"){
                 $("#pos_des0").trigger("click");
                 //accion de clickar el boton enviar
                 $("#enviar").trigger("click");
             }
         });
         $.get('variables/ENTER.html', function(result){
-            if(result.trim()=="<p>1</p>"){
+            if(result.trim().substring(3,4)=="1"){
                 $("#enter0").trigger("click");
                 $("#enviar").trigger("click");
             }
         });
-        $.get('variables/Posicion_Destino.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                $("#pos_des0").trigger("click");
-                $("#enviar").trigger("click");
-            }
-        });
         $.get('variables/Parada_1.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                localStorage.setItem("Parada_1", result.trim());
+            if(result.trim().substring(3,4)=="1"){
+                localStorage.setItem("Parada_1", result.trim().substring(3,4));
+                localStorage.setItem("Parada_0","0");
+                localStorage.setItem("Parada_4","0");
+                localStorage.setItem("Parada_2","0");
+                localStorage.setItem("Parada_3","0");
                 $("#parada1_0").trigger("click");
-                $("#enviar").trigger("click");
+                $("#enviarPar").trigger("click");
             }
         });
         $.get('variables/Parada_2.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                localStorage.setItem("Parada_2", result.trim());
+            console.log()
+            if(result.trim().substring(3,4)=="1"){
+                localStorage.setItem("Parada_2", result.trim().substring(3,4));
+                localStorage.setItem("Parada_0","0");
+                localStorage.setItem("Parada_1","0");
+                localStorage.setItem("Parada_4","0");
+                localStorage.setItem("Parada_3","0");
                 $("#parada2_0").trigger("click");
-                $("#enviar").trigger("click");
+                $("#enviarPar").trigger("click");
             }
         });
         $.get('variables/Parada_3.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                localStorage.setItem("Parada_3", result.trim());
+            if(result.trim().substring(3,4)=="1"){
+                localStorage.setItem("Parada_3", result.trim().substring(3,4));
+                localStorage.setItem("Parada_0","0");
+                localStorage.setItem("Parada_1","0");
+                localStorage.setItem("Parada_2","0");
+                localStorage.setItem("Parada_4","0");
                 $("#parada3_0").trigger("click");
-                $("#enviar").trigger("click");
+                $("#enviarPar").trigger("click");
             }
         });
         $.get('variables/Parada_4.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                localStorage.setItem("Parada_4", result.trim());
+            if(result.trim().substring(3,4)=="1"){
+                localStorage.setItem("Parada_4", result.trim().substring(3,4));
+                localStorage.setItem("Parada_0","0");
+                localStorage.setItem("Parada_1","0");
+                localStorage.setItem("Parada_2","0");
+                localStorage.setItem("Parada_3","0");
                 $("#parada4_0").trigger("click");
-                $("#enviar").trigger("click");
+                $("#enviarPar").trigger("click");
             }
         });
         $.get('variables/Parada_0.html', function(result){
-            if(result.trim()=="<p>1</p>"){
-                localStorage.setItem("Parada_0", result.trim());
+            if(result.trim().substring(3,4)=="1"){
+                localStorage.setItem("Parada_0", result.trim().substring(3,4));
+                localStorage.setItem("Parada_4","0");
+                localStorage.setItem("Parada_1","0");
+                localStorage.setItem("Parada_2","0");
+                localStorage.setItem("Parada_3","0");
                 $("#parada0_0").trigger("click");
-                $("#enviar").trigger("click");
+                $("#enviarPar").trigger("click");
             }
         });
-        $.get('variables/Posicion.html', function(result){
-            localStorage.setItem("Posicion", result.trim());
-        });
         $.get('variables/Velocidad.html', function(result){
-            arrayVelocidad.push(result.trim());
+            arrayVelocidad.push(result.trim().substring(3,6));
             localStorage.setItem("Velocidad", arrayVelocidad.join());
         });
         $.get('variables/REARME_1.html', function(result){
-            if(result.trim()=="<p>1</p>"){
+            if(result.trim().substring(3,4)=="1"){
                 $("#rearme1_0").trigger("click");
-                $("#botonSeguir").trigger("click");
+                $("#enviarRearme").trigger("click");
             }
         });
         $.get('variables/REARME_2.html', function(result){
-            if(result.trim()=="<p>1</p>"){
+            if(result.trim().substring(3,4)=="1"){
                 $("#rearme2_0").trigger("click");
-                $("#botonSeguir").trigger("click");
+                $("#enviarRearme").trigger("click");
             }
         });
     },1000);
+
+    //la posicion del tranvia en tiempo real cada 100 ms
+    setInterval(function() {
+    $.get('variables/Posicion.html', function(result){
+        localStorage.setItem("Posicion", result.trim().substring(3,6));
+        //posInicioBola();
+    });
+    },100);
 });
 //EMERGENCIA
 /**
@@ -182,25 +204,6 @@ function irPosicion() {
 }
 
 /*BOTON MOVER TRANVIA A UNA PARADA*/
-/**
- * Funcion para ocultar la pocion de la parada si esta en esa parada estacionado
- */
-function ocultarParada() {
-    switch (Parada) {
-        case 50:
-            document.getElementById("op1").style.display = "none"
-            break;
-        case 200:
-            document.getElementById("op2").style.display = "none"
-            break;
-        case 350:
-            document.getElementById("op3").style.display = "none"
-            break;
-        case 500:
-            document.getElementById("op4").style.display = "none"
-            break;
-    }
-}
 
 /**
  * funcion para elegir al recargar la pagina si es posicion
@@ -239,6 +242,11 @@ function irParada() {
     mover();
 }
 
+function posInicioBola() {
+    Posicion = localStorage.getItem("Posicion");
+    porcentaje=(parseInt(Posicion)*100)/500;
+    mover();
+}
 /*ANIMACION*/
 /**
  * Funcion para la la animacion de la bola
