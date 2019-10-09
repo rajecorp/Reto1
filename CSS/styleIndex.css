@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|Patua+One&display=swap');
-
-@media (min-width: 1100px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
 }
+
 /*Color de fondo del la pagina*/
 body{
   background-color: #3EBD1C;
   color: black;
 }
+
 /*HEADER*/
 
-/*Color de fondo y letra mas el efecto de sombra en los bordes y el posicionamiento del contenido con flex-box para
-ponerlos a la misma distancia*/
 header {
   background-color: white;
   box-shadow: inset 0px 0px 40px 35px #3EBD1C;
@@ -37,17 +35,13 @@ h1 {
   font-size: 40px;
 }
 
-/*MENU*/
-
 /*Quitar el estilo predeterminado a la lista y posicionamiento de la misma*/
 #menu {
   list-style-type: none;
-  margin: 0;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
   display: flex;
   padding-inline-start: 0;
 }
-
 /*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
 el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
 .menuItem {
@@ -64,6 +58,7 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
 #accionesM {
   border-radius: 29px 0px 0px 29px;
 }
+
 /*Y aqui para que solo tenga borde redondo a la derecha*/
 #graficoM{
   border-radius: 0px 29px 29px 0px;
@@ -72,7 +67,7 @@ el color de fondo y el tamaño de la letra y le damos un borde de color verde pa
 
 /*Cuando el raton pase por encima del menu item se cambiara el color del fondo para que se vea se puede clicar ahí*/
 li:hover{
-    background-color: #D2D9D1;
+  background-color: #D2D9D1;
 }
 
 /*EMERGENCIA*/
@@ -84,7 +79,7 @@ li:hover{
   background-color: #FF896F;
   height: 8.5em;
   border: 2px groove #FF5733;
-  border-radius: 29px 29px 29px 29px;
+  border-radius: 29px;
   /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
   transition: all 0.3s ease;
   animation-duration: 0.7s;
@@ -97,7 +92,7 @@ li:hover{
   margin:auto;
   height: auto;
   padding-top:5px;
-  width: 150px; 
+  width: 150px;
   height: 150px;
   /*Animacion que hace que la imagen aumente el tamaño*/
   animation-name: crecer;
@@ -109,27 +104,19 @@ li:hover{
 /*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
 @keyframes crecer{
   from{
-  transform: scale(0.5);
+    transform: scale(0.5);
   }
-
   25%{
-
-  transform: scale(0.9);
+    transform: scale(0.9);
   }
-
   50%{
-
-  transform: scale(0.5);
+    transform: scale(0.5);
   }
-
   75%{
-
-  transform: scale(0.9);
+    transform: scale(0.9);
   }
-
   to{
-
-  transform: scale(0.5);
+    transform: scale(0.5);
   }
 }
 
@@ -143,110 +130,6 @@ li:hover{
   }
 }
 
-/*Animacion que cierra la caja emergencia que hace la mismo que el de abrir pero a la inversa*/
-/*@keyframes decrease{
-  from{
-    height: 8.5em;
-  }
-  to{
-    height: 0;
-  }
-}*/
-
-/*CONTENIDO*/
-
-/*Anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte del menu y la emergencia si esta, 0 de
-separación con el footer para que esten pegados y auto a los lados para que se centre en la página. Definicion del color
-de fondo. Forma del div con puntas redondas*/
-#contenido {
-  width: 80%;
-  margin: 10px auto;
-  margin-bottom: 0;
-  padding: 20px;
-  background-color: #EFF5EE;
-  border-radius: 29px 29px 0px 0px;
-}
-
-/*ACCIONES*/
-
-#acciones{
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-/*para que el fondo blanco ocupe todo el alto de acciones*/
-#acciones::after{
-  content: ".";
-  display: flex;
-  flex-direction: column;
-  visibility: hidden;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-
-}
-/*Color para los botones*/
-#botonParar{
-    background-color: rgb(171, 11, 53);
-}
-
-
-/*Diseño del boton ir*/
-#enviarPar{
-  width: 100%;
-}
-
-/*Diseñp de los botones de interaccion con el trnavia*/
-.botones{
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px 5px;
-    cursor: pointer;
-}
-
-/*Posicionamiento del los botones*/
-#botizq{
-    float: left;
-    display: flex;
-    justify-content: space-around;
-}
-#botDer{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-#moverPosicion{
-    display: flex;
-    flex-direction: column;
-}
-
-#moverParada{
-    display: flex;
-    flex-direction: column;
-    width: 331px;
-    padding-top: 56px;
-}
-
-
-#rearme {
-  display: flex;
-  height: 28%;
-  width:40.5%;
-  top:46.6%;
-  transform:scale(2);
-}
-#activar{
-  position: absolute;
-  top: 45%;
-}
-
-#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
-  visibility: hidden;
-  display: none;
-}
 /*FOOTER*/
 
 /*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
@@ -255,8 +138,7 @@ centre en la página. Definicion del color de fondo que es diferente al del cont
 Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
 footer {
   width: 80%;
-  margin: 10px auto;
-  margin-top: 0;
+  margin: 0 auto 10px;
   padding: 20px;
   background-color: black;
   color: white;
@@ -266,19 +148,13 @@ footer {
   padding: 0 20px;
 }
 
-
 /*Ajuste a la imagen de github*/
 #github_logo {
   width: 40px;
   height: 40px;
 }
 
-#posicionTranvia{
-  height: 300px;
-  display: flex;
-  flex-direction: column; 
-  padding: 0 8%;    
-}
+/*ANIMACION*/
 
 .trianguloposicion{
   width: 0;
@@ -293,230 +169,61 @@ footer {
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
 }
-  .barra{
-    height: 5%;
-    width: 100%;
-    background-color: black;
-  }
-  #contflechas{
-    height: 53% ;
-    width: 100%;
-    display: flex;
-    justify-content: center;  
-    margin-left:6%;
-  }
 
-  @keyframes parada{
-    from{
-      margin-top: 20px;
-    }
-    25%{
-      margin-top: 40px;
-    }
-
-    50%{
-      margin-top: 20px;
-    }
-
-    75%{
-      margin-top: 40px;
-    } 
-
-    to{
-      margin-top: 20px;
-    }
-  }
-  #contparada{
-    bottom: 11%;
-    right: 29%;
-    position: absolute;
-  }
-  #contbola{
-    padding: 0 9% 0 7%; 
-  }
-
-  #bolapos{
-    background-color: black;
-    height: 40px;
-    width: 40px;
-    border-radius:40px;
-    margin-top: -154px;
-    /*transition:margin-left 4s;*/
-  }
-  #idGrafico{
-    width: 30%;
-    height: 30%;
-    float: left;
-    margin-left:28%;
-  }
-  #grafico{
-    margin: 2%;
-    overflow: hidden;
-    display: none;
-
-  }
-  /*para que el fondo blanco ocupe todo el alto de acciones*/
-#grafico::after{
-  content: ".";
-  visibility: visible;
-  display: block;
-  height: 0;
-  clear: both;
-}
-}
-/*-----------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 1099px) and (min-width:699px){
-*{
-  font-family: 'PT sans', Arial, sans-serif;
-  font-size: 18px;
-}
-/*Color de fondo del la pagina*/
-body{
-  background-color: #3EBD1C;
-  color: black;
-}
-/*HEADER*/
-
-/*Color de fondo y letra mas el efecto de sombra en los bordes y el posicionamiento del contenido con flex-box para
-ponerlos a la misma distancia*/
-header {
-  background-color: white;
-  box-shadow: inset 0px 0px 40px 35px #3EBD1C;
-  padding: 2%;
-  height: 10%;
+#posicionTranvia{
+  height: 300px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  padding: 0 8%;
 }
 
-/*Ajustes a la imagen para que no pege con la sombra y parezca que esta dentro*/
-header img {
-  margin-top: -20px;
-  width:  300px;
-  height: auto;
+.barra{
+  height: 5%;
+  width: 100%;
+  background-color: black;
 }
 
-/*Tamaño de la letra del titulo y posicion del mismo*/
-h1 {
-  font-family: 'Patua One';
-  align-self: center;
-  font-size: 40px;
-}
-
-/*MENU*/
-
-/*Quitar el estilo predeterminado a la lista y posicionamiento de la misma*/
-#menu {
-  list-style-type: none;
-  margin: 0;
-  margin-bottom: 10px;
+#contflechas{
+  height: 53% ;
+  width: 100%;
   display: flex;
-  padding-inline-start: 0;
+  justify-content: center;
+  margin-left:6%;
 }
 
-/*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
-el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
-.menuItem {
-  width: 50%;
-  padding: 5px 0;
-  text-align: center;
-  border: 2px solid green;
-  font-size: 25px;
-  background-color: #EFF5EE;
-}
-
-/*Se les pone el borde redondo a los dos items del menu de tal manera que entre ellos queden unidos (sin bordes redondos)*/
-/*Aqui es para que solo tenga borde redondo a la izquierda*/
-#accionesM {
-  border-radius: 29px 0px 0px 29px;
-}
-/*Y aqui para que solo tenga borde redondo a la derecha*/
-#graficoM{
-  border-radius: 0px 29px 29px 0px;
-  border-left: none;
-}
-
-/*Cuando el raton pase por encima del menu item se cambiara el color del fondo para que se vea se puede clicar ahí*/
-li:hover{
-    background-color: #D2D9D1;
-}
-
-/*EMERGENCIA*/
-
-/*Esta caja solo aparecera si recibimos del automata que ha habido una emergencia*/
-#emergencia{
-  /*Aqui se define el tamaño con el color de fondo y su borde*/
-  margin: 5px;
-  background-color: #FF896F;
-  height: 8.5em;
-  border: 2px groove #FF5733;
-  border-radius: 29px 29px 29px 29px;
-  /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
-  transition: all 0.3s ease;
-  animation-duration: 0.7s;
-  overflow: hidden;
-}
-
-#emergenciaImg{
-  /*Posicionamiento y tamaño de la imagen*/
-  display:block;
-  margin:auto;
-  height: auto;
-  padding-top:5px;
-  width: 150px; 
-  height: 150px;
-  /*Animacion que hace que la imagen aumente el tamaño*/
-  animation-name: crecer;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  animation-delay: 0s;
-}
-
-/*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
-@keyframes crecer{
+@keyframes parada{
   from{
-  transform: scale(0.5);
+    margin-top: 20px;
   }
-
   25%{
-
-  transform: scale(0.9);
+    margin-top: 40px;
   }
 
   50%{
-
-  transform: scale(0.5);
+    margin-top: 20px;
   }
 
   75%{
-
-  transform: scale(0.9);
+    margin-top: 40px;
   }
 
   to{
-
-  transform: scale(0.5);
+    margin-top: 20px;
   }
 }
 
-/*Animacion que abre la caja emergencia que pasa de no tener altura a tener 12.5em*/
-@keyframes abrir{
-  from{
-    height: 0;
-  }
-  to{
-    height: 8.5em;
-  }
+#contbola{
+  padding: 0 9% 0 7%;
 }
 
-/*Animacion que cierra la caja emergencia que hace la mismo que el de abrir pero a la inversa*/
-/*@keyframes decrease{
-  from{
-    height: 8.5em;
-  }
-  to{
-    height: 0;
-  }
-}*/
+#bolapos{
+  background-color: black;
+  height: 40px;
+  width: 40px;
+  border-radius:40px;
+  margin-top: -154px;
+  /*transition:margin-left 4s;*/
+}
 
 /*CONTENIDO*/
 
@@ -525,232 +232,173 @@ separación con el footer para que esten pegados y auto a los lados para que se 
 de fondo. Forma del div con puntas redondas*/
 #contenido {
   width: 80%;
-  margin: 10px auto;
-  margin-bottom: 0;
+  margin: 10px auto 0;
   padding: 20px;
   background-color: #EFF5EE;
   border-radius: 29px 29px 0px 0px;
 }
 
-/*ACCIONES*/
-
-#acciones{
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-/*para que el fondo blanco ocupe todo el alto de acciones*/
-#acciones::after{
-  content: ".";
-  display: flex;
-  flex-direction: column;
-  visibility: hidden;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-
-}
 /*Color para los botones*/
-#botonParar{
-    background-color: rgb(171, 11, 53);
+#botonParar, #botonAbrir{
+  background-color: rgb(171, 11, 53);
 }
 
+#botonSeguir, #botonCerrar{
+  background-color: #4CAF50;
+}
 
 /*Diseño del boton ir*/
 #botonIr{
-    background-color: rgb(36, 50, 206);
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    /*display: inline-block;*/
-    font-size: 16px;
-    /*margin: 5px 5px;*/
-    cursor: pointer;
+  background-color: rgb(36, 50, 206);
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/*Diseñp de los botones de interaccion con el trnavia*/
+/*Diseño de los botones de interaccion con el tranvia*/
 .botones{
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px 5px;
-    cursor: pointer;
-}
-
-/*Posicionamiento del los botones*/
-#botizq{
-    float: left;
-    display: flex;
-    justify-content: space-around;
-}
-#botDer{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-#moverPosicion{
-    display: flex;
-    flex-direction: column;
-}
-
-#moverParada{
-    display: flex;
-    flex-direction: column;
-    width: 331px;
-    padding-top: 56px;
-}
-
-
-#rearme {
-  display: flex;
-  height: 28%;
-  width:40.5%;
-  top:45.6%;
-  transform:scale(2);
-}
-#activar{
-  position: absolute;
-  top: 45%;
-}
-#contparada{
-  bottom: 11%;
-  right: 29%;
-  position: absolute;
-}
-
-#enviarPar{
-  width: 100%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 5px;
+  cursor: pointer;
 }
 
 #pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
   visibility: hidden;
   display: none;
 }
-/*FOOTER*/
 
-/*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
-de abajo de la pagina, 0 de separación con el contenido para que esten pegados y auto a los lados para que se
-centre en la página. Definicion del color de fondo que es diferente al del contenido para que se vea la diferencia.
-Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
-footer {
-  width: 80%;
-  margin: 10px auto;
-  margin-top: 0;
-  padding: 20px;
-  background-color: black;
-  color: white;
-  border-radius: 0px 0px 29px 29px;
+#parada1_1, #parada2_1, #parada3_1, #parada4_1, #p1, #p2, #p3, #p4{
+  visibility: hidden;
+}
+#formParadas{
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
+}
+#enviarPar{
+  width: 100%;
+}
+/*GRAFICO*/
+
+#grafico{
+  margin: 2%;
+  overflow: hidden;
+  display: none;
+
 }
 
-
-/*Ajuste a la imagen de github*/
-#github_logo {
-  width: 40px;
-  height: 40px;
-}
-
-#posicionTranvia{
-  height: 300px;
-  display: flex;
-  flex-direction: column; 
-  padding: 0 8%;    
-}
-
-.trianguloposicion{
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 40px 20px;
-  border-color: black transparent transparent transparent;
-  filter: drop-shadow(3px 3px 3px rgba(0,0,0,.5));
-  float:right;
-  margin:2% 14% 0 12.8%;
-  transition:margin-top 0.3s;
-  animation-duration: 0.7s;
-  animation-iteration-count: infinite;
-}
-  .barra{
-    height: 5%;
-    width: 100%;
-    background-color: black;
-  }
-  #contflechas{
-    height: 53% ;
-    width: 100%;
-    display: flex;
-    justify-content: center;  
-    margin-left:6%;
-  }
-
-  @keyframes parada{
-    from{
-      margin-top: 20px;
-    }
-    25%{
-      margin-top: 40px;
-    }
-
-    50%{
-      margin-top: 20px;
-    }
-
-    75%{
-      margin-top: 40px;
-    } 
-
-    to{
-      margin-top: 20px;
-    }
-  }
-
-  #contbola{
-    padding: 0 9% 0 7%; 
-  }
-
-  #bolapos{
-    background-color: black;
-    height: 40px;
-    width: 40px;
-    border-radius:40px;
-    margin-top: -154px;
-    /*transition:margin-left 4s;*/
-  }
-  #idGrafico{
-    width: 30%;
-    height: 30%;
-    float: left;
-    margin-left:28%;
-  }
-  #grafico{
-    margin: 2%;
-    overflow: hidden;
-    display: none;
-
-  }
-  /*para que el fondo blanco ocupe todo el alto de acciones*/
-#grafico::after{
+/*para que el fondo blanco ocupe todo el alto de el contenido*/
+#grafico:after{
   content: ".";
   visibility: visible;
   display: block;
   height: 0;
   clear: both;
 }
+
+
+/*----------------------------------------------*/
+@media (min-width: 1000px){
+
+  /*ACCIONES*/
+  #acciones{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*Posicionamiento del los botones*/
+  #botizq{
+    float: left;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #botDer{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #moverPosicion{
+      display: flex;
+      flex-direction: column;
+  }
+
+  #moverParada{
+      display: flex;
+      flex-direction: column;
+  }
+
+  #rearme {
+    display: flex;
+  }
+
+  #enviarRearme{
+    position: absolute;
+    top: 45%;
+  }
+
+  #idGrafico{
+    width: 30%;
+    height: 30%;
+    float: left;
+    margin-left:28%;
+  }
+}
+/*-----------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 999px) and (min-width:799px){
+
+  /*ACCIONES*/
+
+  #acciones{
+    overflow: hidden;
+    display: block;
+  }
+
+  /*Posicionamiento del los botones*/
+  #botizq{
+      float: left;
+  }
+
+  #botDer{
+      float: right;
+      width: 48%;
+  }
+
+  #rearme {
+    display: flex;
+    margin-left: -22%;
+    padding-bottom: 16%;
+  }
+
+  #enviarRearme{
+    position: absolute;
+    top: 45%;
+  }
+  /*FOOTER*/
+
+    #idGrafico{
+      width: 70%;
+      height: 37%;
+      float: left;
+      margin-left:28%;
+    }
 }
 
 
 /*-----------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 700px){
+@media (max-width: 800px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
 }
+
 h2{
-  font-style: bold
+  font-weight: bold;
 }
 /*Color de fondo del la pagina*/
 body{
@@ -758,6 +406,7 @@ body{
   color: black;
   z-index: 1;
   margin:-1px;
+  overflow: hidden;
 }
 /*HEADER*/
 
@@ -766,9 +415,7 @@ ponerlos a la misma distancia*/
 header {
   background-color: #3EBD1C;
   box-shadow: inset 0px 0px 16px 19px #EFF5EE;
-  display: flex;
-  justify-content: space-around;
-} 
+}
 
 /*Ajustes a la imagen para que no pege con la sombra y parezca que esta dentro*/
 header img {
@@ -779,17 +426,13 @@ header img {
 
 /*Tamaño de la letra del titulo y posicion del mismo*/
 h1 {
-  font-family: 'Patua One';
-  align-self: center;
-  font-size: 40px;
+  font-size: 20px;
 }
 
 /*MENU*/
 
 /*Quitar el estilo predeterminado a la lista y posicionamiento de la misma*/
 #menu {
-  list-style-type: none;
-  display: flex;
   padding: 0;
   position:fixed;
   bottom:0;
@@ -799,74 +442,25 @@ h1 {
   box-shadow:3px 3px 5px #BEBEBE ;
   z-index: 2;
 }
+
 /*Se establece el ancho de cada item de la lista para que ocupen lo mismo y se alinea el texto en el centro, se cambia
 el color de fondo y el tamaño de la letra y le damos un borde de color verde para que resalte del fondo*/
 .menuItem {
-  width: 50%;
   padding: 13px 0;
-  text-align: center;
   border: 0.016px solid #BEBEBE;
-  font-size: 25px;
   background-color: #E0E8DF;
-}
-
-/*Cuando el raton pase por encima del menu item se cambiara el color del fondo para que se vea se puede clicar ahí*/
-li:hover{
-    background-color: #D2D9D1;
 }
 
 /*EMERGENCIA*/
 
 /*Esta caja solo aparecera si recibimos del automata que ha habido una emergencia*/
 #emergencia{
-  /*Aqui se define el tamaño con el color de fondo y su borde*/
-  background-color: #FF896F;
   height: 4.5em;
-  border: 2px groove #FF5733;
-  /*Y aqui tenemos la animacion que va ha hacer que el div se abra o cierre*/
-  transition: all 0.3s ease;
-  animation-duration: 0.7s;
-  overflow: hidden;
 }
 
 #emergenciaImg{
-  /*Posicionamiento y tamaño de la imagen*/
-  display:block;
-  margin:auto;
-  height: auto;
   height: 100%;
-  /*Animacion que hace que la imagen aumente el tamaño*/
-  animation-name: crecer;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  animation-delay: 0;
-}
-
-/*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
-@keyframes crecer{
-  from{
-  transform: scale(0.5);
-  }
-
-  25%{
-
-  transform: scale(0.9);
-  }
-
-  50%{
-
-  transform: scale(0.5);
-  }
-
-  75%{
-
-  transform: scale(0.9);
-  }
-
-  to{
-
-  transform: scale(0.5);
-  }
+  width: 25%;
 }
 
 /*Animacion que abre la caja emergencia que pasa de no tener altura a tener 12.5em*/
@@ -879,16 +473,6 @@ li:hover{
   }
 }
 
-/*Animacion que cierra la caja emergencia que hace la mismo que el de abrir pero a la inversa*/
-/*@keyframes decrease{
-  from{
-    height: 8.5em;
-  }
-  to{
-    height: 0;
-  }
-}*/
-
 /*CONTENIDO*/
 
 /*Anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte del menu y la emergencia si esta, 0 de
@@ -897,188 +481,65 @@ de fondo. Forma del div con puntas redondas*/
 #contenido {
   padding:0 34px 0 34px;
   position: relative;
-  background-color: #EFF5EE;
 }
 
-/*ACCIONES*/
-#acciones{
-  display: inherit;
-}
-/*para que el fondo blanco ocupe todo el alto de acciones*/
-#acciones::after{
-  content: ".";
-  display: block;
-  flex-direction: column;
-  visibility: hidden;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-
-}
-/*Color para los botones*/
-#botonParar{
-    background-color: rgb(171, 11, 53);
-}
-#contparada{
-  bottom: -3%;
-  right: 14%;
-  position: absolute;
-}
-/*Diseño del boton ir*/
-#enviarPar{
-  width: 100%;
+#botonSeguir, #botonCerrar{
+    background-color: #4CAF50;
 }
 
 /*Diseñp de los botones de interaccion con el trnavia*/
 .botones{
-    color: white;
     padding: 0px 14px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px 5px;
-    cursor: pointer;
     height: 49px;
 }
+#botonrearme{
 
-/*Posicionamiento del los botones*/
-#botizq{
-    float: left;
-}
-#botDer{
-    float: right;
-    width: 98%;
 }
 
-#mandarPosicion{
+  #rearme {
+    display: flex;
+    margin-left: 20%;
+    padding:0% 5% 9% 5%;
+  }
+
+  #enviarRearme{
     position: absolute;
-    margin-top: 6.5%;
-    left: 20%;
-}
-
-#mandarParada{
-    position: absolute;
-    left: 70%;
-}
-
-#rearme {
+    top: 45%;
+  }
+#acciones{
   display: flex;
-  height: 43%;
-  width: 75.5%;
-  top: 31.6%;
-  transform:scale(1.5);
-}
-#activar{
-  position: absolute;
-  top: 45%;
-}
-
-#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
-  visibility: hidden;
-  display: none;
+  flex-direction: column;
 }
 /*FOOTER*/
-
-/*Al igual que el contenido tiene una anchura del 80% para dejar dos columnas vacias a los lados. Margen con la parte
-de abajo de la pagina, 0 de separación con el contenido para que esten pegados y auto a los lados para que se
-centre en la página. Definicion del color de fondo que es diferente al del contenido para que se vea la diferencia.
-Forma de la caja con borde redondo y separacion entre el contenido del mismo*/
-footer {
-visibility: hidden;
-}
-
-
-/*Ajuste a la imagen de github*/
-#github_logo {
-  width: 40px;
-  height: 40px;
+footer{
+  visibility: hidden;
 }
 
 #posicionTranvia{
   height: 140px;
-  display: flex;
-  flex-direction: column; 
-  padding: 0 8%;   
   width: 84%; 
 }
 
 .trianguloposicion{
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 20px 10px;
-  border-color: black transparent transparent transparent;
-  filter: drop-shadow(3px 3px 3px rgba(0,0,0,.5));
-  float:right;
-  margin:2% 14% 0 12.8%;
-  transition:margin-top 0.3s;
-  animation-duration: 0.7s;
-  animation-iteration-count: infinite;
+  border-width: 24px 12px;
 }
   .barra{
-    height: 5%;
     width: 104%;
-    background-color: black;
   }
   #contflechas{
-    height: 53%;
     width: 88%;
-    display: flex;
-    justify-content: center;
-    margin-left: 10.5%;  }
-
-  @keyframes parada{
-    from{
-      margin-top: 20px;
-    }
-    25%{
-      margin-top: 40px;
-    }
-
-    50%{
-      margin-top: 20px;
-    }
-
-    75%{
-      margin-top: 40px;
-    } 
-
-    to{
-      margin-top: 20px;
-    }
-  }
-
-  #contbola{
-    padding: 0 9% 0 7%; 
+    margin-left: 10.5%;
   }
 
   #bolapos{
-    background-color: black;
     height: 25px;
     width: 25px;
     border-radius:25px;
     margin-top: -75.6px;
-    /*transition:margin-left 4s;*/
   }
   #idGrafico{
-    width: 30%;
-    height: 30%;
+    height: 185px;
+    width: 298px;
     float: left;
-    margin-left:28%;
   }
-  #grafico{
-    margin: 2%;
-    overflow: hidden;
-    display: none;
-
-  }
-  /*para que el fondo blanco ocupe todo el alto de acciones*/
-#grafico::after{
-  content: ".";
-  visibility: visible;
-  display: block;
-  height: 0;
-  clear: both;
 }
-}
-

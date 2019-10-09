@@ -1,20 +1,14 @@
 /**
  * Variables globales
  */
-var Posicion_Destino=0;
 var COTAS;
-var ENTER=0;
-var Paro=0;
 var Parada_0=0;
 var Parada_1=0;
 var Parada_2=0;
 var Parada_3=0;
 var Parada_4=0;
-var Parada;
 var Posicion;
 var Emergencia=false;
-var REARME_1=0;
-var REARME_2=0;
 var arrayVelocidad= new Array();
 let posi = new Array();
 var porcentaje;
@@ -162,14 +156,15 @@ function activarTranvia(){
 function rearme(){
     document.getElementById("rearme").style.backgroundColor='#EFF5EE';
     document.getElementById("rearme").style.position='absolute';
+    document.getElementById("rearme").style.width='40.5%';
+    document.getElementById("rearme").style.height='18%';
+    document.getElementById("rearme").style.top='41.6%';
     document.getElementById("rearme").style.paddingTop='6%';
     document.getElementById("rearme").style.justifyContent='center';
-    
+    document.getElementById("rearme").style.transform='scale(2)';
+    document.getElementById("rearme").style.transform='scale(2)';
+
     document.getElementById("tranvia").style.visibility='hidden';
-
-    document.getElementById("contparada").style.visibility='hidden';
-
-    document.getElementById("moverposicion").style.visibility='hidden';
 
     document.getElementById("botonParar").style.visibility='hidden';
 
@@ -234,6 +229,56 @@ function ocultarMenu(valor) {
 
 
 //ACCION
+/**
+ * Función para mostrar el radiobutton de cada parada y solo el suyo
+ * @param {*} seleccion
+ */
+function activarRBparada(seleccion) {
+    seleccion = parseInt(seleccion.value);
+
+    switch (seleccion) {
+        case 1:
+            document.getElementById("parada1_1").style.visibility = "visible";
+            document.getElementById("parada2_1").style.visibility = "hidden";
+            document.getElementById("parada3_1").style.visibility = "hidden";
+            document.getElementById("parada4_1").style.visibility = "hidden";
+            document.getElementById("p1").style.visibility = "visible";
+            document.getElementById("p2").style.visibility = "hidden";
+            document.getElementById("p3").style.visibility = "hidden";
+            document.getElementById("p4").style.visibility = "hidden";
+            break;
+        case 2:
+            document.getElementById("parada2_1").style.visibility = "visible";
+            document.getElementById("parada1_1").style.visibility = "hidden";
+            document.getElementById("parada3_1").style.visibility = "hidden";
+            document.getElementById("parada4_1").style.visibility = "hidden";
+            document.getElementById("p1").style.visibility = "hidden";
+            document.getElementById("p2").style.visibility = "visible";
+            document.getElementById("p3").style.visibility = "hidden";
+            document.getElementById("p4").style.visibility = "hidden";
+            break;
+        case 3:
+            document.getElementById("parada3_1").style.visibility = "visible";
+            document.getElementById("parada2_1").style.visibility = "hidden";
+            document.getElementById("parada1_1").style.visibility = "hidden";
+            document.getElementById("parada4_1").style.visibility = "hidden";
+            document.getElementById("p1").style.visibility = "hidden";
+            document.getElementById("p2").style.visibility = "hidden";
+            document.getElementById("p3").style.visibility = "visible";
+            document.getElementById("p4").style.visibility = "hidden";
+            break;
+        case 4:
+            document.getElementById("parada4_1").style.visibility = "visible";
+            document.getElementById("parada2_1").style.visibility = "hidden";
+            document.getElementById("parada3_1").style.visibility = "hidden";
+            document.getElementById("parada1_1").style.visibility = "hidden";
+            document.getElementById("p1").style.visibility = "hidden";
+            document.getElementById("p2").style.visibility = "hidden";
+            document.getElementById("p3").style.visibility = "hidden";
+            document.getElementById("p4").style.visibility = "visible";
+            break;
+    }
+}
 /**
  * Funcion para mover el tranvia a una posicion en mm
  */
