@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|Patua+One&display=swap');
 
-@media (min-width: 1200px){
+@media (min-width: 1000px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
@@ -270,10 +270,6 @@ footer {
   padding: 0 20px;
 }
 
-#pos_des0, #enter0, #parada1_0, #parada2_0, #parada3_0, #parada4_0, #rearme1_0, #rearme2_0 {
-  visibility: hidden;
-  display: none;
-}
 
 /*Ajuste a la imagen de github*/
 #github_logo {
@@ -369,7 +365,7 @@ footer {
 }
 }
 /*-----------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 1199px) and (min-width:799px){
+@media (max-width: 999px) and (min-width:799px){
 *{
   font-family: 'PT sans', Arial, sans-serif;
   font-size: 18px;
@@ -906,13 +902,17 @@ de fondo. Forma del div con puntas redondas*/
 }
 
 /*Posicionamiento del los botones*/
+#acciones{
+  display: inherit;
+}
+
 #botizq{
     float: left;
 }
 #botDer{
-    width: 58%;
-    display: flex;
-    justify-content: space-between;
+    float: right;
+    width: 98%;
+
 }
 
 #mandarPosicion{
@@ -1016,8 +1016,8 @@ footer{
     transition:margin-left 4s;
   }
   #idGrafico{
-    width: 30%;
-    height: 30%;
+    height: 185px;
+    width: 298px;
     float: left;
   }
   #grafico{
