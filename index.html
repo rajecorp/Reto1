@@ -1,16 +1,27 @@
 <!-- AWP_In_Variable Name='"mis_datos".Emergencia'-->
+<!-- AWP_In_Variable Name='"mis_datos".COTAS'-->
+<!-- AWP_In_Variable Name='"mis_datos".ENTER'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_1'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_2'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_3'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_4'-->
+<!-- AWP_In_Variable Name='"mis_datos".Parada_0'-->
+<!-- AWP_In_Variable Name='"mis_datos".Paro'-->
 <!-- AWP_In_Variable Name='"mis_datos".Posicion'-->
 <!-- AWP_In_Variable Name='"mis_datos".Velocidad'-->
-<!-- AWP_In_Variable Name='"mis_datos".PuertaAbierta'-->
-<!-- AWP_In_Variable Name='"mis_datos".PuertaCerrada'-->
-<!-- AWP_In_Variable Name='"mis_datos".SeguridadPuerta'-->
-<!-- AWP_In_Variable Name='"mis_datos".Parada'-->
+<!-- AWP_In_Variable Name='"mis_datos".REARME_1'-->
+<!-- AWP_In_Variable Name='"mis_datos".REARME_2'-->
+<!-- AWP_In_Variable Name='"mis_datos".Posicion_Destino'-->
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>"Tranvia Vitoria"</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <title>Tranvia Vitoria</title>
       <script src="jquery-3.4.1.js"></script>
-      <script src="javaScript.js"></script>
+      <script src="main.js"></script>
+      <script src="Librerias/Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
   </head>
   <body onload="todas()">
@@ -23,17 +34,17 @@
       <!-- /Cabecera -->
 
       <!-- Men� principal -->
-        <div>
+        <div id=contmenu>
           <ul id="menu">
-              <li class="menuItem" id="estadoM" onclick="ocultarMenu('estado')">Estado</li>
               <li class="menuItem" id="accionesM" onclick="ocultarMenu('acciones')">Acciones</li>
+              <li class="menuItem" id="graficoM" onclick="ocultarMenu('grafico')">Grafico</li>
           </ul>
         </div>
       <!-- /Men� principal -->
 
       <!-- Emergencia -->
-        <div id="emergencia" style='visibility:hidden; display:none;'>
-            <img src="img/emergencia.png" class="growshrink" style="width: 150px; height: 150px;" id="emergenciaImg">
+        <div id="emergencia">
+            <img src="img/emergencia.png" class="growshrink" id="emergenciaImg">
         </div>
       <!-- /Emergencia -->
 
@@ -45,7 +56,7 @@
         <h2>Posicion del tranvia</h2>
         <div id="posicionTranvia">
           <div id="contflechas">
-            <div class="trianguloposicion" id="parada1" ></div>
+            <div class="trianguloposicion" id="parada1"></div>
             <div class="trianguloposicion" id="parada2"></div>
             <div class="trianguloposicion" id="parada3"></div>
             <div class="trianguloposicion" id="parada4"></div>
@@ -57,47 +68,77 @@
       </div>
       <!-- /Tranv�a -->
 
-      <!-- Estado -->
-          <div id="estado">
-            <h2>Estado del tranvia</h2>
-            <p><span id="paradaAnt"></span>----------------------------><span id="paradaSig"></span></p>
-              <p><span id="tiempoAhora"></span>----------------------------><span id="tiempoParSalida"></span></p>
-          </div>
-      <!-- /Estado -->
-
           <!-- Acciones -->
           <div id="acciones">
               <h2>Acciones</h2>
               <div id="botIzq">
-                  <p> <label>Posicion a la que ir: <input type="number" name="posicion" id="posicion" min="0" max="500"></label> </p>
-                  <input type="button" onclick="irPosicion();mover()" value="Ir posicion">
-                  <form action="" method="post" onsubmit="irParada()">
+              <form id="moverposicion" action="" method="post" onsubmit="pos()">
+                      <p>
+                          <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_Destino'>True
+                          <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_Destino' value="false">
+                      </p>
+                      <p> <label>Posicion a la que ir: <input type="number" name='"mis_datos".COTAS' id="posicion" min="0" max="500"></label> </p>
+
+                      <p>
+                          <input id="enter1" type="radio" class="radio" name='"mis_datos".ENTER'>True
+                          <input id="enter0" type="radio" class="radio" name='"mis_datos".ENTER' value="false">
+                      </p>
+
+                      <input type="submit" id="enviar" value="Ir posicion">
+              </form>
+
+
+                  <form action="" method="post" id="moverparada">
+
                       <p> <label>Parada a la que ir:
                           <select id="parad">
                               <option selected="true" disabled>seleccione la parada</option>
-                              <option name="parad" id="op1" value="50">1</option>
-                              <option name="parad" id="op2" value="200">2</option>
-                              <option name="parad" id="op3" value="350">3</option>
-                              <option name="parad" id="op4" value="500">4</option>
+                              <option name="parad" id="op1">1</option>
+                              <option name="parad" id="op2">2</option>
+                              <option name="parad" id="op3">3</option>
+                              <option name="parad" id="op4">4</option>
                           </select>
-                          <br><br>
-                          <input type="submit" class="botonIr" value="Ir">
-                      </label> </p>
+                      <p>
                   </form>
-                  <!--<p> <label>Parada a la que ir: <input type="number" name="parada" min="1" max="4"></label> </p>-->
+                  <form action="" method="post" onsubmit="par()">
+                      <p>
+                          <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1' >
+                          <input id="parada1_0" type="radio" class="radio" name='"mis_datos".Parada_1' value="false">
+
+                          <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'>
+                          <input id="parada2_0" type="radio" class="radio" name='"mis_datos".Parada_2' value="false">
+
+                          <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'>
+                          <input id="parada3_0" type="radio" class="radio" name='"mis_datos".Parada_3' value="false">
+
+                          <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'>
+                          <input id="parada4_0" type="radio" class="radio" name='"mis_datos".Parada_4' value="false">
+                      </p>
+                      <input type="submit" id="enviarPar" class="botonIr" value="Ir">
+                  </form>
               </div>
               <div id="botDer">
-                  <input type="button" id="botonSeguir" class="botones" onclick="showConfirm('seguir')" value="Poner en marcha">
-                  <input type="button" id="botonParar" class="botones" onclick="showConfirm('parar')" value="Parar">
-                  <br>
-                  <p>Abrir puertas<label class="switch">
-                      <input type="checkbox" onclick="abrirPuertas( this)">
-                      <span class="slider"></span>
-                  </label></p>
+
+                  <form id="rearme" onsubmit="activarTranvia()">
+                    <input id="rearme1_1" type="radio" class="radio" name='"mis_datos".REARME_1' style="height: 52px;"><p>Rearme 1</p>
+                    <input id="rearme1_0" type="radio" class="radio" name='"mis_datos".REARME_1' value="false">
+
+                    <input id="rearme2_1" type="radio" class="radio" name='"mis_datos".REARME_2' style="height: 52px;"><p>Rearme 2</p>
+                    <input id="rearme2_0" type="radio" class="radio" name='"mis_datos".REARME_2' value="false">
+
+                    <input type="submit" id="enviarRearme" value="Activar Tranvia" style="margin-top: 4%;">
+                  </form>                  
+                  <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
               </div>
           </div>
           <!-- /Acciones -->
-
+          <!--Grafico-->
+          <div id="grafico">
+              <div id="idGrafico">
+                <canvas id="myChart"></canvas>
+              </div>
+          </div>
+            <!--/Grafico-->
         </div>
         <!-- /Contenido -->
 
