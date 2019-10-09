@@ -26,6 +26,45 @@ function todas() {
     emergencia();
     ocultarParada();
     ejecGrafico();
+    
+    if (localStorage.getItem('rearme')==1){
+        mostrarTodo()
+    }
+    else{
+        rearme();
+    }
+}
+function activarTranvia(){
+    if(rearme1_1.checked && rearme2_1.checked)
+    localStorage.setItem('rearme', '1');
+}
+/**
+ *Funcion necesaria para el funcionamiento de tranvia, y sirve para encender el automata.
+ */
+function rearme(){
+    document.getElementById("rearme").style.backgroundColor='#EFF5EE';
+    document.getElementById("rearme").style.position='absolute';
+    document.getElementById("rearme").style.width='40.5%';
+    document.getElementById("rearme").style.height='18%';
+    document.getElementById("rearme").style.top='41.6%';
+    document.getElementById("rearme").style.paddingTop='6%';
+    document.getElementById("rearme").style.justifyContent='center';
+    document.getElementById("rearme").style.transform='scale(2)';
+    document.getElementById("rearme").style.transform='scale(2)';
+
+    document.getElementById("tranvia").style.visibility='hidden';
+
+    document.getElementById("botonSeguir").style.visibility='hidden';
+    document.getElementById("botonParar").style.visibility='hidden';
+
+    document.getElementById("contmenu").style.visibility='hidden';
+
+ 
+}
+
+function mostrarTodo(){
+    document.getElementById("rearme").style.display='none';
+    document.getElementById("contmenu").style.visibility='visible';
 }
 
 /*POSICIONAR BOLA*/
@@ -44,6 +83,8 @@ function pararEm() {
     if (Emergencia==true){
         Emergencia=false;
         emergencia();
+        localStorage.setItem('rearme', '0');
+        document.location.reload();
     }
     else{
         Emergencia=true;
