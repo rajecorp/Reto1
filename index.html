@@ -1,23 +1,17 @@
 <!-- AWP_In_Variable Name='"mis_datos".Emergencia'-->
 <!-- AWP_In_Variable Name='"mis_datos".COTAS'-->
-    <!--permiso para mover en mm -->
 <!-- AWP_In_Variable Name='"mis_datos".ENTER'-->
-    <!--permiso para mover en mm -->
 <!-- AWP_In_Variable Name='"mis_datos".Parada_1'-->
 <!-- AWP_In_Variable Name='"mis_datos".Parada_2'-->
 <!-- AWP_In_Variable Name='"mis_datos".Parada_3'-->
 <!-- AWP_In_Variable Name='"mis_datos".Parada_4'-->
 <!-- AWP_In_Variable Name='"mis_datos".Parada_0'-->
 <!-- AWP_In_Variable Name='"mis_datos".Paro'-->
-    <!--boton de parar Boleano -->
 <!-- AWP_In_Variable Name='"mis_datos".Posicion'-->
 <!-- AWP_In_Variable Name='"mis_datos".Velocidad'-->
 <!-- AWP_In_Variable Name='"mis_datos".REARME_1'-->
-    <!--boton de añadir corriente Boleano-->
 <!-- AWP_In_Variable Name='"mis_datos".REARME_2'-->
-    <!--boton de inicio de automata Boleano-->
-<!-- AWP_In_Variable Name='"mis_datos".Posicion_destino'-->
-    <!--permiso para mover en mm -->
+<!-- AWP_In_Variable Name='"mis_datos".Posicion_Destino'-->
 
 <html>
   <head>
@@ -26,7 +20,7 @@
 
     <title>Tranvia Vitoria</title>
       <script src="jquery-3.4.1.js"></script>
-      <script src="MV/main.js"></script>
+      <script src="main.js"></script>
       <script src="Librerias/Chart.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styleIndex.css" title="styleIndex" />
   </head>
@@ -80,24 +74,22 @@
               <div id="botIzq">
               <form id="moverposicion" action="" method="post" onsubmit="pos()">
                       <p>
-                          <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_destino'>True
-                          <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_destino' value="false">
+                          <input id="pos_des1" type="radio" class="radio" name='"mis_datos".Posicion_Destino'>Posicion Destino
+                          <input id="pos_des0" type="radio" class="radio" name='"mis_datos".Posicion_Destino' value="false">
                       </p>
                       <p> <label>Posicion a la que ir: <input type="number" name='"mis_datos".COTAS' id="posicion" min="0" max="500"></label> </p>
 
                       <p>
-                          <input id="enter1" type="radio" class="radio" name='"mis_datos".ENTER'>True
+                          <input id="enter1" type="radio" class="radio" name='"mis_datos".ENTER'>Enter
                           <input id="enter0" type="radio" class="radio" name='"mis_datos".ENTER' value="false">
                       </p>
 
                       <input type="submit" id="enviar" value="Ir posicion">
               </form>
 
-
-                  <form action="" method="post" id="moverparada">
-
+                <div id="moverParada">
                       <p> <label>Parada a la que ir:
-                          <select id="parad">
+                          <select id="parad" onchange="activarRBparada(this)">
                               <option selected="true" disabled>seleccione la parada</option>
                               <option name="parad" id="op1">1</option>
                               <option name="parad" id="op2">2</option>
@@ -105,23 +97,23 @@
                               <option name="parad" id="op4">4</option>
                           </select>
                       <p>
-                  </form>
-                  <form action="" method="post"id="contparada" onsubmit="par()">
-                      <p>
-                          <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1' >
+                  <form  action="" method="post" onsubmit="par()">
+                      <div id="formParadas">
+                    <input id="parada1_1" type="radio" class="radio" name='"mis_datos".Parada_1' ><p id="p1">Parada 1</p>
                           <input id="parada1_0" type="radio" class="radio" name='"mis_datos".Parada_1' value="false">
 
-                          <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'>
+                          <input id="parada2_1" type="radio" class="radio" name='"mis_datos".Parada_2'><p id="p2">Parada 2</p>
                           <input id="parada2_0" type="radio" class="radio" name='"mis_datos".Parada_2' value="false">
 
-                          <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'>
+                          <input id="parada3_1" type="radio" class="radio" name='"mis_datos".Parada_3'><p id="p3">Parada 3</p>
                           <input id="parada3_0" type="radio" class="radio" name='"mis_datos".Parada_3' value="false">
 
-                          <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'>
+                          <input id="parada4_1" type="radio" class="radio" name='"mis_datos".Parada_4'><p id="p4">Parada 4</p>
                           <input id="parada4_0" type="radio" class="radio" name='"mis_datos".Parada_4' value="false">
-                      </p>
+                      </div>
                       <input type="submit" id="enviarPar" class="botonIr" value="Ir">
                   </form>
+                </div>
               </div>
               <div id="botDer">
 
@@ -132,7 +124,7 @@
                     <input id="rearme2_1" type="radio" class="radio" name='"mis_datos".REARME_2' style="height: 52px;"><p>Rearme 2</p>
                     <input id="rearme2_0" type="radio" class="radio" name='"mis_datos".REARME_2' value="false">
 
-                    <input type="submit" id="activar" value="Activar Tranvia" style="margin-top: 4%;">
+                    <input type="submit" id="enviarRearme" value="Activar Tranvia" style="margin-top: 4%;">
                   </form>                  
                   <input type="button" id="botonParar" class="botones" onclick="pararEm()" value="Emergencia">
               </div>
