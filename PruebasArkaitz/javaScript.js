@@ -1,13 +1,13 @@
 /**
  * Variables globales
  */
-var Posicion_Destino=false;
+var Posicion_Destino = false;
 var COTAS;
-var ENTER=false;
+var ENTER = false;
 var paradaSiguiente;
-var Parada=50;//aqui ira '"mis_datos".Parada'
-var Posicion=50;//'"mis_datos".Posicion'
-var Emergencia=true;//aqui va '"mis_datos".Emergencia'
+var Parada = 50;//aqui ira '"mis_datos".Parada'
+var Posicion = 50;//'"mis_datos".Posicion'
+var Emergencia = true;//aqui va '"mis_datos".Emergencia'
 //let fechaAhora;
 var porcentaje;
 
@@ -16,9 +16,11 @@ var porcentaje;
  *
  */
 function todas() {
+    velocidadesAnterior();
     emergencia();
     ocultarParada();
     ejecGrafico();
+    
 }
 
 /*EMERGENCIA*/
@@ -26,12 +28,12 @@ function todas() {
  * funcion que es un poton para sacar o meter el mensaje de emergencia
  */
 function pararEm() {
-    if (Emergencia==true){
-        Emergencia=false;
+    if (Emergencia == true) {
+        Emergencia = false;
         emergencia();
     }
-    else{
-        Emergencia=true;
+    else {
+        Emergencia = true;
         emergencia();
     }
 
@@ -46,8 +48,7 @@ function emergencia() {
         document.getElementById('emergencia').style.visibility = 'visible';
         document.getElementById('emergencia').style.animationName = 'abrir';
     }
-    else
-    {
+    else {
         document.getElementById('emergencia').style.display = 'none';
     }
 }
@@ -57,18 +58,18 @@ function emergencia() {
  * @param valor el cambia si es acciones o estado
  */
 function ocultarMenu(valor) {
-    if (valor=="estado") {
+    if (valor == "estado") {
         document.getElementById("acciones").style.display = "none"
         document.getElementById("grafico").style.display = "none"
         document.getElementById("estado").style.display = "inline"
         document.getElementById("estado").style.overflow = "hidden"
-    }else if(valor == "acciones"){
+    } else if (valor == "acciones") {
         document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "none"
         document.getElementById("acciones").style.display = "contents"
         document.getElementById("acciones").style.overflow = "hidden"
         document.getElementById("acciones").style.height = "20%"
-    }else if (valor=="grafico") {
+    } else if (valor == "grafico") {
         document.getElementById("acciones").style.display = "none"
         document.getElementById("estado").style.display = "none"
         document.getElementById("grafico").style.display = "inline"
@@ -81,14 +82,14 @@ function ocultarMenu(valor) {
  * Funcion para mover el tranvia a una posicion en mm
  */
 function irPosicion() {
-    Posicion_Destino=true;
-    ENTER=true;
+    Posicion_Destino = true;
+    ENTER = true;
     COTAS = document.getElementById("posicion").value
     let validar = validarMm(COTAS)
-    if(validar){       
-        porcentaje=(parseInt(COTAS)*100)/500;
+    if (validar) {
+        porcentaje = (parseInt(COTAS) * 100) / 500;
         mover();
-    }else{
+    } else {
         alert("Solo se puede ir a una posicion entre 0-500")
     }
 }
@@ -99,8 +100,8 @@ function irPosicion() {
  * @param COTAS
  */
 function validarMm(COTAS) {
-    if (COTAS>500||COTAS<0){
-     return false;
+    if (COTAS > 500 || COTAS < 0) {
+        return false;
     }
     return true;
 }
@@ -144,10 +145,10 @@ function ocultarParada() {
  * @param evt para prevenir recargar la pagina
  */
 function irParada(evt) {
-    let evento= evt||window.event;
+    let evento = evt || window.event;
     evento.preventDefault();
     paradaSiguiente = document.getElementById("parad").value
-    porcentaje=parseInt((parseInt(paradaSiguiente)*100)/500);
+    porcentaje = parseInt((parseInt(paradaSiguiente) * 100) / 500);
     mover();
 }
 
@@ -262,19 +263,19 @@ function showConfirm(accion) {
 
             alert("Seguir")
 
-        }else if (accion == 'parar') {
+        } else if (accion == 'parar') {
 
             alert("Parar")
 
-        }else if (accion == 'abrir') {
+        } else if (accion == 'abrir') {
 
             alert("Abrir")
 
-        }else if (accion == 'cerrar') {
+        } else if (accion == 'cerrar') {
 
             alert("cerrar")
 
-        }else if(accion == 'ir'){
+        } else if (accion == 'ir') {
             alert("Ir")
         }
     }
@@ -285,81 +286,86 @@ function showConfirm(accion) {
  * Funcion para la la animacion de la bola
  * @param evt para prevenir que la pagina se recargue
  */
-function mover(evt){
-    let evento= evt||window.event;
+function mover(evt) {
+    let evento = evt || window.event;
     evento.preventDefault();
-    var postranvia=document.getElementById("bolapos")
-    postranvia.style.marginLeft=(porcentaje+"%")
+    var postranvia = document.getElementById("bolapos")
+    postranvia.style.marginLeft = (porcentaje + "%")
 
-    switch(porcentaje){    
-    case 10:
-        document.getElementById('parada1').style.animationName ='parada';
+    switch (porcentaje) {
+        case 10:
+            document.getElementById('parada1').style.animationName = 'parada';
 
-        document.getElementById('parada2').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada3').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada4').style.animationName = 'none';
 
-        break;
-   
-    case 40:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='parada';
+        case 40:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'parada';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada3').style.animationName = 'none';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'none';
 
-    case 70:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='none';
+        case 70:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='parada';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada3').style.animationName = 'parada';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'none';
 
-    case 100:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='none';
+        case 100:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='parada';  
+            document.getElementById('parada3').style.animationName = 'none';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'parada';
 
-    default:
-        document.getElementById('parada1').style.animationName ='none';
+            break;
 
-        document.getElementById('parada2').style.animationName ='none';
+        default:
+            document.getElementById('parada1').style.animationName = 'none';
 
-        document.getElementById('parada3').style.animationName ='none';
+            document.getElementById('parada2').style.animationName = 'none';
 
-        document.getElementById('parada4').style.animationName ='none';  
+            document.getElementById('parada3').style.animationName = 'none';
 
-        break;
+            document.getElementById('parada4').style.animationName = 'none';
+
+            break;
     }
 }
 /**
  * Funcionalidad de Grafico
  */
+
+let velocidades = new Array();
+let posi = new Array();
+
 function ejecGrafico() {
+    datosGrafico();
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            labels: posi,
             datasets: [{
                 label: 'Velocity',
-                data: [localStorage.getItem('v1'), localStorage.getItem('v2'), localStorage.getItem('v3'), localStorage.getItem('v4'), localStorage.getItem('v5'), localStorage.getItem('v6'), localStorage.getItem('v7'), localStorage.getItem('v8'), localStorage.getItem('v9'), localStorage.getItem('v10')],
+                data: velocidades,
                 backgroundColor: 'rgba(26, 129, 102, 0.2)',
                 borderColor: "#3cba9f",
                 borderWidth: 1
@@ -372,8 +378,26 @@ function ejecGrafico() {
  * Recoge la velocidad y la parada del grafico y la guarda en localStorage para futuras sesiones
  */
 function asignarVel() {
+    
     let velo = parseInt(document.getElementById("vel").value);
     let stop = parseInt(document.getElementById("stop").value);
-    localStorage.setItem('v'+stop.toString(), JSON.stringify(velo))
+    
+    velocidades[stop-1] = velo;
+    localStorage.setItem('v'+stop, JSON.stringify(velocidades[stop-1]))
+    localStorage.setItem('posicionAnterior', JSON.stringify(velocidades.length))
     ejecGrafico();
+}
+
+function datosGrafico() {
+
+    for (let i = 0; i < velocidades.length; i++) {
+        posi[i] = i+1;
+    }
+}
+
+function velocidadesAnterior() {
+    let posicionAnterior = localStorage.getItem('posicionAnterior');
+    for (let i = 0; i < posicionAnterior; i++) {
+            velocidades[i] = localStorage.getItem('v'+(i+1));
+    }
 }

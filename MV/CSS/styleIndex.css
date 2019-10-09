@@ -107,7 +107,7 @@ li:hover{
   animation-name: crecer;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
-  animation-delay: 0;
+  animation-delay: 0s;
 }
 
 /*Animacion crecer que hace que la imagen vaya cambiando de tamaño de 0.7 del tamaño base a 1.1 del tamaño base*/
@@ -319,7 +319,7 @@ footer {
     width: 40px;
     border-radius:40px;
     margin-top: -154px;
-    transition:margin-left 4s;
+    /*transition:margin-left 4s;*/
   }
   #idGrafico{
     width: 30%;
